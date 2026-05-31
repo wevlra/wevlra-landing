@@ -189,9 +189,6 @@ export function SiteHeader() {
         <div className="hidden items-center gap-1.5 md:flex">
           <ThemeToggle />
           <div className="mx-1 h-5 w-px bg-border/60" aria-hidden="true" />
-          <Button variant="ghost" size="sm" className="h-9">
-            Masuk
-          </Button>
           <Button size="sm" className="h-9 shadow-sm" asChild>
             <Link href="/ai-web-builder">Mulai Gratis</Link>
           </Button>
@@ -292,9 +289,6 @@ export function SiteHeader() {
                 </nav>
 
                 <div className="flex flex-col gap-2 border-t px-4 py-5">
-                  <Button variant="outline" className="w-full" size="lg">
-                    Masuk
-                  </Button>
                   <Button className="w-full" size="lg" asChild>
                     <Link href="/ai-web-builder">Mulai Gratis</Link>
                   </Button>
