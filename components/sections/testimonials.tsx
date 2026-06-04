@@ -22,7 +22,7 @@ export function Testimonials() {
             <span className="text-primary">500+ bisnis</span>
           </>
         }
-        description="Cerita nyata dari pemilik bisnis yang membangun kehadiran online bersama WebVlora."
+        description="Cerita nyata dari pemilik bisnis yang membangun kehadiran online bersama WEVLRA."
         className="mb-10 sm:mb-12"
       />
 

@@ -3,20 +3,20 @@ import { Check, Minus, X } from "lucide-react";
 import { comparisonRows } from "@/lib/content/comparison";
 import { cn } from "@/lib/utils";
 
-type ColumnKey = "diy" | "agency" | "webvlora";
+type ColumnKey = "diy" | "agency" | "wevlra";
 
 const COLUMNS: {
   key: ColumnKey;
   label: string;
   highlight: boolean;
 }[] = [
-  { key: "diy", label: "DIY", highlight: false },
-  { key: "agency", label: "Agensi", highlight: false },
-  { key: "webvlora", label: "WebVlora", highlight: true },
-];
+    { key: "diy", label: "DIY", highlight: false },
+    { key: "agency", label: "Agensi", highlight: false },
+    { key: "wevlra", label: "WEVLRA", highlight: true },
+  ];
 
 function StatusIcon({ col }: { col: ColumnKey }) {
-  if (col === "webvlora") {
+  if (col === "wevlra") {
     return (
       <Check className="size-4 text-primary" aria-label="Tersedia" />
     );
@@ -44,7 +44,7 @@ export function Comparison() {
         eyebrow="Perbandingan"
         title={
           <>
-            Kenapa <span className="text-gradient-brand">WebVlora</span> lebih
+            Kenapa <span className="text-gradient-brand">WEVLRA</span> lebih
             unggul
           </>
         }

@@ -17,7 +17,7 @@ export function HeroMockup() {
         <div className="flex-1 mx-4">
           <div className="mx-auto max-w-[260px] rounded-md bg-background border px-3 py-1.5 text-[10px] text-muted-foreground text-center font-mono flex items-center justify-center gap-1.5">
             <span className="size-1.5 rounded-full bg-green-500" />
-            webvlora.id/your-site
+            WEVLRA.COM
           </div>
         </div>
         <div className="size-3" />

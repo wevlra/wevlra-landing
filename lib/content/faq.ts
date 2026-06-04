@@ -5,7 +5,7 @@ export type FaqItem = {
 
 export const faqItems: FaqItem[] = [
   {
-    question: "Apa itu AI Web Builder dari WebVlora?",
+    question: "Apa itu AI Web Builder dari WEVLRA?",
     answer:
       "AI Web Builder adalah fitur unggulan kami yang memungkinkan Anda membuat draft website hanya dengan mendeskripsikan kebutuhan Anda dalam bahasa sehari-hari. AI kami akan menghasilkan struktur, konten, dan desain awal secara otomatis, yang kemudian disempurnakan oleh tim desainer kami.",
   },
@@ -35,13 +35,13 @@ export const faqItems: FaqItem[] = [
       "Bisa! Anda dapat mengajukan perubahan desain kapan saja. Perubahan minor (warna, font, layout kecil) termasuk dalam paket dukungan bulanan. Untuk redesign besar, kami akan memberikan penawaran khusus.",
   },
   {
-    question: "Bagaimana cara menghubungi tim support WebVlora?",
+    question: "Bagaimana cara menghubungi tim support WEVLRA?",
     answer:
-      "Tim support kami tersedia via WhatsApp dan email di halo@webvlora.id, hari kerja Senin–Jumat pukul 08.00–17.00 WIB. Pelanggan Enterprise mendapatkan dukungan prioritas 24/7.",
+      "Tim support kami tersedia via WhatsApp dan email di halo@WEVLRA.id, hari kerja Senin–Jumat pukul 08.00–17.00 WIB. Pelanggan Enterprise mendapatkan dukungan prioritas 24/7.",
   },
   {
     question: "Apakah harga sudah termasuk domain dan hosting?",
     answer:
-      "Ya! Semua paket WebVlora sudah termasuk domain gratis untuk tahun pertama dan hosting SSD berkecepatan tinggi. Tidak ada biaya tersembunyi — harga yang Anda lihat adalah harga yang Anda bayar.",
+      "Ya! Semua paket WEVLRA sudah termasuk domain gratis untuk tahun pertama dan hosting SSD berkecepatan tinggi. Tidak ada biaya tersembunyi — harga yang Anda lihat adalah harga yang Anda bayar.",
   },
 ];

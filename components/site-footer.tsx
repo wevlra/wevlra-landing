@@ -44,7 +44,7 @@ const legalLinks = [
 
 const socialLinks: { label: string; href: string; icon: React.ReactNode }[] = [
   {
-    label: "Instagram WebVlora",
+    label: "Instagram WEVLRA",
     href: "#",
     icon: (
       <svg
@@ -64,7 +64,7 @@ const socialLinks: { label: string; href: string; icon: React.ReactNode }[] = [
     ),
   },
   {
-    label: "X (Twitter) WebVlora",
+    label: "X (Twitter) WEVLRA",
     href: "#",
     icon: (
       <svg
@@ -78,7 +78,7 @@ const socialLinks: { label: string; href: string; icon: React.ReactNode }[] = [
     ),
   },
   {
-    label: "LinkedIn WebVlora",
+    label: "LinkedIn WEVLRA",
     href: "#",
     icon: (
       <svg
@@ -92,7 +92,7 @@ const socialLinks: { label: string; href: string; icon: React.ReactNode }[] = [
     ),
   },
   {
-    label: "YouTube WebVlora",
+    label: "YouTube WEVLRA",
     href: "#",
     icon: (
       <svg

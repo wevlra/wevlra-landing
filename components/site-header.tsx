@@ -76,7 +76,7 @@ export function SiteHeader() {
         <Link
           href="/"
           className="group flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90"
-          aria-label="WebVlora — kembali ke beranda"
+          aria-label="WEVLRA — kembali ke beranda"
         >
           <div className="relative">
             <div
@@ -100,7 +100,7 @@ export function SiteHeader() {
               priority
             />
           </div>
-          <span className="text-base font-bold tracking-tight">WebVlora</span>
+          <span className="text-base font-bold tracking-tight">WEVLRA</span>
         </Link>
 
         {/* Desktop nav */}
@@ -226,7 +226,7 @@ export function SiteHeader() {
                     height={28}
                     className="hidden rounded-md dark:block"
                   />
-                  <span className="text-base font-bold">WebVlora</span>
+                  <span className="text-base font-bold">WEVLRA</span>
                 </div>
 
                 <nav className="flex-1 overflow-y-auto px-3 py-4">

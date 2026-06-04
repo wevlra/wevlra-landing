@@ -29,16 +29,16 @@ export type NavGroup = {
 export type NavItem =
   | { kind: "link"; label: string; href: string }
   | {
-      kind: "panel";
-      label: string;
-      groups: NavGroup[];
-      featured?: {
-        title: string;
-        description: string;
-        href: string;
-        cta: string;
-      };
+    kind: "panel";
+    label: string;
+    groups: NavGroup[];
+    featured?: {
+      title: string;
+      description: string;
+      href: string;
+      cta: string;
     };
+  };
 
 export const nav: NavItem[] = [
   {
@@ -166,7 +166,7 @@ export const navFlat = [
 ];
 
 export const brand = {
-  name: "WebVlora",
+  name: "WEVLRA",
   tagline: "Cerita Anda, jadi website dalam hitungan menit.",
   description:
     "Jasa pembuatan website profesional yang menggabungkan kecepatan AI dengan sentuhan desainer manusia.",
@@ -180,6 +180,6 @@ export const social = {
 };
 
 export const contact = {
-  email: "halo@webvlora.id",
+  email: "helo@wevlra.com",
   whatsapp: "#",
 };
