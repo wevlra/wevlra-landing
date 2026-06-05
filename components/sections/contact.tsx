@@ -28,13 +28,19 @@ const contactInfo: {
   {
     icon: MessageCircle,
     label: "WhatsApp",
-    value: "+62 812-3456-7890",
-    href: contact.whatsapp,
+    value: "+62 831-6087-1702 (Azni)",
+    href: contact.whatsapp_1,
+  },
+  {
+    icon: MessageCircle,
+    label: "WhatsApp",
+    value: "+62 851-8154-9975 (Bintang)",
+    href: contact.whatsapp_2,
   },
   {
     icon: MapPin,
     label: "Lokasi",
-    value: "Jakarta, Indonesia",
+    value: "Lampung, Indonesia",
     href: null,
   },
 ]
