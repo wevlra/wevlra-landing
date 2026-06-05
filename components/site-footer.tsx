@@ -166,13 +166,21 @@ export function SiteFooter() {
               </li>
               <li>
                 <a
-                  href={contact.whatsapp}
+                  href={contact.whatsapp_1}
                   className="transition-colors hover:text-foreground"
                 >
-                  +62 812-3456-7890
+                  +62 831-6087-1702 (Azni)
                 </a>
               </li>
-              <li>Jakarta, Indonesia</li>
+              <li>
+                <a
+                  href={contact.whatsapp_2}
+                  className="transition-colors hover:text-foreground"
+                >
+                  +62 851-8154-9975 (Bintang)
+                </a>
+              </li>
+              <li>Lampung, Indonesia</li>
             </ul>
           </div>
 

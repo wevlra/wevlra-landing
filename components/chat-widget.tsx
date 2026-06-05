@@ -63,6 +63,33 @@ export function ChatWidget() {
   const abortControllerRef = useRef<AbortController | null>(null)
 
   useEffect(() => {
+    try {
+      const saved = localStorage.getItem("wevlra_chat_history")
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          // eslint-disable-next-line react-hooks/set-state-in-effect
+          setMessages(parsed)
+        }
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (messages.length === 1 && messages[0].id === WELCOME_MESSAGE.id) {
+      localStorage.removeItem("wevlra_chat_history")
+      return
+    }
+    try {
+      localStorage.setItem("wevlra_chat_history", JSON.stringify(messages))
+    } catch (err) {
+      console.error(err)
+    }
+  }, [messages])
+
+  useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
         isOpen &&
@@ -438,7 +465,7 @@ function ChatBubble({ message }: { message: Message }) {
   return (
     <div
       className={cn(
-        "flex items-start gap-2.5",
+        "flex w-full min-w-0 items-start gap-2.5",
         isUser ? "flex-row-reverse" : "flex-row"
       )}
     >
@@ -456,7 +483,7 @@ function ChatBubble({ message }: { message: Message }) {
 
       <div
         className={cn(
-          "max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed",
+          "max-w-[80%] min-w-0 rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed break-words",
           isUser
             ? "rounded-tr-sm bg-primary text-primary-foreground"
             : "rounded-tl-sm bg-muted/60 text-foreground"
@@ -466,6 +493,178 @@ function ChatBubble({ message }: { message: Message }) {
       </div>
     </div>
   )
+}
+
+type BlockType =
+  | "paragraph"
+  | "code"
+  | "list"
+  | "heading"
+  | "table"
+  | "blockquote"
+  | "hr"
+
+interface Block {
+  type: BlockType
+  lines: string[]
+  listType?: "ol" | "ul"
+}
+
+function parseBlocks(content: string): Block[] {
+  const lines = content.split("\n")
+  const blocks: Block[] = []
+
+  let currentBlock: Block | null = null
+  let inCodeBlock = false
+  let codeLines: string[] = []
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i]
+    const trimmed = line.trim()
+
+    if (trimmed.startsWith("```")) {
+      if (inCodeBlock) {
+        codeLines.push(line)
+        blocks.push({
+          type: "code",
+          lines: [...codeLines],
+        })
+        codeLines = []
+        inCodeBlock = false
+        currentBlock = null
+      } else {
+        if (currentBlock) {
+          blocks.push(currentBlock)
+        }
+        inCodeBlock = true
+        codeLines.push(line)
+        currentBlock = null
+      }
+      continue
+    }
+
+    if (inCodeBlock) {
+      codeLines.push(line)
+      continue
+    }
+
+    if (/^(?:-{3,}|\*{3,}|_{3,})$/.test(trimmed)) {
+      if (currentBlock) {
+        blocks.push(currentBlock)
+      }
+      blocks.push({
+        type: "hr",
+        lines: [line],
+      })
+      currentBlock = null
+      continue
+    }
+
+    if (trimmed.startsWith(">")) {
+      if (currentBlock && currentBlock.type === "blockquote") {
+        currentBlock.lines.push(line)
+      } else {
+        if (currentBlock) {
+          blocks.push(currentBlock)
+        }
+        currentBlock = {
+          type: "blockquote",
+          lines: [line],
+        }
+      }
+      continue
+    }
+
+    if (trimmed.startsWith("#")) {
+      if (currentBlock) {
+        blocks.push(currentBlock)
+        currentBlock = null
+      }
+      blocks.push({
+        type: "heading",
+        lines: [line],
+      })
+      continue
+    }
+
+    if (trimmed.startsWith("|")) {
+      if (currentBlock && currentBlock.type === "table") {
+        currentBlock.lines.push(line)
+        continue
+      }
+      const nextLine = lines[i + 1]
+      const nextTrimmed = nextLine ? nextLine.trim() : ""
+      const isSeparator = /^\|?(?:\s*:?-+:?\s*\|)+\s*:?-+:?\s*\|?$/.test(
+        nextTrimmed
+      )
+      if (isSeparator) {
+        if (currentBlock) {
+          blocks.push(currentBlock)
+        }
+        currentBlock = {
+          type: "table",
+          lines: [line],
+        }
+        continue
+      }
+    }
+
+    const isUnordered = trimmed.startsWith("- ") || trimmed.startsWith("* ")
+    const isOrdered = /^\d+\.\s/.test(trimmed)
+
+    if (isUnordered || isOrdered) {
+      const listType = isOrdered ? "ol" : "ul"
+
+      if (
+        currentBlock &&
+        currentBlock.type === "list" &&
+        currentBlock.listType === listType
+      ) {
+        currentBlock.lines.push(line)
+      } else {
+        if (currentBlock) {
+          blocks.push(currentBlock)
+        }
+        currentBlock = {
+          type: "list",
+          listType,
+          lines: [line],
+        }
+      }
+      continue
+    }
+
+    if (trimmed === "") {
+      if (currentBlock) {
+        blocks.push(currentBlock)
+        currentBlock = null
+      }
+      continue
+    }
+
+    if (currentBlock && currentBlock.type === "paragraph") {
+      currentBlock.lines.push(line)
+    } else {
+      if (currentBlock) {
+        blocks.push(currentBlock)
+      }
+      currentBlock = {
+        type: "paragraph",
+        lines: [line],
+      }
+    }
+  }
+
+  if (inCodeBlock && codeLines.length > 0) {
+    blocks.push({
+      type: "code",
+      lines: codeLines,
+    })
+  } else if (currentBlock) {
+    blocks.push(currentBlock)
+  }
+
+  return blocks
 }
 
 /* ─── Render content with Markdown support ─── */
@@ -478,17 +677,19 @@ function ChatContent({
 }) {
   if (!content) return null
 
-  // Split content into blocks by double newlines (paragraphs/lists/code blocks)
-  const blocks = content.split(/\n\n+/)
+  const blocks = parseBlocks(content)
 
   return (
     <div className="space-y-2">
       {blocks.map((block, blockIndex) => {
-        // Code block
-        if (block.startsWith("```")) {
-          const lines = block.split("\n")
-          const hasEnd = block.endsWith("```") && lines.length > 1
-          const code = lines.slice(1, hasEnd ? -1 : undefined).join("\n")
+        if (block.type === "code") {
+          const hasStart = block.lines[0]?.trim().startsWith("```")
+          const hasEnd =
+            block.lines.length > 1 &&
+            block.lines[block.lines.length - 1]?.trim().startsWith("```")
+          const code = block.lines
+            .slice(hasStart ? 1 : 0, hasEnd ? -1 : undefined)
+            .join("\n")
           return (
             <pre
               key={blockIndex}
@@ -504,46 +705,154 @@ function ChatContent({
           )
         }
 
-        // Check if list
-        const lines = block.split("\n")
-        const isList =
-          lines.length > 0 &&
-          lines.every((line) => {
+        if (block.type === "hr") {
+          return (
+            <hr
+              key={blockIndex}
+              className={cn(
+                "my-4 border-t",
+                isUser ? "border-primary-foreground/20" : "border-border/40"
+              )}
+            />
+          )
+        }
+
+        if (block.type === "blockquote") {
+          const blockquoteContent = block.lines
+            .map((line) => line.trim().replace(/^>\s?/, ""))
+            .join("\n")
+          return (
+            <blockquote
+              key={blockIndex}
+              className={cn(
+                "my-2 border-l-4 pl-3 text-left text-sm italic",
+                isUser
+                  ? "border-primary-foreground/30 text-primary-foreground/80"
+                  : "border-border/40 text-muted-foreground"
+              )}
+            >
+              {renderInlineMarkdown(blockquoteContent, isUser)}
+            </blockquote>
+          )
+        }
+
+        if (block.type === "table") {
+          const rows = block.lines.map((line) => {
             const trimmed = line.trim()
-            return (
-              trimmed === "" ||
-              trimmed.startsWith("- ") ||
-              trimmed.startsWith("* ") ||
-              /^\d+\.\s/.test(trimmed)
-            )
-          }) &&
-          lines.some((line) => {
-            const trimmed = line.trim()
-            return (
-              trimmed.startsWith("- ") ||
-              trimmed.startsWith("* ") ||
-              /^\d+\.\s/.test(trimmed)
-            )
+            const contentVal = trimmed.replace(/^\|/, "").replace(/\|$/, "")
+            return contentVal.split("|").map((cell) => cell.trim())
+          })
+          const headers = rows[0] || []
+          const separators = rows[1] || []
+          const dataRows = rows.slice(2)
+
+          const alignments = separators.map((cell) => {
+            const c = cell.trim()
+            if (c.startsWith(":") && c.endsWith(":")) return "center"
+            if (c.endsWith(":")) return "right"
+            return "left"
           })
 
-        if (isList) {
-          const firstNonEmpty = lines.find((l) => l.trim() !== "")
-          const isOrdered = firstNonEmpty
-            ? /^\d+\.\s/.test(firstNonEmpty.trim())
-            : false
-          const ListTag = isOrdered ? "ol" : "ul"
+          const getAlignClass = (index: number) => {
+            const align = alignments[index] || "left"
+            if (align === "center") return "text-center"
+            if (align === "right") return "text-right"
+            return "text-left"
+          }
+
+          return (
+            <div
+              key={blockIndex}
+              className="my-3 overflow-x-auto rounded-lg border border-border/40"
+            >
+              <table className="w-full border-collapse text-xs">
+                <thead>
+                  <tr
+                    className={cn(
+                      "border-b font-semibold",
+                      isUser
+                        ? "border-primary-foreground/20 bg-primary-foreground/10"
+                        : "border-border/40 bg-muted/50"
+                    )}
+                  >
+                    {headers.map((header, i) => (
+                      <th
+                        key={i}
+                        className={cn("p-2 font-semibold", getAlignClass(i))}
+                      >
+                        {renderInlineMarkdown(header, isUser)}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {dataRows.map((row, rowIndex) => (
+                    <tr
+                      key={rowIndex}
+                      className={cn(
+                        "border-b last:border-0",
+                        isUser
+                          ? "border-primary-foreground/10 hover:bg-primary-foreground/5"
+                          : "border-border/40 hover:bg-muted/30",
+                        rowIndex % 2 === 1 &&
+                          (isUser ? "bg-primary-foreground/5" : "bg-muted/20")
+                      )}
+                    >
+                      {headers.map((_, colIndex) => {
+                        const cellValue = row[colIndex] || ""
+                        return (
+                          <td
+                            key={colIndex}
+                            className={cn("p-2", getAlignClass(colIndex))}
+                          >
+                            {renderInlineMarkdown(cellValue, isUser)}
+                          </td>
+                        )
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )
+        }
+
+        if (block.type === "list") {
+          const ListTag = block.listType === "ol" ? "ol" : "ul"
           return (
             <ListTag
               key={blockIndex}
               className={cn(
                 "my-1.5 space-y-1 pl-5",
-                isOrdered ? "list-decimal text-left" : "list-disc text-left"
+                block.listType === "ol"
+                  ? "list-decimal text-left"
+                  : "list-disc text-left"
               )}
             >
-              {lines.map((line, lineIndex) => {
-                const trimmed = line.trim()
-                if (trimmed === "") return null
+              {block.lines.map((line, lineIndex) => {
                 const cleanText = line.replace(/^\s*(-\s|\*\s|\d+\.\s)/, "")
+                const taskMatch = cleanText.match(/^\[([ xX])\]\s*(.*)/)
+                if (taskMatch) {
+                  const isChecked = taskMatch[1].toLowerCase() === "x"
+                  const remainingText = taskMatch[2] || ""
+                  return (
+                    <li
+                      key={lineIndex}
+                      className="-ml-5 flex list-none items-start gap-2 leading-relaxed"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={isChecked}
+                        readOnly
+                        className={cn(
+                          "mt-1.5 h-3.5 w-3.5 shrink-0 rounded border-gray-300 bg-zinc-100 text-primary focus:ring-primary focus:ring-offset-background dark:border-zinc-700 dark:bg-zinc-800",
+                          isUser && "accent-primary-foreground"
+                        )}
+                      />
+                      <span>{renderInlineMarkdown(remainingText, isUser)}</span>
+                    </li>
+                  )
+                }
                 return (
                   <li key={lineIndex} className="leading-relaxed">
                     {renderInlineMarkdown(cleanText, isUser)}
@@ -554,9 +863,9 @@ function ChatContent({
           )
         }
 
-        // Headings
-        if (block.startsWith("#")) {
-          const match = block.match(/^(#{1,6})\s+(.*)$/)
+        if (block.type === "heading") {
+          const line = block.lines[0] || ""
+          const match = line.match(/^(#{1,6})\s+(.*)$/)
           if (match) {
             const level = match[1].length
             const text = match[2]
@@ -583,10 +892,10 @@ function ChatContent({
           }
         }
 
-        // Plain paragraph
+        const text = block.lines.join("\n")
         return (
           <p key={blockIndex} className="text-left leading-relaxed">
-            {renderInlineMarkdown(block, isUser)}
+            {renderInlineMarkdown(text, isUser)}
           </p>
         )
       })}
@@ -595,9 +904,9 @@ function ChatContent({
 }
 
 function renderInlineMarkdown(text: string, isUser: boolean) {
-  // Split by bold, italic, inline code, and links
+  // Split by bold, italic, strikethrough, inline code, and links
   const parts = text.split(
-    /(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`|\[[^\]]+\]\([^)]+\))/g
+    /(\*\*[^*]+\*\*|\*[^*]+\*|~~[^~]+~~|`[^`]+`|\[[^\]]+\]\([^)]+\))/g
   )
 
   return parts.map((part, i) => {
@@ -613,6 +922,13 @@ function renderInlineMarkdown(text: string, isUser: boolean) {
         <em key={i} className="italic">
           {part.slice(1, -1)}
         </em>
+      )
+    }
+    if (part.startsWith("~~") && part.endsWith("~~")) {
+      return (
+        <span key={i} className="line-through opacity-70">
+          {part.slice(2, -2)}
+        </span>
       )
     }
     if (part.startsWith("`") && part.endsWith("`")) {
@@ -634,13 +950,31 @@ function renderInlineMarkdown(text: string, isUser: boolean) {
       const match = part.match(/\[([^\]]+)\]\(([^)]+)\)/)
       if (match) {
         const linkText = match[1]
-        const linkUrl = match[2]
+        let linkUrl = match[2].trim()
+
+        // Strip mailto: from linkText if present
+        const displayLinkText = linkText.startsWith("mailto:")
+          ? linkText.slice(7)
+          : linkText
+
+        // Prepend mailto: to email urls that don't have it
+        if (
+          /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(linkUrl) &&
+          !linkUrl.startsWith("mailto:") &&
+          !linkUrl.startsWith("http")
+        ) {
+          linkUrl = `mailto:${linkUrl}`
+        }
+
+        const isMailtoOrTel =
+          linkUrl.startsWith("mailto:") || linkUrl.startsWith("tel:")
+
         return (
           <a
             key={i}
             href={linkUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            target={isMailtoOrTel ? undefined : "_blank"}
+            rel={isMailtoOrTel ? undefined : "noopener noreferrer"}
             className={cn(
               "underline transition-colors",
               isUser
@@ -648,7 +982,7 @@ function renderInlineMarkdown(text: string, isUser: boolean) {
                 : "text-primary hover:text-primary/80"
             )}
           >
-            {linkText}
+            {displayLinkText}
           </a>
         )
       }
@@ -665,10 +999,10 @@ function renderInlineMarkdown(text: string, isUser: boolean) {
 function renderTextWithAutoLinks(text: string, isUser: boolean) {
   // Regex to detect:
   // 1. URLs (excluding trailing punctuation)
-  // 2. Email addresses
+  // 2. Email addresses (with optional mailto: prefix)
   // 3. Phone numbers (Indonesian mobile: 08xx/+628xx, landlines: 021xx/+6221xx, or general international numbers)
   const regex =
-    /(https?:\/\/[^\s/$.?#].[^\s]*?(?=[.,?!:;()]?(\s|$))|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|\+?62\s?8\d{2,4}[-\s]?\d{3,4}[-\s]?\d{3,4}|08\d{2,4}[-\s]?\d{3,4}[-\s]?\d{3,4}|\+?62[-\s]?2[1-9][-\s]?\d{3,4}[-\s]?\d{3,4}|02[1-9][-\s]?\d{3,4}[-\s]?\d{3,4})/g
+    /(https?:\/\/[^\s/$.?#].[^\s]*?(?=[.,?!:;()]?(\s|$))|(?:mailto:)?[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|\+?62\s?8\d{2,4}[-\s]?\d{3,4}[-\s]?\d{3,4}|08\d{2,4}[-\s]?\d{3,4}[-\s]?\d{3,4}|\+?62[-\s]?2[1-9][-\s]?\d{3,4}[-\s]?\d{3,4}|02[1-9][-\s]?\d{3,4}[-\s]?\d{3,4})/g
   const parts = text.split(regex)
 
   return parts.map((part, i) => {
@@ -690,11 +1024,14 @@ function renderTextWithAutoLinks(text: string, isUser: boolean) {
         </a>
       )
     }
-    if (/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(part)) {
+    if (
+      /(?:mailto:)?[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(part)
+    ) {
+      const email = part.startsWith("mailto:") ? part.slice(7) : part
       return (
         <a
           key={i}
-          href={`mailto:${part}`}
+          href={`mailto:${email}`}
           className={cn(
             "break-all underline transition-colors",
             isUser
@@ -702,7 +1039,7 @@ function renderTextWithAutoLinks(text: string, isUser: boolean) {
               : "text-primary hover:text-primary/80"
           )}
         >
-          {part}
+          {email}
         </a>
       )
     }
