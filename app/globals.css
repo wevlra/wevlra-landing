@@ -55,8 +55,8 @@
     --card-foreground: oklch(0.18 0.005 80);
     --popover: oklch(0.985 0.004 80);
     --popover-foreground: oklch(0.18 0.005 80);
-    /* Brighter, more vibrant orange brand */
-    --primary: oklch(0.68 0.205 45);
+    /* Elegant, premium gold brand */
+    --primary: oklch(0.74 0.15 78);
     --primary-foreground: oklch(0.99 0.012 80);
     --secondary: oklch(0.93 0.006 80);
     --secondary-foreground: oklch(0.22 0.006 80);
@@ -67,21 +67,21 @@
     --destructive: oklch(0.62 0.235 27);
     --border: oklch(0.88 0.006 80);
     --input: oklch(0.88 0.006 80);
-    --ring: oklch(0.68 0.205 45);
-    --chart-1: oklch(0.86 0.135 70);
-    --chart-2: oklch(0.76 0.205 50);
-    --chart-3: oklch(0.7 0.22 45);
-    --chart-4: oklch(0.62 0.21 38);
-    --chart-5: oklch(0.54 0.18 35);
+    --ring: oklch(0.74 0.15 78);
+    --chart-1: oklch(0.86 0.12 82);
+    --chart-2: oklch(0.80 0.15 80);
+    --chart-3: oklch(0.72 0.14 76);
+    --chart-4: oklch(0.62 0.13 72);
+    --chart-5: oklch(0.51 0.11 68);
     --radius: 0.875rem;
     --sidebar: oklch(0.945 0.006 80);
     --sidebar-foreground: oklch(0.18 0.005 80);
-    --sidebar-primary: oklch(0.68 0.205 45);
+    --sidebar-primary: oklch(0.74 0.15 78);
     --sidebar-primary-foreground: oklch(0.99 0.012 80);
     --sidebar-accent: oklch(0.93 0.006 80);
     --sidebar-accent-foreground: oklch(0.22 0.006 80);
     --sidebar-border: oklch(0.88 0.006 80);
-    --sidebar-ring: oklch(0.68 0.205 45);
+    --sidebar-ring: oklch(0.74 0.15 78);
 }
 
 .dark {
@@ -91,8 +91,8 @@
     --card-foreground: oklch(0.985 0 0);
     --popover: oklch(0.205 0 0);
     --popover-foreground: oklch(0.985 0 0);
-    /* Brighter orange in dark mode too */
-    --primary: oklch(0.7 0.21 47);
+    /* Elegant, premium gold in dark mode too */
+    --primary: oklch(0.76 0.15 80);
     --primary-foreground: oklch(0.99 0.012 80);
     --secondary: oklch(0.274 0.006 286);
     --secondary-foreground: oklch(0.985 0 0);
@@ -103,20 +103,20 @@
     --destructive: oklch(0.704 0.191 22);
     --border: oklch(1 0 0 / 10%);
     --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.7 0.21 47);
-    --chart-1: oklch(0.86 0.135 70);
-    --chart-2: oklch(0.76 0.205 50);
-    --chart-3: oklch(0.7 0.22 45);
-    --chart-4: oklch(0.62 0.21 38);
-    --chart-5: oklch(0.54 0.18 35);
+    --ring: oklch(0.76 0.15 80);
+    --chart-1: oklch(0.88 0.13 84);
+    --chart-2: oklch(0.81 0.15 81);
+    --chart-3: oklch(0.73 0.14 77);
+    --chart-4: oklch(0.63 0.12 73);
+    --chart-5: oklch(0.52 0.10 69);
     --sidebar: oklch(0.205 0 0);
     --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.7 0.21 47);
+    --sidebar-primary: oklch(0.76 0.15 80);
     --sidebar-primary-foreground: oklch(0.99 0.012 80);
     --sidebar-accent: oklch(0.269 0 0);
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.7 0.21 47);
+    --sidebar-ring: oklch(0.76 0.15 80);
 }
 
 @layer base {
@@ -168,13 +168,73 @@
     mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
   }
-  /* Gradient brand text — used sparingly */
+
+  /* Shimmering Metallic Gold Gradients */
+  @keyframes gold-shimmer-anim {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Gradient brand text — gold shimmering */
   .text-gradient-brand {
-    background: linear-gradient(135deg, var(--chart-3) 0%, var(--primary) 50%, var(--chart-2) 100%);
+    background: linear-gradient(
+      120deg,
+      #BF953F 0%,
+      #FCF6BA 25%,
+      #B38728 50%,
+      #FBF5B7 75%,
+      #AA771C 100%
+    );
+    background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    animation: gold-shimmer-anim 8s linear infinite;
   }
+
+  /* Style default buttons to have the shimmering metallic gold background */
+  [data-slot="button"][data-variant="default"] {
+    background: linear-gradient(
+      120deg,
+      #BF953F 0%,
+      #FCF6BA 25%,
+      #B38728 50%,
+      #FBF5B7 75%,
+      #AA771C 100%
+    ) !important;
+    background-size: 200% auto !important;
+    color: #1a1405 !important; /* Elegant dark bronze/gold-black text for high contrast */
+    font-weight: 600 !important;
+    border: 1px solid rgba(191, 149, 63, 0.4) !important;
+    box-shadow: 0 4px 15px -3px rgba(179, 135, 40, 0.3) !important;
+    transition: all 0.3s ease !important;
+    animation: gold-shimmer-anim 8s linear infinite !important;
+  }
+  [data-slot="button"][data-variant="default"]:hover {
+    background-position: right center !important;
+    box-shadow: 0 6px 20px -3px rgba(179, 135, 40, 0.5) !important;
+    transform: translateY(-1px) !important;
+  }
+  [data-slot="button"][data-variant="default"] svg {
+    color: #1a1405 !important;
+  }
+
+  /* Style default badges to have shimmering metallic gold */
+  [data-slot="badge"][data-variant="default"] {
+    background: linear-gradient(
+      120deg,
+      #BF953F 0%,
+      #FCF6BA 50%,
+      #B38728 100%
+    ) !important;
+    background-size: 200% auto !important;
+    color: #1a1405 !important;
+    font-weight: 600 !important;
+    border: 1px solid rgba(191, 149, 63, 0.3) !important;
+    animation: gold-shimmer-anim 10s linear infinite !important;
+  }
+
   /* Soft elevated card surface */
   .surface-card {
     background: color-mix(in oklch, var(--card) 100%, transparent);

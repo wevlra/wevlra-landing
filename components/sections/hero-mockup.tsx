@@ -42,7 +42,7 @@ export function HeroMockup() {
         {/* Hero block mock */}
         <div className="relative rounded-xl bg-gradient-to-br from-primary/15 via-primary/5 to-transparent p-6 space-y-3 overflow-hidden border border-border/40">
           <div className="absolute top-2 right-2 rounded-full bg-primary/20 px-2 py-0.5 text-[8px] font-semibold text-primary">
-            AI BUILT
+            PREMIUM
           </div>
           <div className="h-3 w-1/3 rounded bg-primary/30" />
           <div className="space-y-1.5 pt-1">

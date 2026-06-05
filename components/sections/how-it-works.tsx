@@ -22,7 +22,7 @@ export function HowItWorks() {
           aria-hidden="true"
           className="absolute top-10 left-0 right-0 hidden lg:block"
         >
-          <div className="mx-auto max-w-5xl px-24">
+          <div className="mx-auto max-w-7xl px-24">
             <div className="h-px w-full bg-[linear-gradient(to_right,transparent,var(--border)_15%,var(--border)_85%,transparent)]" />
           </div>
         </div>

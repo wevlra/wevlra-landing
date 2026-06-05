@@ -58,7 +58,7 @@ export function Features() {
         className="mb-12 sm:mb-14"
       />
 
-      <div className="mx-auto flex max-w-5xl flex-col gap-4 sm:gap-5">
+      <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:gap-5">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 md:grid-cols-3">
           {features.slice(0, 3).map((feature) => (
             <FeatureCard

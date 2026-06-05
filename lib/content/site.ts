@@ -7,7 +7,6 @@ import {
   Quote,
   Rocket,
   ShoppingCart,
-  Sparkles,
   Store,
   User,
   Workflow,
@@ -49,12 +48,6 @@ export const nav: NavItem[] = [
         title: "Platform",
         items: [
           {
-            label: "AI Web Builder",
-            href: "/ai-web-builder",
-            description: "Buat website lengkap dari satu prompt",
-            icon: Sparkles,
-          },
-          {
             label: "Fitur",
             href: "/#fitur",
             description: "Apa saja yang Anda dapatkan",
@@ -92,13 +85,7 @@ export const nav: NavItem[] = [
         ],
       },
     ],
-    featured: {
-      title: "Coba AI Web Builder",
-      description:
-        "Cukup ceritakan bisnis Anda, kami susun strukturnya dalam hitungan menit.",
-      href: "/ai-web-builder",
-      cta: "Mulai sekarang",
-    },
+
   },
   {
     kind: "panel",
@@ -162,7 +149,6 @@ export const navFlat = [
   { label: "Cara Kerja", href: "/#cara-kerja" },
   { label: "Harga", href: "/#harga" },
   { label: "Kontak", href: "/#kontak" },
-  { label: "AI Web Builder", href: "/ai-web-builder" },
 ];
 
 export const brand = {

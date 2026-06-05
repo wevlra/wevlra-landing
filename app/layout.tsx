@@ -17,13 +17,13 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://webvlora.id"),
   title: {
     template: "%s | WebVlora",
-    default: "WebVlora — Jasa Pembuatan Website + AI Web Builder",
+    default: "WebVlora — Jasa Pembuatan Website Premium",
   },
   description:
-    "WebVlora menggabungkan kecepatan AI Web Builder dengan sentuhan desainer manusia. Buat website profesional untuk UMKM, portofolio, atau perusahaan Anda mulai dari Rp 499 ribu.",
+    "WebVlora menggabungkan kecepatan teknologi modern dengan sentuhan desainer manusia. Buat website profesional untuk UMKM, portofolio, atau perusahaan Anda mulai dari Rp 499 ribu.",
   keywords: [
     "jasa pembuatan website",
-    "AI web builder",
+    "pembuatan website cepat",
     "website UMKM Indonesia",
     "buat website murah",
     "website profesional",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     apple: "/icon-dark.png",
   },
   openGraph: {
-    title: "WebVlora — Jasa Pembuatan Website + AI Web Builder",
+    title: "WebVlora — Jasa Pembuatan Website Premium",
     description:
-      "Ceritakan website impian Anda. Kami bangun dalam hitungan menit dengan AI + tim desainer lokal.",
+      "Ceritakan website impian Anda. Kami bangun dengan cepat menggunakan teknologi modern + tim desainer lokal.",
     url: "https://webvlora.id",
     siteName: "WebVlora",
     locale: "id_ID",
@@ -65,9 +65,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "WebVlora — Jasa Pembuatan Website + AI Web Builder",
+    title: "WebVlora — Jasa Pembuatan Website Premium",
     description:
-      "Ceritakan website impian Anda. Kami bangun dalam hitungan menit dengan AI + tim desainer lokal.",
+      "Ceritakan website impian Anda. Kami bangun dengan cepat menggunakan teknologi modern + tim desainer lokal.",
     images: ["/icon-dark.png"],
   },
 };

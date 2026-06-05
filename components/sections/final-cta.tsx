@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/section";
 import { ArrowRight, Mail, Sparkles } from "lucide-react";
@@ -27,7 +28,7 @@ export function FinalCta() {
         className="pointer-events-none absolute -bottom-40 -left-32 size-[400px] rounded-full bg-chart-2/10 blur-[80px]"
       />
 
-      <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-5 text-center sm:gap-7 md:gap-8">
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-5 text-center sm:gap-7 md:gap-8">
         <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[11px] font-medium text-primary backdrop-blur sm:px-4 sm:py-1.5 sm:text-xs">
           <span>Mulai dalam 60 detik</span>
         </div>
@@ -48,11 +49,11 @@ export function FinalCta() {
             className="h-12 w-full px-7 text-base font-medium shadow-xl shadow-primary/25 transition-transform hover:scale-[1.02] sm:w-auto"
             asChild
           >
-            <a href="/ai-web-builder">
+            <Link href="/#kontak">
               <Sparkles aria-hidden className="size-4" />
               Mulai Gratis Sekarang
               <ArrowRight aria-hidden className="size-4" />
-            </a>
+            </Link>
           </Button>
           <Button
             size="lg"

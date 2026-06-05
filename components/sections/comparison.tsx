@@ -53,7 +53,7 @@ export function Comparison() {
       />
 
       {/* Desktop / tablet — table layout */}
-      <div className="mx-auto hidden max-w-4xl overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm md:block">
+      <div className="mx-auto hidden max-w-7xl overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm md:block">
         <div className="grid grid-cols-[1.5fr_repeat(3,1fr)] border-b border-border/60 bg-muted/40">
           <div className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
             Atribut
@@ -113,7 +113,7 @@ export function Comparison() {
       </div>
 
       {/* Mobile — stacked cards per attribute */}
-      <div className="mx-auto flex max-w-2xl flex-col gap-3 md:hidden">
+      <div className="mx-auto flex max-w-7xl flex-col gap-3 md:hidden">
         {comparisonRows.map((row) => (
           <div
             key={row.attribute}

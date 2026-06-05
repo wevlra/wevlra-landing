@@ -22,7 +22,7 @@ export const comparisonRows: ComparisonRow[] = [
     attribute: "Kustomisasi",
     diy: "Terbatas template",
     agency: "Penuh, tapi lama",
-    wevlra: "Penuh + AI-assisted",
+    wevlra: "Penuh & Kustom",
   },
   {
     attribute: "Dukungan",

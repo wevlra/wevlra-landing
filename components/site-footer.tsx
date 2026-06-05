@@ -5,7 +5,6 @@ import { NewsletterForm } from "@/components/newsletter-form";
 import { brand, contact } from "@/lib/content/site";
 
 const productLinks = [
-  { label: "AI Web Builder", href: "/ai-web-builder" },
   { label: "Fitur", href: "/#fitur" },
   { label: "Cara Kerja", href: "/#cara-kerja" },
   { label: "Harga", href: "/#harga" },

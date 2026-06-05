@@ -19,14 +19,14 @@ export function Testimonials() {
         title={
           <>
             Dipercaya oleh{" "}
-            <span className="text-primary">500+ bisnis</span>
+            <span className="text-gradient-brand">500+ bisnis</span>
           </>
         }
         description="Cerita nyata dari pemilik bisnis yang membangun kehadiran online bersama WEVLRA."
         className="mb-10 sm:mb-12"
       />
 
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {testimonials.map((t) => (
           <figure
             key={t.name}

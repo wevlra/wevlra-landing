@@ -43,7 +43,7 @@ export function Contact() {
         className="mb-12 sm:mb-14"
       />
 
-      <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm">
+      <div className="mx-auto max-w-7xl overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm">
         <div className="grid lg:grid-cols-5">
           {/* Info panel */}
           <aside className="relative flex flex-col gap-6 border-b border-border/60 bg-muted/40 p-6 sm:p-8 lg:col-span-2 lg:border-b-0 lg:border-r">

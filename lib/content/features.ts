@@ -9,9 +9,9 @@ export type Feature = {
 export const features: Feature[] = [
   {
     icon: Sparkles,
-    title: "AI Web Builder",
+    title: "Platform Modern",
     description:
-      "Ceritakan ide Anda dalam bahasa sehari-hari. AI kami langsung membuat draft website lengkap dalam hitungan menit.",
+      "Sampaikan kebutuhan website Anda, dan sistem kami langsung merancang draf website lengkap dalam waktu singkat.",
   },
   {
     icon: Palette,

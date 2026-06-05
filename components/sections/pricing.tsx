@@ -65,7 +65,7 @@ export function Pricing() {
             value={cat.id}
             className="focus-visible:outline-none"
           >
-            <div className="mx-auto grid max-w-5xl grid-cols-1 items-stretch gap-6 px-1 pt-5 sm:gap-7 md:grid-cols-3 md:gap-5 lg:gap-6">
+            <div className="mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-6 px-1 pt-5 sm:gap-7 md:grid-cols-3 md:gap-5 lg:gap-6">
               {cat.tiers.map((tier) => {
                 const pricePerMonth = tier.monthlyPrice;
 

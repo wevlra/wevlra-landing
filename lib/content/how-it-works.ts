@@ -18,16 +18,16 @@ export const steps: Step[] = [
   {
     step: 2,
     icon: WandSparkles,
-    title: "AI Buat Draft",
+    title: "Draft Cepat Terbuat",
     description:
-      "Dalam hitungan menit, AI kami menghasilkan struktur, konten, dan desain awal yang siap untuk ditinjau.",
+      "Dalam waktu singkat, sistem kami merancang struktur, konten, dan desain awal yang siap untuk ditinjau.",
   },
   {
     step: 3,
     icon: Users,
     title: "Tim Kami Sempurnakan",
     description:
-      "Desainer dan developer kami menyempurnakan draft AI dengan sentuhan manusia: branding, animasi, dan detail custom.",
+      "Desainer dan developer kami menyempurnakan draft awal dengan sentuhan profesional: branding, animasi, dan detail kustom.",
   },
   {
     step: 4,

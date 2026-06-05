@@ -5,9 +5,9 @@ export type FaqItem = {
 
 export const faqItems: FaqItem[] = [
   {
-    question: "Apa itu AI Web Builder dari WEVLRA?",
+    question: "Bagaimana cara kerja pembuatan website di WEVLRA?",
     answer:
-      "AI Web Builder adalah fitur unggulan kami yang memungkinkan Anda membuat draft website hanya dengan mendeskripsikan kebutuhan Anda dalam bahasa sehari-hari. AI kami akan menghasilkan struktur, konten, dan desain awal secara otomatis, yang kemudian disempurnakan oleh tim desainer kami.",
+      "Kami menggabungkan kecepatan teknologi platform modern dengan sentuhan desainer profesional. Anda cukup menjelaskan kebutuhan Anda dalam bahasa sehari-hari, sistem kami akan merancang struktur awal secara cepat, lalu tim desainer kami menyempurnakannya secara manual agar sesuai dengan standar brand Anda.",
   },
   {
     question: "Berapa lama proses pembuatan website?",

@@ -25,20 +25,20 @@ export function Hero() {
         <div className="flex flex-col gap-6 lg:col-span-6 animate-fade-up">
           <h1 className="text-balance text-4xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem]">
             Website impian Anda,{" "}
-            <span className="text-primary">jadi nyata</span> dalam hitungan
+            <span className="text-gradient-brand">jadi nyata</span> dalam hitungan
             menit.
           </h1>
 
           <p className="max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Gabungkan kecepatan AI dengan sentuhan desainer profesional —
+            Gabungkan kecepatan teknologi modern dengan sentuhan desainer profesional —
             untuk UMKM hingga enterprise.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row">
             <Button size="lg" className="h-11 px-6 sm:w-auto" asChild>
-              <Link href="/ai-web-builder">
-                <Sparkles aria-hidden className="size-4" />
-                Coba AI Web Builder
+              <Link href="/#showcase">
+                Lihat Katalog
+                <ArrowRight aria-hidden className="size-4" />
               </Link>
             </Button>
             <Button
