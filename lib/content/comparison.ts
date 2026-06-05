@@ -1,9 +1,9 @@
 export type ComparisonRow = {
-  attribute: string;
-  diy: string;
-  agency: string;
-  wevlra: string;
-};
+  attribute: string
+  diy: string
+  agency: string
+  wevlra: string
+}
 
 export const comparisonRows: ComparisonRow[] = [
   {
@@ -48,4 +48,4 @@ export const comparisonRows: ComparisonRow[] = [
     agency: "Bayar per perubahan",
     wevlra: "Mudah via dashboard",
   },
-];
+]

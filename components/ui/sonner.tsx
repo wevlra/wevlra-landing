@@ -2,7 +2,13 @@
 
 import { useTheme } from "next-themes"
 import { Toaster as Sonner, type ToasterProps } from "sonner"
-import { CircleCheck, Info, Loader, OctagonX, TriangleAlert } from "lucide-react"
+import {
+  CircleCheck,
+  Info,
+  Loader,
+  OctagonX,
+  TriangleAlert,
+} from "lucide-react"
 
 const Toaster = ({ ...props }: ToasterProps) => {
   const { theme = "system" } = useTheme()

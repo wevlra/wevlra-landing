@@ -1,17 +1,23 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Section, SectionHeader } from "@/components/section";
-import { Mail, MapPin, MessageCircle, Send, type LucideIcon } from "lucide-react";
-import { contact } from "@/lib/content/site";
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Section, SectionHeader } from "@/components/section"
+import {
+  Mail,
+  MapPin,
+  MessageCircle,
+  Send,
+  type LucideIcon,
+} from "lucide-react"
+import { contact } from "@/lib/content/site"
 
 const contactInfo: {
-  icon: LucideIcon;
-  label: string;
-  value: string;
-  href: string | null;
+  icon: LucideIcon
+  label: string
+  value: string
+  href: string | null
 }[] = [
   {
     icon: Mail,
@@ -31,7 +37,7 @@ const contactInfo: {
     value: "Jakarta, Indonesia",
     href: null,
   },
-];
+]
 
 export function Contact() {
   return (
@@ -46,14 +52,14 @@ export function Contact() {
       <div className="mx-auto max-w-7xl overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm">
         <div className="grid lg:grid-cols-5">
           {/* Info panel */}
-          <aside className="relative flex flex-col gap-6 border-b border-border/60 bg-muted/40 p-6 sm:p-8 lg:col-span-2 lg:border-b-0 lg:border-r">
+          <aside className="relative flex flex-col gap-6 border-b border-border/60 bg-muted/40 p-6 sm:p-8 lg:col-span-2 lg:border-r lg:border-b-0">
             <div>
               <h3 className="text-lg font-semibold text-foreground">
                 Mari mulai obrolan
               </h3>
               <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                Balasan tercepat lewat WhatsApp pada jam kerja. Untuk
-                permintaan formal, kirim email kapan saja.
+                Balasan tercepat lewat WhatsApp pada jam kerja. Untuk permintaan
+                formal, kirim email kapan saja.
               </p>
             </div>
 
@@ -65,7 +71,7 @@ export function Contact() {
                       <item.icon aria-hidden className="size-4" />
                     </span>
                     <span className="flex min-w-0 flex-col">
-                      <span className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                      <span className="text-[11px] font-medium tracking-wide text-muted-foreground uppercase">
                         {item.label}
                       </span>
                       <span className="truncate text-sm font-semibold text-foreground">
@@ -73,24 +79,24 @@ export function Contact() {
                       </span>
                     </span>
                   </>
-                );
+                )
 
                 return (
                   <li key={item.label}>
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="group flex items-center gap-3 rounded-lg px-2 py-2 -mx-2 transition-colors hover:bg-background/60"
+                        className="group -mx-2 flex items-center gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-background/60"
                       >
                         {content}
                       </a>
                     ) : (
-                      <div className="flex items-center gap-3 px-2 py-2 -mx-2">
+                      <div className="-mx-2 flex items-center gap-3 px-2 py-2">
                         {content}
                       </div>
                     )}
                   </li>
-                );
+                )
               })}
             </ul>
           </aside>
@@ -109,7 +115,11 @@ export function Contact() {
                   >
                     Nama
                   </label>
-                  <Input id="name" placeholder="Nama lengkap" className="h-10" />
+                  <Input
+                    id="name"
+                    placeholder="Nama lengkap"
+                    className="h-10"
+                  />
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label
@@ -167,5 +177,5 @@ export function Contact() {
         </div>
       </div>
     </Section>
-  );
+  )
 }

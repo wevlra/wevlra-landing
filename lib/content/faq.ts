@@ -1,7 +1,7 @@
 export type FaqItem = {
-  question: string;
-  answer: string;
-};
+  question: string
+  answer: string
+}
 
 export const faqItems: FaqItem[] = [
   {
@@ -37,11 +37,11 @@ export const faqItems: FaqItem[] = [
   {
     question: "Bagaimana cara menghubungi tim support WEVLRA?",
     answer:
-      "Tim support kami tersedia via WhatsApp dan email di halo@WEVLRA.id, hari kerja Senin–Jumat pukul 08.00–17.00 WIB. Pelanggan Enterprise mendapatkan dukungan prioritas 24/7.",
+      "Tim support kami tersedia via WhatsApp dan email di helo@wevlra.com, hari kerja Senin–Jumat pukul 08.00–17.00 WIB. Pelanggan Enterprise mendapatkan dukungan prioritas 24/7.",
   },
   {
     question: "Apakah harga sudah termasuk domain dan hosting?",
     answer:
       "Ya! Semua paket WEVLRA sudah termasuk domain gratis untuk tahun pertama dan hosting SSD berkecepatan tinggi. Tidak ada biaya tersembunyi — harga yang Anda lihat adalah harga yang Anda bayar.",
   },
-];
+]

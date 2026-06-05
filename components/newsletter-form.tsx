@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react"
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 export function NewsletterForm() {
   return (
@@ -26,5 +26,5 @@ export function NewsletterForm() {
         <ArrowRight aria-hidden className="size-4" />
       </Button>
     </form>
-  );
+  )
 }

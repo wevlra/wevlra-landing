@@ -134,6 +134,24 @@
     @apply font-sans;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklch, var(--muted-foreground) 25%, transparent) transparent;
+  }
+
+  /* Thin Scrollbars for webkit */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklch, var(--muted-foreground) 25%, transparent);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklch, var(--primary) 70%, transparent);
   }
   /* Tighter, more refined headline tracking */
   h1, h2, h3, h4 {
@@ -207,13 +225,12 @@
     color: #1a1405 !important; /* Elegant dark bronze/gold-black text for high contrast */
     font-weight: 600 !important;
     border: 1px solid rgba(191, 149, 63, 0.4) !important;
-    box-shadow: 0 4px 15px -3px rgba(179, 135, 40, 0.3) !important;
     transition: all 0.3s ease !important;
     animation: gold-shimmer-anim 8s linear infinite !important;
   }
   [data-slot="button"][data-variant="default"]:hover {
     background-position: right center !important;
-    box-shadow: 0 6px 20px -3px rgba(179, 135, 40, 0.5) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
     transform: translateY(-1px) !important;
   }
   [data-slot="button"][data-variant="default"] svg {
@@ -249,9 +266,7 @@
   }
   .hover-lift:hover {
     transform: translateY(-3px);
-    box-shadow:
-      0 16px 40px -12px color-mix(in oklch, var(--primary) 15%, transparent),
-      0 4px 12px -4px color-mix(in oklch, var(--foreground) 6%, transparent);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   }
   @media (prefers-reduced-motion: reduce) {
     .hover-lift:hover { transform: none; }
@@ -282,5 +297,46 @@
   }
   @media (min-width: 1024px) {
     .container-px { padding-left: 2rem; padding-right: 2rem; }
+  }
+
+  /* ─── Chat Widget ─── */
+  .chat-widget-card {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    max-height: min(600px, calc(100vh - 7rem));
+  }
+  .chat-widget-panel {
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+  }
+  /* Typing dots */
+  @keyframes chat-dot-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+  .chat-typing-dots span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--muted-foreground);
+    animation: chat-dot-bounce 1.4s ease-in-out infinite;
+  }
+  .chat-typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .chat-typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+  /* FAB pulse ring */
+  .chat-widget-fab::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), transparent, var(--primary));
+    opacity: 0;
+    animation: chat-fab-pulse 3s ease-in-out infinite;
+    z-index: -1;
+  }
+  @keyframes chat-fab-pulse {
+    0%, 100% { opacity: 0; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(1.08); }
   }
 }

@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Section } from "@/components/section";
-import { ArrowRight, Mail, Sparkles } from "lucide-react";
-import { contact } from "@/lib/content/site";
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Section } from "@/components/section"
+import { ArrowRight, Mail, Sparkles } from "lucide-react"
+import { contact } from "@/lib/content/site"
 
 export function FinalCta() {
   return (
@@ -13,7 +13,7 @@ export function FinalCta() {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-grid mask-radial-fade opacity-40"
+        className="bg-grid mask-radial-fade pointer-events-none absolute inset-0 opacity-40"
       />
       <div
         aria-hidden="true"
@@ -21,7 +21,7 @@ export function FinalCta() {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-40 -right-32 size-[500px] rounded-full bg-chart-3/15 blur-[100px]"
+        className="pointer-events-none absolute -right-32 -bottom-40 size-[500px] rounded-full bg-chart-3/15 blur-[100px]"
       />
       <div
         aria-hidden="true"
@@ -33,14 +33,14 @@ export function FinalCta() {
           <span>Mulai dalam 60 detik</span>
         </div>
 
-        <h2 className="text-balance text-3xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
+        <h2 className="text-3xl leading-[1.1] font-semibold tracking-tight text-balance text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
           Siap membangun{" "}
           <span className="text-gradient-brand">website impian</span> Anda?
         </h2>
 
-        <p className="max-w-xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+        <p className="max-w-xl text-base leading-relaxed text-pretty text-muted-foreground sm:text-lg">
           Bergabunglah dengan 500+ bisnis yang sudah mempercayakan kehadiran
-          online mereka kepada WebVlora. Mulai gratis, tanpa kartu kredit.
+          online mereka kepada WEVLRA. Mulai gratis, tanpa kartu kredit.
         </p>
 
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
@@ -101,5 +101,5 @@ export function FinalCta() {
         </div>
       </div>
     </Section>
-  );
+  )
 }

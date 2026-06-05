@@ -1,11 +1,17 @@
-import { MessageCircle, Rocket, Users, WandSparkles, type LucideIcon } from "lucide-react";
+import {
+  MessageCircle,
+  Rocket,
+  Users,
+  WandSparkles,
+  type LucideIcon,
+} from "lucide-react"
 
 export type Step = {
-  step: number;
-  title: string;
-  description: string;
-  icon: LucideIcon;
-};
+  step: number
+  title: string
+  description: string
+  icon: LucideIcon
+}
 
 export const steps: Step[] = [
   {
@@ -36,4 +42,4 @@ export const steps: Step[] = [
     description:
       "Website Anda tayang dengan domain dan hosting siap pakai. Kami terus mendampingi untuk update dan pemeliharaan.",
   },
-];
+]

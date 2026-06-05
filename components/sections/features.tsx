@@ -1,17 +1,17 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Section, SectionHeader } from "@/components/section";
-import type { LucideIcon } from "lucide-react";
-import { features } from "@/lib/content/features";
+import { Card, CardContent } from "@/components/ui/card"
+import { Section, SectionHeader } from "@/components/section"
+import type { LucideIcon } from "lucide-react"
+import { features } from "@/lib/content/features"
 
 type FeatureCardProps = {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-};
+  icon: LucideIcon
+  title: string
+  description: string
+}
 
 function FeatureCard({ icon: Icon, title, description }: FeatureCardProps) {
   return (
-    <Card className="group relative h-full overflow-hidden border-border/60 bg-card/80 backdrop-blur-sm transition-all duration-300 hover-lift hover:border-primary/40">
+    <Card className="group hover-lift relative h-full overflow-hidden border-border/60 bg-card/80 backdrop-blur-sm transition-all duration-300 hover:border-primary/40">
       <CardContent className="flex flex-1 flex-col gap-2">
         <div className="flex items-center gap-3">
           <div className="relative shrink-0">
@@ -40,7 +40,7 @@ function FeatureCard({ icon: Icon, title, description }: FeatureCardProps) {
         className="absolute inset-x-0 top-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-primary/60 to-transparent transition-transform duration-500 group-hover:scale-x-100"
       />
     </Card>
-  );
+  )
 }
 
 export function Features() {
@@ -69,7 +69,7 @@ export function Features() {
             />
           ))}
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 md:mx-auto md:max-w-[calc(66.666%+0.625rem)] md:w-full">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 md:mx-auto md:w-full md:max-w-[calc(66.666%+0.625rem)]">
           {features.slice(3).map((feature) => (
             <FeatureCard
               key={feature.title}
@@ -81,5 +81,5 @@ export function Features() {
         </div>
       </div>
     </Section>
-  );
+  )
 }

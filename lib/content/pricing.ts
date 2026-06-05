@@ -1,19 +1,19 @@
 export type PricingTier = {
-  name: string;
-  description: string;
-  monthlyPrice: number | null;
-  yearlyPrice: number | null;
-  popular?: boolean;
-  features: string[];
-  cta: string;
-  ctaHref: string;
-};
+  name: string
+  description: string
+  monthlyPrice: number | null
+  yearlyPrice: number | null
+  popular?: boolean
+  features: string[]
+  cta: string
+  ctaHref: string
+}
 
 export type PricingCategory = {
-  id: string;
-  label: string;
-  tiers: PricingTier[];
-};
+  id: string
+  label: string
+  tiers: PricingTier[]
+}
 
 export const pricingCategories: PricingCategory[] = [
   {
@@ -76,7 +76,7 @@ export const pricingCategories: PricingCategory[] = [
           "Pelatihan & onboarding tim",
         ],
         cta: "Hubungi Kami",
-        ctaHref: "mailto:halo@webvlora.id",
+        ctaHref: "mailto:helo@wevlra.com",
       },
     ],
   },
@@ -142,7 +142,7 @@ export const pricingCategories: PricingCategory[] = [
           "Pelatihan & onboarding tim",
         ],
         cta: "Hubungi Kami",
-        ctaHref: "mailto:halo@webvlora.id",
+        ctaHref: "mailto:helo@wevlra.com",
       },
     ],
   },
@@ -208,11 +208,10 @@ export const pricingCategories: PricingCategory[] = [
           "Pelatihan & onboarding tim",
         ],
         cta: "Hubungi Kami",
-        ctaHref: "mailto:halo@webvlora.id",
+        ctaHref: "mailto:helo@wevlra.com",
       },
     ],
   },
-];
+]
 
-// Backward-compatible export (agar tidak ada komponen lain yang rusak)
-export const pricingTiers = pricingCategories[0].tiers;
+export const pricingTiers = pricingCategories[0].tiers

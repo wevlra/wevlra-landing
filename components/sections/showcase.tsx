@@ -1,17 +1,17 @@
-"use client";
+"use client"
 
-import { Card, CardFooter } from "@/components/ui/card";
-import { ArrowUpRight } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Section, SectionHeader } from "@/components/section";
-import { showcaseCategories } from "@/lib/content/showcase";
+import { Card, CardFooter } from "@/components/ui/card"
+import { ArrowUpRight } from "lucide-react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Section, SectionHeader } from "@/components/section"
+import { showcaseCategories } from "@/lib/content/showcase"
 
 const GRADIENTS: Record<string, string> = {
   umkm: "from-primary/15 via-chart-1/10 to-transparent",
   personal: "from-chart-3/15 via-chart-2/10 to-transparent",
   korporat: "from-foreground/8 via-muted/40 to-transparent",
   ecommerce: "from-chart-5/15 via-chart-4/10 to-transparent",
-};
+}
 
 export function Showcase() {
   return (
@@ -53,7 +53,7 @@ export function Showcase() {
               {cat.items.map((item) => (
                 <Card
                   key={item.name}
-                  className="group cursor-pointer overflow-hidden border-border/60 p-0 hover-lift hover:border-primary/40"
+                  className="group hover-lift cursor-pointer overflow-hidden border-border/60 p-0 hover:border-primary/40"
                 >
                   {/* Card Header — visual preview */}
                   <div
@@ -108,7 +108,7 @@ export function Showcase() {
                       </div>
                       <ArrowUpRight
                         aria-hidden
-                        className="size-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+                        className="size-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary"
                       />
                     </div>
                   </CardFooter>
@@ -119,5 +119,5 @@ export function Showcase() {
         ))}
       </Tabs>
     </Section>
-  );
+  )
 }

@@ -3,9 +3,9 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Section, SectionHeader } from "@/components/section";
-import { faqItems } from "@/lib/content/faq";
+} from "@/components/ui/accordion"
+import { Section, SectionHeader } from "@/components/section"
+import { faqItems } from "@/lib/content/faq"
 
 export function Faq() {
   const schema = {
@@ -19,7 +19,7 @@ export function Faq() {
         text: item.answer,
       },
     })),
-  };
+  }
 
   return (
     <Section id="pertanyaan">
@@ -39,7 +39,7 @@ export function Faq() {
         <Accordion
           type="single"
           collapsible
-          className="w-full overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm divide-y divide-border/60"
+          className="w-full divide-y divide-border/60 overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm"
           defaultValue="item-0"
         >
           {faqItems.map((item, i) => (
@@ -64,5 +64,5 @@ export function Faq() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
     </Section>
-  );
+  )
 }

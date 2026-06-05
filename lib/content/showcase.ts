@@ -1,13 +1,13 @@
 export type ShowcaseItem = {
-  name: string;
-  description: string;
-};
+  name: string
+  description: string
+}
 
 export type ShowcaseCategory = {
-  id: string;
-  label: string;
-  items: ShowcaseItem[];
-};
+  id: string
+  label: string
+  items: ShowcaseItem[]
+}
 
 export const showcaseCategories: ShowcaseCategory[] = [
   {
@@ -34,7 +34,8 @@ export const showcaseCategories: ShowcaseCategory[] = [
     items: [
       {
         name: "Portofolio Reza",
-        description: "Portofolio fotografer profesional dengan galeri interaktif",
+        description:
+          "Portofolio fotografer profesional dengan galeri interaktif",
       },
       {
         name: "Blog Perjalanan Dina",
@@ -52,15 +53,18 @@ export const showcaseCategories: ShowcaseCategory[] = [
     items: [
       {
         name: "PT Maju Bersama",
-        description: "Website perusahaan konstruksi dengan profil dan portofolio proyek",
+        description:
+          "Website perusahaan konstruksi dengan profil dan portofolio proyek",
       },
       {
         name: "Klinik Sehat Sentosa",
-        description: "Website klinik dengan jadwal dokter dan pendaftaran online",
+        description:
+          "Website klinik dengan jadwal dokter dan pendaftaran online",
       },
       {
         name: "Yayasan Peduli Anak",
-        description: "Website yayasan sosial dengan program donasi terintegrasi",
+        description:
+          "Website yayasan sosial dengan program donasi terintegrasi",
       },
     ],
   },
@@ -70,16 +74,19 @@ export const showcaseCategories: ShowcaseCategory[] = [
     items: [
       {
         name: "Toko Herbal Alami",
-        description: "Toko online produk herbal dengan sistem keranjang belanja",
+        description:
+          "Toko online produk herbal dengan sistem keranjang belanja",
       },
       {
         name: "Fashion Lokal ID",
-        description: "E-commerce fashion lokal dengan filter produk dan wishlist",
+        description:
+          "E-commerce fashion lokal dengan filter produk dan wishlist",
       },
       {
         name: "Elektronik Murah",
-        description: "Marketplace elektronik dengan perbandingan harga dan ulasan",
+        description:
+          "Marketplace elektronik dengan perbandingan harga dan ulasan",
       },
     ],
   },
-];
+]

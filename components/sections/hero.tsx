@@ -1,9 +1,9 @@
-import Link from "next/link";
+import Link from "next/link"
 
-import { Button } from "@/components/ui/button";
-import { Section } from "@/components/section";
-import { HeroMockup } from "@/components/sections/hero-mockup";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button"
+import { Section } from "@/components/section"
+import { HeroMockup } from "@/components/sections/hero-mockup"
+import { ArrowRight } from "lucide-react"
 
 export function Hero() {
   return (
@@ -14,24 +14,24 @@ export function Hero() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-grid mask-radial-fade opacity-40"
+        className="bg-grid mask-radial-fade pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] opacity-40"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute right-[-10%] top-[-10%] -z-10 size-[420px] rounded-full bg-primary/10 blur-3xl"
+        className="pointer-events-none absolute top-[-10%] right-[-10%] -z-10 size-[420px] rounded-full bg-primary/10 blur-3xl"
       />
 
       <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-10">
-        <div className="flex flex-col gap-6 lg:col-span-6 animate-fade-up">
-          <h1 className="text-balance text-4xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem]">
+        <div className="animate-fade-up flex flex-col gap-6 lg:col-span-6">
+          <h1 className="text-4xl leading-[1.1] font-semibold tracking-tight text-balance text-foreground sm:text-5xl lg:text-[3.25rem]">
             Website impian Anda,{" "}
-            <span className="text-gradient-brand">jadi nyata</span> dalam hitungan
-            menit.
+            <span className="text-gradient-brand">jadi nyata</span> dalam
+            hitungan menit.
           </h1>
 
           <p className="max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Gabungkan kecepatan teknologi modern dengan sentuhan desainer profesional —
-            untuk UMKM hingga enterprise.
+            Gabungkan kecepatan teknologi modern dengan sentuhan desainer
+            profesional — untuk UMKM hingga enterprise.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row">
@@ -56,12 +56,12 @@ export function Hero() {
         </div>
 
         <div
-          className="lg:col-span-6 animate-fade-up"
+          className="animate-fade-up lg:col-span-6"
           style={{ animationDelay: "100ms" }}
         >
           <HeroMockup />
         </div>
       </div>
     </Section>
-  );
+  )
 }

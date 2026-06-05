@@ -1,15 +1,15 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
 
-import { NewsletterForm } from "@/components/newsletter-form";
-import { brand, contact } from "@/lib/content/site";
+import { NewsletterForm } from "@/components/newsletter-form"
+import { brand, contact } from "@/lib/content/site"
 
 const productLinks = [
   { label: "Fitur", href: "/#fitur" },
   { label: "Cara Kerja", href: "/#cara-kerja" },
   { label: "Harga", href: "/#harga" },
   { label: "Showcase", href: "/#showcase" },
-];
+]
 
 const solutionLinks = [
   { label: "Landing Page", href: "/#showcase" },
@@ -17,7 +17,7 @@ const solutionLinks = [
   { label: "Profil Perusahaan", href: "/#showcase" },
   { label: "Portofolio Personal", href: "/#showcase" },
   { label: "Blog & Konten", href: "/#showcase" },
-];
+]
 
 const companyLinks = [
   { label: "Tentang Kami", href: "#" },
@@ -25,7 +25,7 @@ const companyLinks = [
   { label: "Mitra", href: "#" },
   { label: "Kontak", href: "/#kontak" },
   { label: "Press Kit", href: "#" },
-];
+]
 
 const resourceLinks = [
   { label: "Blog", href: "#" },
@@ -33,13 +33,13 @@ const resourceLinks = [
   { label: "Testimoni", href: "/#testimoni" },
   { label: "Panduan", href: "#" },
   { label: "Status", href: "#" },
-];
+]
 
 const legalLinks = [
   { label: "Syarat & Ketentuan", href: "#" },
   { label: "Kebijakan Privasi", href: "#" },
   { label: "Kebijakan Cookie", href: "#" },
-];
+]
 
 const socialLinks: { label: string; href: string; icon: React.ReactNode }[] = [
   {
@@ -104,7 +104,7 @@ const socialLinks: { label: string; href: string; icon: React.ReactNode }[] = [
       </svg>
     ),
   },
-];
+]
 
 export function SiteFooter() {
   return (
@@ -217,18 +217,18 @@ export function SiteFooter() {
         </div>
       </div>
     </footer>
-  );
+  )
 }
 
 type FooterColumnProps = {
-  title: string;
-  links: { label: string; href: string }[];
-};
+  title: string
+  links: { label: string; href: string }[]
+}
 
 function FooterColumn({ title, links }: FooterColumnProps) {
   return (
     <div>
-      <h3 className="text-[11px] font-semibold uppercase tracking-wider text-foreground">
+      <h3 className="text-[11px] font-semibold tracking-wider text-foreground uppercase">
         {title}
       </h3>
       <ul className="mt-4 flex flex-col gap-2.5">
@@ -244,5 +244,5 @@ function FooterColumn({ title, links }: FooterColumnProps) {
         ))}
       </ul>
     </div>
-  );
+  )
 }

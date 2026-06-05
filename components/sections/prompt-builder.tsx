@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { toast } from "sonner";
+import { useState } from "react"
+import { toast } from "sonner"
 
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { ArrowRight, Loader, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button"
+import { Textarea } from "@/components/ui/textarea"
+import { ArrowRight, Loader, Sparkles } from "lucide-react"
 
 const SUGGESTION_CHIPS = [
   {
@@ -33,32 +33,32 @@ const SUGGESTION_CHIPS = [
     expanded:
       "Saya ingin membuat blog kuliner yang berisi resep masakan, ulasan restoran, dan tips memasak untuk pembaca Indonesia.",
   },
-];
+]
 
 export function PromptBuilder() {
-  const [value, setValue] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [value, setValue] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   function handleChipClick(expanded: string) {
-    setValue(expanded);
+    setValue(expanded)
   }
 
   function handleSubmit() {
     if (value.trim().length < 10) {
       toast.warning(
         "Tolong ceritakan sedikit lebih detail (minimal 10 karakter)."
-      );
-      return;
+      )
+      return
     }
 
-    setIsLoading(true);
+    setIsLoading(true)
     setTimeout(() => {
       toast.success(
         "Permintaan Anda diterima! Kami akan kirim draft dalam 24 jam."
-      );
-      setValue("");
-      setIsLoading(false);
-    }, 1200);
+      )
+      setValue("")
+      setIsLoading(false)
+    }, 1200)
   }
 
   return (
@@ -106,7 +106,7 @@ export function PromptBuilder() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+        <p className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
           Coba contoh:
         </p>
         <div className="flex flex-wrap gap-2">
@@ -128,5 +128,5 @@ export function PromptBuilder() {
         Pratinjau gratis. Tanpa kartu kredit.
       </p>
     </div>
-  );
+  )
 }

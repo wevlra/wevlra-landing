@@ -1,5 +1,5 @@
-import { Section, SectionHeader } from "@/components/section";
-import { steps } from "@/lib/content/how-it-works";
+import { Section, SectionHeader } from "@/components/section"
+import { steps } from "@/lib/content/how-it-works"
 
 export function HowItWorks() {
   return (
@@ -20,7 +20,7 @@ export function HowItWorks() {
         {/* Connector line — desktop only */}
         <div
           aria-hidden="true"
-          className="absolute top-10 left-0 right-0 hidden lg:block"
+          className="absolute top-10 right-0 left-0 hidden lg:block"
         >
           <div className="mx-auto max-w-7xl px-24">
             <div className="h-px w-full bg-[linear-gradient(to_right,transparent,var(--border)_15%,var(--border)_85%,transparent)]" />
@@ -29,7 +29,7 @@ export function HowItWorks() {
 
         <ol className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-6">
           {steps.map((step) => {
-            const Icon = step.icon;
+            const Icon = step.icon
             return (
               <li
                 key={step.step}
@@ -59,10 +59,10 @@ export function HowItWorks() {
                   </p>
                 </div>
               </li>
-            );
+            )
           })}
         </ol>
       </div>
     </Section>
-  );
+  )
 }

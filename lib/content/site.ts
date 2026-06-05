@@ -11,33 +11,33 @@ import {
   User,
   Workflow,
   type LucideIcon,
-} from "lucide-react";
+} from "lucide-react"
 
 export type NavLeaf = {
-  label: string;
-  href: string;
-  description?: string;
-  icon?: LucideIcon;
-};
+  label: string
+  href: string
+  description?: string
+  icon?: LucideIcon
+}
 
 export type NavGroup = {
-  title: string;
-  items: NavLeaf[];
-};
+  title: string
+  items: NavLeaf[]
+}
 
 export type NavItem =
   | { kind: "link"; label: string; href: string }
   | {
-    kind: "panel";
-    label: string;
-    groups: NavGroup[];
-    featured?: {
-      title: string;
-      description: string;
-      href: string;
-      cta: string;
-    };
-  };
+      kind: "panel"
+      label: string
+      groups: NavGroup[]
+      featured?: {
+        title: string
+        description: string
+        href: string
+        cta: string
+      }
+    }
 
 export const nav: NavItem[] = [
   {
@@ -85,7 +85,6 @@ export const nav: NavItem[] = [
         ],
       },
     ],
-
   },
   {
     kind: "panel",
@@ -141,31 +140,30 @@ export const nav: NavItem[] = [
   },
   { kind: "link", label: "Harga", href: "/#harga" },
   { kind: "link", label: "Kontak", href: "/#kontak" },
-];
+]
 
-// Sederhana untuk footer/sitemap
 export const navFlat = [
   { label: "Fitur", href: "/#fitur" },
   { label: "Cara Kerja", href: "/#cara-kerja" },
   { label: "Harga", href: "/#harga" },
   { label: "Kontak", href: "/#kontak" },
-];
+]
 
 export const brand = {
   name: "WEVLRA",
   tagline: "Cerita Anda, jadi website dalam hitungan menit.",
   description:
-    "Jasa pembuatan website profesional yang menggabungkan kecepatan AI dengan sentuhan desainer manusia.",
-};
+    "Jasa pembuatan website profesional dengan desain premium dan proses pengerjaan super cepat.",
+}
 
 export const social = {
   instagram: "#",
   twitter: "#",
   linkedin: "#",
   youtube: "#",
-};
+}
 
 export const contact = {
   email: "helo@wevlra.com",
   whatsapp: "#",
-};
+}

@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Section, SectionHeader } from "@/components/section";
-import { testimonials } from "@/lib/content/testimonials";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Section, SectionHeader } from "@/components/section"
+import { testimonials } from "@/lib/content/testimonials"
 
 function getInitials(name: string): string {
   return name
@@ -8,7 +8,7 @@ function getInitials(name: string): string {
     .slice(0, 2)
     .map((n) => n[0])
     .join("")
-    .toUpperCase();
+    .toUpperCase()
 }
 
 export function Testimonials() {
@@ -55,5 +55,5 @@ export function Testimonials() {
         ))}
       </div>
     </Section>
-  );
+  )
 }

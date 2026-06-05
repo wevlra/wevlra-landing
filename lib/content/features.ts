@@ -1,10 +1,17 @@
-import { Globe, Palette, Search, Sparkles, Zap, type LucideIcon } from "lucide-react";
+import {
+  Globe,
+  Palette,
+  Search,
+  Sparkles,
+  Zap,
+  type LucideIcon,
+} from "lucide-react"
 
 export type Feature = {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-};
+  icon: LucideIcon
+  title: string
+  description: string
+}
 
 export const features: Feature[] = [
   {
@@ -37,4 +44,4 @@ export const features: Feature[] = [
     description:
       "Kami urus semua kebutuhan teknis: domain, hosting, SSL, hingga email profesional — semuanya dalam satu paket.",
   },
-];
+]

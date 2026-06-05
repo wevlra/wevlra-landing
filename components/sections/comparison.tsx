@@ -1,40 +1,35 @@
-import { Section, SectionHeader } from "@/components/section";
-import { Check, Minus, X } from "lucide-react";
-import { comparisonRows } from "@/lib/content/comparison";
-import { cn } from "@/lib/utils";
+import { Section, SectionHeader } from "@/components/section"
+import { Check, Minus, X } from "lucide-react"
+import { comparisonRows } from "@/lib/content/comparison"
+import { cn } from "@/lib/utils"
 
-type ColumnKey = "diy" | "agency" | "wevlra";
+type ColumnKey = "diy" | "agency" | "wevlra"
 
 const COLUMNS: {
-  key: ColumnKey;
-  label: string;
-  highlight: boolean;
+  key: ColumnKey
+  label: string
+  highlight: boolean
 }[] = [
-    { key: "diy", label: "DIY", highlight: false },
-    { key: "agency", label: "Agensi", highlight: false },
-    { key: "wevlra", label: "WEVLRA", highlight: true },
-  ];
+  { key: "diy", label: "DIY", highlight: false },
+  { key: "agency", label: "Agensi", highlight: false },
+  { key: "wevlra", label: "WEVLRA", highlight: true },
+]
 
 function StatusIcon({ col }: { col: ColumnKey }) {
   if (col === "wevlra") {
-    return (
-      <Check className="size-4 text-primary" aria-label="Tersedia" />
-    );
+    return <Check className="size-4 text-primary" aria-label="Tersedia" />
   }
   if (col === "agency") {
     return (
-      <Minus
-        className="size-4 text-muted-foreground"
-        aria-label="Sebagian"
-      />
-    );
+      <Minus className="size-4 text-muted-foreground" aria-label="Sebagian" />
+    )
   }
   return (
     <X
       className="size-4 text-muted-foreground/50"
       aria-label="Tidak tersedia"
     />
-  );
+  )
 }
 
 export function Comparison() {
@@ -55,7 +50,7 @@ export function Comparison() {
       {/* Desktop / tablet — table layout */}
       <div className="mx-auto hidden max-w-7xl overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm md:block">
         <div className="grid grid-cols-[1.5fr_repeat(3,1fr)] border-b border-border/60 bg-muted/40">
-          <div className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          <div className="px-6 py-4 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
             Atribut
           </div>
           {COLUMNS.map((col) => (
@@ -68,7 +63,7 @@ export function Comparison() {
             >
               {col.label}
               {col.highlight ? (
-                <span className="ml-2 inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider">
+                <span className="ml-2 inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-medium tracking-wider uppercase">
                   Pilihan
                 </span>
               ) : null}
@@ -135,10 +130,8 @@ export function Comparison() {
                 >
                   <span
                     className={cn(
-                      "shrink-0 text-xs font-semibold uppercase tracking-wider",
-                      col.highlight
-                        ? "text-primary"
-                        : "text-muted-foreground"
+                      "shrink-0 text-xs font-semibold tracking-wider uppercase",
+                      col.highlight ? "text-primary" : "text-muted-foreground"
                     )}
                   >
                     {col.label}
@@ -163,5 +156,5 @@ export function Comparison() {
         ))}
       </div>
     </Section>
-  );
+  )
 }

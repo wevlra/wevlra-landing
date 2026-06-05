@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, ChevronDown, Menu } from "lucide-react";
+import { useEffect, useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { ArrowRight, ChevronDown, Menu } from "lucide-react"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -13,19 +13,19 @@ import {
   NavigationMenuLink,
   NavigationMenuTrigger,
   NavigationMenuContent,
-} from "@/components/ui/navigation-menu";
+} from "@/components/ui/navigation-menu"
 import {
   Sheet,
   SheetContent,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { nav, type NavLeaf } from "@/lib/content/site";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/sheet"
+import { ThemeToggle } from "@/components/theme-toggle"
+import { nav, type NavLeaf } from "@/lib/content/site"
+import { cn } from "@/lib/utils"
 
 function PanelLink({ item }: { item: NavLeaf }) {
-  const Icon = item.icon;
+  const Icon = item.icon
   return (
     <NavigationMenuLink asChild>
       <Link
@@ -49,25 +49,25 @@ function PanelLink({ item }: { item: NavLeaf }) {
         </span>
       </Link>
     </NavigationMenuLink>
-  );
+  )
 }
 
 export function SiteHeader() {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   return (
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
         scrolled
-          ? "border-b border-border/60 bg-background/80 backdrop-blur-xl shadow-sm supports-[backdrop-filter]:bg-background/60"
+          ? "border-b border-border/60 bg-background/80 shadow-sm backdrop-blur-xl supports-[backdrop-filter]:bg-background/60"
           : "border-b border-transparent bg-transparent"
       )}
     >
@@ -119,13 +119,13 @@ export function SiteHeader() {
                       </Link>
                     </NavigationMenuLink>
                   </NavigationMenuItem>
-                );
+                )
               }
 
               const colsClass = item.featured
                 ? "grid-cols-[1.1fr_1fr_1fr]"
-                : "grid-cols-2";
-              const widthClass = item.featured ? "w-[760px]" : "w-[560px]";
+                : "grid-cols-2"
+              const widthClass = item.featured ? "w-[760px]" : "w-[560px]"
 
               return (
                 <NavigationMenuItem key={item.label}>
@@ -134,11 +134,7 @@ export function SiteHeader() {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div
-                      className={cn(
-                        "grid gap-6 p-4",
-                        colsClass,
-                        widthClass
-                      )}
+                      className={cn("grid gap-6 p-4", colsClass, widthClass)}
                     >
                       {item.featured ? (
                         <Link
@@ -147,7 +143,7 @@ export function SiteHeader() {
                         >
                           <div
                             aria-hidden="true"
-                            className="pointer-events-none absolute -right-10 -top-10 size-40 rounded-full bg-primary/20 blur-3xl"
+                            className="pointer-events-none absolute -top-10 -right-10 size-40 rounded-full bg-primary/20 blur-3xl"
                           />
                           <div className="relative">
                             <h4 className="text-base font-semibold text-foreground">
@@ -169,7 +165,7 @@ export function SiteHeader() {
 
                       {item.groups.map((group) => (
                         <div key={group.title} className="flex flex-col gap-1">
-                          <h5 className="px-2.5 pb-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                          <h5 className="px-2.5 pb-1 text-[10px] font-semibold tracking-wider text-muted-foreground uppercase">
                             {group.title}
                           </h5>
                           {group.items.map((leaf) => (
@@ -180,7 +176,7 @@ export function SiteHeader() {
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-              );
+              )
             })}
           </NavigationMenuList>
         </NavigationMenu>
@@ -242,7 +238,7 @@ export function SiteHeader() {
                               {item.label}
                             </Link>
                           </li>
-                        );
+                        )
                       }
                       return (
                         <li key={item.label}>
@@ -256,12 +252,15 @@ export function SiteHeader() {
                             </summary>
                             <div className="mt-1 ml-1 flex flex-col gap-3 border-l border-border/60 pb-2 pl-3">
                               {item.groups.map((group) => (
-                                <div key={group.title} className="flex flex-col gap-0.5">
-                                  <span className="px-2 pt-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                                <div
+                                  key={group.title}
+                                  className="flex flex-col gap-0.5"
+                                >
+                                  <span className="px-2 pt-2 text-[10px] font-semibold tracking-wider text-muted-foreground uppercase">
                                     {group.title}
                                   </span>
                                   {group.items.map((leaf) => {
-                                    const LeafIcon = leaf.icon;
+                                    const LeafIcon = leaf.icon
                                     return (
                                       <Link
                                         key={leaf.label}
@@ -276,14 +275,14 @@ export function SiteHeader() {
                                         ) : null}
                                         {leaf.label}
                                       </Link>
-                                    );
+                                    )
                                   })}
                                 </div>
                               ))}
                             </div>
                           </details>
                         </li>
-                      );
+                      )
                     })}
                   </ul>
                 </nav>
@@ -299,5 +298,5 @@ export function SiteHeader() {
         </div>
       </div>
     </header>
-  );
+  )
 }

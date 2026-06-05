@@ -1,23 +1,23 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 type SectionProps = {
-  id?: string;
-  className?: string;
-  containerClassName?: string;
+  id?: string
+  className?: string
+  containerClassName?: string
   /** Vertical spacing variant — controls py utilities */
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg"
   /** Disable the inner container if section needs full-bleed children */
-  bleed?: boolean;
+  bleed?: boolean
   /** Optional aria-label for screen readers when no visible heading */
-  ariaLabel?: string;
-  children: React.ReactNode;
-};
+  ariaLabel?: string
+  children: React.ReactNode
+}
 
 const sizeClasses: Record<NonNullable<SectionProps["size"]>, string> = {
   sm: "py-10 sm:py-12 md:py-16",
   md: "py-16 sm:py-20 md:py-24 lg:py-28",
   lg: "py-20 sm:py-24 md:py-28 lg:py-32",
-};
+}
 
 export function Section({
   id,
@@ -47,17 +47,17 @@ export function Section({
         </div>
       )}
     </section>
-  );
+  )
 }
 
 /** Section header — consistent eyebrow + title + description block. */
 type SectionHeaderProps = {
-  eyebrow?: string;
-  title: React.ReactNode;
-  description?: React.ReactNode;
-  align?: "center" | "left";
-  className?: string;
-};
+  eyebrow?: string
+  title: React.ReactNode
+  description?: React.ReactNode
+  align?: "center" | "left"
+  className?: string
+}
 
 export function SectionHeader({
   eyebrow,
@@ -70,23 +70,25 @@ export function SectionHeader({
     <div
       className={cn(
         "mx-auto flex max-w-3xl flex-col gap-4",
-        align === "center" ? "items-center text-center" : "items-start text-left",
+        align === "center"
+          ? "items-center text-center"
+          : "items-start text-left",
         className
       )}
     >
       {eyebrow ? (
-        <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium uppercase tracking-wider text-primary">
+        <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium tracking-wider text-primary uppercase">
           {eyebrow}
         </span>
       ) : null}
-      <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+      <h2 className="text-3xl font-semibold tracking-tight text-balance text-foreground sm:text-4xl md:text-5xl">
         {title}
       </h2>
       {description ? (
-        <p className="text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+        <p className="text-base leading-relaxed text-pretty text-muted-foreground sm:text-lg">
           {description}
         </p>
       ) : null}
     </div>
-  );
+  )
 }

@@ -1,9 +1,9 @@
 export type Testimonial = {
-  quote: string;
-  name: string;
-  role: string;
-  avatarUrl?: string;
-};
+  quote: string
+  name: string
+  role: string
+  avatarUrl?: string
+}
 
 export const testimonials: Testimonial[] = [
   {
@@ -26,7 +26,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Fitur AI Builder-nya luar biasa! Saya tinggal ceritakan konsep kedai kopi saya, dan dalam 10 menit sudah ada draft yang hampir sempurna.",
+      "Proses pembuatan draft dari WEVLRA luar biasa cepat! Saya tinggal menjelaskan konsep kedai kopi saya, dan dalam hitungan hari sudah ada draft desain yang menakjubkan.",
     name: "Dewi Kusuma",
     role: "Founder Kopi Kita, Bandung",
   },
@@ -42,4 +42,4 @@ export const testimonials: Testimonial[] = [
     name: "Linda Wijaya",
     role: "Pemilik Toko Herbal Alami, Semarang",
   },
-];
+]
