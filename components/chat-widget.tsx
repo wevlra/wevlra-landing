@@ -284,35 +284,38 @@ export function ChatWidget() {
 
   return (
     <TooltipProvider>
-      {isOpen && isMaximized && (
+      {isOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-all duration-300"
-          onClick={() => setIsMaximized(false)}
+          className="fixed inset-0 z-40 bg-black/40 transition-all duration-300"
+          onClick={() => {
+            if (isMaximized) setIsMaximized(false)
+            else setIsOpen(false)
+          }}
         />
       )}
       <div
         ref={widgetRef}
         className={cn(
-          "z-50 transition-all duration-300",
+          "z-50",
           isMaximized
-            ? "pointer-events-none fixed inset-0 flex items-center justify-center p-4"
+            ? "contents"
             : "fixed right-4 bottom-4 flex flex-col items-end gap-3 sm:right-6 sm:bottom-6"
         )}
       >
         {/* Chat Panel */}
         <div
           className={cn(
-            "chat-widget-panel origin-bottom-right transition-all duration-300 ease-out",
+            "chat-widget-panel transition-all duration-300 ease-out",
             isOpen
               ? "pointer-events-auto scale-100 opacity-100"
               : "pointer-events-none scale-95 opacity-0",
-            isMaximized &&
-              "pointer-events-none flex h-full w-full items-center justify-center"
+            !isMaximized && "origin-bottom-right",
+            isMaximized && "fixed inset-0 z-50 flex items-center justify-center p-4"
           )}
         >
           <Card
             className={cn(
-              "chat-widget-card pointer-events-auto flex flex-col overflow-hidden shadow-lg transition-all duration-300 ease-in-out",
+              "chat-widget-card pointer-events-auto flex flex-col overflow-hidden shadow-lg",
               isMaximized
                 ? "h-[calc(100vh-4rem)] max-h-none w-[calc(100vw-2rem)] max-w-5xl sm:h-[600px] sm:w-[600px] md:h-[700px] md:w-[800px]"
                 : "w-[calc(100vw-2rem)] sm:w-[400px]"
