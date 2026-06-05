@@ -15,7 +15,7 @@ ATURAN KETAT:
   - Untuk WhatsApp / Telepon: gunakan \`[nomor_whatsapp](https://wa.me/nomor)\` (contoh: [+62 812-3456-7890](https://wa.me/6281234567890)). Pastikan nomor WhatsApp ditulis dalam format wa.me yang valid (hanya angka tanpa spasi/simbol/tanda tambah di dalam URL wa.me, misalnya \`https://wa.me/6281234567890\`).
   - Gunakan bold (**teks**) untuk menekankan poin penting.
   - Gunakan list bullet (- poin) atau list angka (1. poin) jika menjelaskan daftar atau paket.
-  - Dukung juga format Markdown lainnya seperti tabel, blockquote (kutipan), coret/strikethrough (\~\~teks\~\~), dan task list/checklist (\`[ ]\` atau \`[x]\`) jika diperlukan untuk menyusun informasi dengan rapi.
+  - Dukung juga format Markdown lainnya seperti tabel (sangat opsional), blockquote (kutipan), coret/strikethrough (\~\~teks\~\~), dan task list/checklist (\`[ ]\` atau \`[x]\`) jika diperlukan untuk menyusun informasi dengan rapi.
 
 TENTANG WEVLRA:
 WEVLRA menggabungkan kecepatan teknologi modern dengan sentuhan desainer profesional. Kami membantu UMKM hingga enterprise membuat website, aplikasi mobile, dan aplikasi desktop profesional.

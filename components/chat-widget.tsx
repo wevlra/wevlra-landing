@@ -9,6 +9,8 @@ import {
   User,
   RotateCcw,
   Minus,
+  Maximize2,
+  Minimize2,
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -21,7 +23,6 @@ import {
 } from "@/components/ui/card"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { ScrollArea } from "@/components/ui/scroll-area"
 import { Textarea } from "@/components/ui/textarea"
 import {
   Tooltip,
@@ -56,6 +57,7 @@ export function ChatWidget() {
   const [input, setInput] = useState("")
   const [isStreaming, setIsStreaming] = useState(false)
   const [hasUnread, setHasUnread] = useState(false)
+  const [isMaximized, setIsMaximized] = useState(false)
 
   const scrollViewportRef = useRef<HTMLDivElement>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -96,7 +98,11 @@ export function ChatWidget() {
         widgetRef.current &&
         !widgetRef.current.contains(event.target as Node)
       ) {
-        setIsOpen(false)
+        if (isMaximized) {
+          setIsMaximized(false)
+        } else {
+          setIsOpen(false)
+        }
       }
     }
 
@@ -104,7 +110,7 @@ export function ChatWidget() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside)
     }
-  }, [isOpen])
+  }, [isOpen, isMaximized])
 
   const scrollToBottom = useCallback(() => {
     requestAnimationFrame(() => {
@@ -138,8 +144,12 @@ export function ChatWidget() {
 
   const toggleOpen = useCallback(() => {
     setIsOpen((prev) => {
-      if (!prev) setHasUnread(false)
-      return !prev
+      const next = !prev
+      if (!next) {
+        setHasUnread(false)
+        setIsMaximized(false)
+      }
+      return next
     })
   }, [])
 
@@ -274,9 +284,20 @@ export function ChatWidget() {
 
   return (
     <TooltipProvider>
+      {isOpen && isMaximized && (
+        <div
+          className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-all duration-300"
+          onClick={() => setIsMaximized(false)}
+        />
+      )}
       <div
         ref={widgetRef}
-        className="fixed right-4 bottom-4 z-50 flex flex-col items-end gap-3 sm:right-6 sm:bottom-6"
+        className={cn(
+          "z-50 transition-all duration-300",
+          isMaximized
+            ? "pointer-events-none fixed inset-0 flex items-center justify-center p-4"
+            : "fixed right-4 bottom-4 flex flex-col items-end gap-3 sm:right-6 sm:bottom-6"
+        )}
       >
         {/* Chat Panel */}
         <div
@@ -284,10 +305,19 @@ export function ChatWidget() {
             "chat-widget-panel origin-bottom-right transition-all duration-300 ease-out",
             isOpen
               ? "pointer-events-auto scale-100 opacity-100"
-              : "pointer-events-none scale-95 opacity-0"
+              : "pointer-events-none scale-95 opacity-0",
+            isMaximized &&
+              "pointer-events-none flex h-full w-full items-center justify-center"
           )}
         >
-          <Card className="chat-widget-card flex w-[calc(100vw-2rem)] flex-col overflow-hidden shadow-lg sm:w-[400px]">
+          <Card
+            className={cn(
+              "chat-widget-card pointer-events-auto flex flex-col overflow-hidden shadow-lg transition-all duration-300 ease-in-out",
+              isMaximized
+                ? "h-[calc(100vh-4rem)] max-h-none w-[calc(100vw-2rem)] max-w-5xl sm:h-[600px] sm:w-[600px] md:h-[700px] md:w-[800px]"
+                : "w-[calc(100vw-2rem)] sm:w-[400px]"
+            )}
+          >
             {/* Header */}
             <CardHeader className="flex items-center justify-between">
               <CardTitle className="font-semibold">WEVLRA Assistant</CardTitle>
@@ -310,6 +340,27 @@ export function ChatWidget() {
                     <Button
                       variant="ghost"
                       size="icon-sm"
+                      onClick={() => setIsMaximized((prev) => !prev)}
+                      aria-label={
+                        isMaximized ? "Minimize chat" : "Maximize chat"
+                      }
+                    >
+                      {isMaximized ? (
+                        <Minimize2 className="size-3.5" />
+                      ) : (
+                        <Maximize2 className="size-3.5" />
+                      )}
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">
+                    {isMaximized ? "Minimize" : "Maximize"}
+                  </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon-sm"
                       onClick={() => setIsOpen(false)}
                       aria-label="Tutup chat"
                     >
@@ -322,12 +373,15 @@ export function ChatWidget() {
             </CardHeader>
 
             {/* Messages */}
-            <CardContent className="flex-1 overflow-hidden p-0">
-              <ScrollArea
-                viewportRef={scrollViewportRef}
-                className="h-[350px] sm:h-[400px]"
+            <CardContent className="flex min-h-0 flex-1 flex-col overflow-hidden p-0">
+              <div
+                ref={scrollViewportRef}
+                className={cn(
+                  "chat-scrollbar min-h-0 overflow-y-auto",
+                  isMaximized ? "flex-1" : "h-[350px] sm:h-[400px]"
+                )}
               >
-                <div className="flex flex-col gap-3 p-4">
+                <div className="flex flex-col gap-3 px-4 py-4">
                   {messages.map((msg) =>
                     msg.content ? (
                       <ChatBubble key={msg.id} message={msg} />
@@ -374,7 +428,7 @@ export function ChatWidget() {
                     </div>
                   )}
                 </div>
-              </ScrollArea>
+              </div>
             </CardContent>
 
             <CardFooter className="-mt-4">
@@ -419,7 +473,8 @@ export function ChatWidget() {
               onClick={toggleOpen}
               className={cn(
                 "chat-widget-fab relative size-14 rounded-full shadow-md transition-all duration-300 hover:shadow-lg",
-                isOpen && "rotate-0"
+                isOpen && "rotate-0",
+                isMaximized && "pointer-events-none scale-0 opacity-0"
               )}
               aria-label={isOpen ? "Tutup chat" : "Buka chat"}
             >
@@ -913,21 +968,21 @@ function renderInlineMarkdown(text: string, isUser: boolean) {
     if (part.startsWith("**") && part.endsWith("**")) {
       return (
         <strong key={i} className="font-semibold">
-          {part.slice(2, -2)}
+          {renderTextWithHtmlBr(part.slice(2, -2), isUser)}
         </strong>
       )
     }
     if (part.startsWith("*") && part.endsWith("*")) {
       return (
         <em key={i} className="italic">
-          {part.slice(1, -1)}
+          {renderTextWithHtmlBr(part.slice(1, -1), isUser)}
         </em>
       )
     }
     if (part.startsWith("~~") && part.endsWith("~~")) {
       return (
         <span key={i} className="line-through opacity-70">
-          {part.slice(2, -2)}
+          {renderTextWithHtmlBr(part.slice(2, -2), isUser)}
         </span>
       )
     }
@@ -982,18 +1037,29 @@ function renderInlineMarkdown(text: string, isUser: boolean) {
                 : "text-primary hover:text-primary/80"
             )}
           >
-            {displayLinkText}
+            {renderTextWithHtmlBr(displayLinkText, isUser)}
           </a>
         )
       }
     }
     return part.split("\n").map((line, j, arr) => (
       <span key={`${i}-${j}`}>
-        {renderTextWithAutoLinks(line, isUser)}
+        {renderTextWithHtmlBr(line, isUser)}
         {j < arr.length - 1 && <br />}
       </span>
     ))
   })
+}
+
+function renderTextWithHtmlBr(text: string, isUser: boolean) {
+  const brRegex = /(?:<br\s*\/?>|&lt;br\s*\/?&gt;)/gi
+  const parts = text.split(brRegex)
+  return parts.map((part, i) => (
+    <span key={i}>
+      {renderTextWithAutoLinks(part, isUser)}
+      {i < parts.length - 1 && <br />}
+    </span>
+  ))
 }
 
 function renderTextWithAutoLinks(text: string, isUser: boolean) {
