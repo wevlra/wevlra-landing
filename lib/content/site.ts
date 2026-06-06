@@ -165,6 +165,6 @@ export const social = {
 
 export const contact = {
   email: "wevlratech@gmail.com",
-  whatsapp_1: "+62 831 6087 1702",
-  whatsapp_2: "+62 851 8154 9975",
+  whatsapp_link: "https://wa.me/6285122305720",
+  whatsapp_text: "+62 851-2230-5720",
 }

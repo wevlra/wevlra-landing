@@ -65,42 +65,42 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
+        "sticky top-0 z-50 w-full  bg-background/80 shadow-sm backdrop-blur-xl",
         scrolled
-          ? "border-b border-border/60 bg-background/80 shadow-sm backdrop-blur-xl supports-[backdrop-filter]:bg-background/60"
-          : "border-b border-transparent bg-transparent"
+          ? "border-b border-border/60"
+          : "border-b border-transparent"
       )}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link
-          href="/"
+          href="/#"
           className="group flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90"
           aria-label="WEVLRA — kembali ke beranda"
         >
           <div className="relative">
             <div
               aria-hidden="true"
-              className="absolute inset-0 -m-1 rounded-xl bg-primary/30 opacity-0 blur-md transition-opacity group-hover:opacity-100"
+              className="absolute inset-0"
             />
             <Image
               src="/icon-dark-transparent.png"
               alt=""
-              width={32}
-              height={32}
+              width={40}
+              height={40}
               className="relative rounded-lg dark:hidden"
               priority
             />
             <Image
               src="/icon-light-transparent.png"
               alt=""
-              width={32}
-              height={32}
+              width={40}
+              height={40}
               className="relative hidden rounded-lg dark:block"
               priority
             />
           </div>
-          <span className="text-base font-bold tracking-tight">WEVLRA</span>
+          <span className="text-lg font-extrabold tracking-tight">WEVLRA</span>
         </Link>
 
         {/* Desktop nav */}

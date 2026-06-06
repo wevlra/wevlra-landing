@@ -28,14 +28,8 @@ const contactInfo: {
   {
     icon: MessageCircle,
     label: "WhatsApp",
-    value: "+62 831-6087-1702 (Azni)",
-    href: contact.whatsapp_1,
-  },
-  {
-    icon: MessageCircle,
-    label: "WhatsApp",
-    value: "+62 851-8154-9975 (Bintang)",
-    href: contact.whatsapp_2,
+    value: contact.whatsapp_text,
+    href: contact.whatsapp_link,
   },
   {
     icon: MapPin,
