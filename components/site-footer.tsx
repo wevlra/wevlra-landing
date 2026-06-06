@@ -20,7 +20,7 @@ const solutionLinks = [
 ]
 
 const companyLinks = [
-  { label: "Tentang Kami", href: "#" },
+  { label: "Tentang Kami", href: "/about" },
   { label: "Karir", href: "#" },
   { label: "Mitra", href: "#" },
   { label: "Kontak", href: "/#kontak" },
