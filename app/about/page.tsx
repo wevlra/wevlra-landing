@@ -6,92 +6,21 @@ import { SiteHeader } from "@/components/site-header"
 import { Section, SectionHeader } from "@/components/section"
 import { Card, CardContent } from "@/components/ui/card"
 import { brand } from "@/lib/content/site"
+import type { LucideIcon } from "lucide-react"
+
 import {
-  Globe,
-  Heart,
-  Lightbulb,
-  Rocket,
-  Users,
-  Zap,
-} from "lucide-react"
+  founders,
+  companyValues,
+  heroStats,
+  companyInfoCards,
+  type Founder,
+} from "@/lib/content/about"
 
 export const metadata: Metadata = {
   title: "Tentang Kami",
   description:
     "Kenali tim di balik WEVLRA — orang-orang yang berdedikasi membangun website impian klien dengan teknologi modern dan sentuhan desain premium.",
 }
-
-// ─── Data Founder ────────────────────────────────────────────────────────────
-
-type Founder = {
-  name: string
-  role: string
-  bio: string
-  /** Inisial untuk avatar placeholder */
-  initial: string
-  /** Warna gradient avatar — pasangan from/to Tailwind */
-  gradient: string
-}
-
-const founders: Founder[] = [
-  {
-    name: "Raka Pratama",
-    role: "CEO & Co-Founder",
-    bio: "Visioner di balik WEVLRA. Berpengalaman 5+ tahun di industri teknologi dan desain produk digital.",
-    initial: "RP",
-    gradient: "from-violet-500 to-primary",
-  },
-  {
-    name: "Deva Ananda",
-    role: "CTO & Co-Founder",
-    bio: "Arsitek sistem WEVLRA. Ahli dalam Next.js, cloud infrastructure, dan performa web skala enterprise.",
-    initial: "DA",
-    gradient: "from-sky-500 to-cyan-400",
-  },
-  {
-    name: "Laras Kinanti",
-    role: "Head of Design",
-    bio: "Penyempurna estetika setiap proyek. Berlatar belakang UI/UX dan brand identity selama 4 tahun.",
-    initial: "LK",
-    gradient: "from-rose-400 to-pink-500",
-  },
-  {
-    name: "Bima Satriya",
-    role: "Lead Developer",
-    bio: "Penerjemah desain menjadi kode. Spesialis React, animasi web, dan optimasi performa front-end.",
-    initial: "BS",
-    gradient: "from-amber-400 to-orange-500",
-  },
-]
-
-// ─── Nilai Perusahaan ─────────────────────────────────────────────────────────
-
-const values = [
-  {
-    icon: Zap,
-    title: "Kecepatan",
-    description:
-      "Kami percaya waktu adalah aset terpenting klien. Setiap proses kami rancang untuk efisiensi maksimal.",
-  },
-  {
-    icon: Heart,
-    title: "Dedikasi",
-    description:
-      "Setiap website yang kami bangun diperlakukan seperti milik sendiri — dengan perhatian penuh pada detail.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Inovasi",
-    description:
-      "Kami selalu mengikuti perkembangan teknologi terbaru untuk memberikan solusi yang relevan dan future-proof.",
-  },
-  {
-    icon: Globe,
-    title: "Dampak Nyata",
-    description:
-      "Kesuksesan klien adalah tolok ukur kami. Website bukan sekadar estetika — ia harus menghasilkan bisnis.",
-  },
-]
 
 // ─── Komponen ─────────────────────────────────────────────────────────────────
 
@@ -146,7 +75,7 @@ function ValueCard({
   title,
   description,
 }: {
-  icon: typeof Zap
+  icon: LucideIcon
   title: string
   description: string
 }) {
@@ -193,11 +122,7 @@ export default function AboutPage() {
 
             {/* Stats */}
             <div className="mt-12 grid grid-cols-3 gap-6 border-t border-border/60 pt-10">
-              {[
-                { value: "50+", label: "Klien Puas" },
-                { value: "2hari", label: "Rata-rata Pengerjaan" },
-                { value: "4.9★", label: "Rating Klien" },
-              ].map((stat) => (
+              {heroStats.map((stat) => (
                 <div key={stat.label} className="flex flex-col gap-1">
                   <span className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
                     {stat.value}
@@ -250,12 +175,7 @@ export default function AboutPage() {
 
             {/* Visual card info */}
             <div className="grid grid-cols-2 gap-4">
-              {[
-                { icon: Rocket, label: "Didirikan", value: "2024" },
-                { icon: Users, label: "Tim Inti", value: "4 Orang" },
-                { icon: Globe, label: "Lokasi", value: "Lampung, ID" },
-                { icon: Heart, label: "Misi", value: "UMKM Digital" },
-              ].map((item) => (
+              {companyInfoCards.map((item) => (
                 <div
                   key={item.label}
                   className="flex flex-col gap-3 rounded-2xl border border-border/60 bg-card/60 p-5 backdrop-blur-sm"
@@ -287,7 +207,7 @@ export default function AboutPage() {
             className="mb-12"
           />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 md:grid-cols-4">
-            {values.map((v) => (
+            {companyValues.map((v) => (
               <ValueCard
                 key={v.title}
                 icon={v.icon}
