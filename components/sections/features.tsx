@@ -14,53 +14,72 @@ type FeatureCardProps = {
 
 function FeatureCard({ icon: Icon, title, description, videoSrc, poster, className }: FeatureCardProps) {
   return (
-    <Card className={`group hover-lift relative h-full overflow-hidden border-border/60 bg-card/80 backdrop-blur-sm transition-all duration-300 hover:border-primary/40${className ? ` ${className}` : ""}`}>
-      <CardContent className="flex flex-1 flex-col gap-4">
-        {/* BAGIAN ATAS — Media Container Landscape */}
-        <div className="relative">
-          {/* Glow effect behind media container */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 rounded-xl bg-primary/20 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100"
-          />
-          <div className="relative w-full h-48 sm:h-[200px] rounded-xl overflow-hidden bg-primary/[0.03] flex items-center justify-center p-4">
-            {videoSrc ? (
-              <video
-                src={videoSrc}
-                poster={poster}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                className="w-full h-full object-contain drop-shadow-sm"
-              />
-            ) : (
-              <div className="flex items-center justify-center w-full h-full text-primary">
-                <Icon aria-hidden className="size-12" />
-              </div>
-            )}
-          </div>
-        </div>
+    <Card
+      className={`
+        group relative h-full overflow-hidden transition-all duration-500 ease-out
+        isolate transform-gpu
+        hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5
+        ${videoSrc
+          ? "border-transparent bg-black"
+          : "border-border/60 bg-card/80 backdrop-blur-sm hover:border-primary/40"
+        }
+        ${className ? ` ${className}` : ""}
+      `}
+    >
 
-        {/* BAGIAN BAWAH — Text Content */}
-        <div className="flex flex-col gap-1.5 text-left">
-          <h3 className="text-lg font-semibold tracking-tight text-foreground">
+      {videoSrc && (
+        <video
+          src={videoSrc}
+          poster={poster}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 z-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        />
+      )}
+
+      {videoSrc && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-2 left-0 right-0 top-1/2 z-[1] bg-gradient-to-t from-black via-black/60 to-transparent transition-opacity duration-500 group-hover:opacity-90"
+        />
+      )}
+
+      <CardContent className="relative z-10 flex h-full min-h-[280px] flex-1 flex-col sm:min-h-[320px]">
+
+        {!videoSrc && (
+          <div className="flex flex-1 items-center justify-center text-primary transition-transform duration-500 group-hover:scale-110">
+            <Icon aria-hidden className="size-12" />
+          </div>
+        )}
+
+        {videoSrc && <div className="flex-1" />}
+
+        <div className="relative mt-auto flex flex-col gap-2 text-left transition-transform duration-500 ease-out group-hover:-translate-y-1">
+          <h3 className={`text-lg font-bold tracking-tight ${videoSrc ? 'text-white' : 'text-foreground'}`}>
             {title}
           </h3>
-          <p className="text-sm leading-relaxed text-muted-foreground">
+          <p className={`text-sm leading-relaxed ${videoSrc ? 'text-white/80' : 'text-muted-foreground'}`}>
             {description}
           </p>
         </div>
       </CardContent>
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-primary/60 to-transparent transition-transform duration-500 group-hover:scale-x-100"
-      />
+
+      {!videoSrc && (
+        <>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-br from-primary/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 top-0 z-20 h-px scale-x-0 bg-gradient-to-r from-transparent via-primary/60 to-transparent transition-transform duration-500 group-hover:scale-x-100"
+          />
+        </>
+      )}
+
     </Card>
   )
 }
