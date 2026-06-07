@@ -8,15 +8,11 @@ import {
   type LucideIcon,
 } from "lucide-react"
 
-// ─── Founder ──────────────────────────────────────────────────────────────────
-
 export type Founder = {
   name: string
   role: string
   bio: string
-  /** Inisial untuk avatar placeholder */
   initial: string
-  /** Warna gradient avatar — pasangan from/to Tailwind */
   gradient: string
 }
 
@@ -50,8 +46,6 @@ export const founders: Founder[] = [
     gradient: "from-amber-400 to-orange-500",
   },
 ]
-
-// ─── Nilai Perusahaan ─────────────────────────────────────────────────────────
 
 export type CompanyValue = {
   icon: LucideIcon
