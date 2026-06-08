@@ -23,31 +23,22 @@ export const metadata: Metadata = {
     "Kenali tim di balik WEVLRA — orang-orang yang berdedikasi membangun website impian klien dengan teknologi modern dan sentuhan desain premium.",
 }
 
-// ─── Komponen ─────────────────────────────────────────────────────────────────
-
 function FounderCard({ founder }: { founder: Founder }) {
   return (
     <Card className="group relative h-[420px] sm:h-[460px] overflow-hidden border-border/60 bg-card transition-all duration-500 hover:-translate-y-2 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10">
 
-      {/* 1. Gambar Background (Portrait) */}
       <div className="absolute inset-x-0 top-0 h-[80%] w-full overflow-hidden">
         <img
-          // Gunakan placeholder abu-abu jika belum ada foto
           src={founder.image || "https://ui-avatars.com/api/?name=" + founder.name + "&size=512&background=random"}
           alt={founder.name}
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
-
-        {/* 2. Gradient Fade (Vignette Bawah) */}
-        {/* Efek ini yang membuat gambar menyatu mulus dengan bagian teks di bawah */}
-        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/80 to-transparent" />
       </div>
 
-      {/* 3. Konten Teks & Sosial Media */}
-      {/* Gunakan z-10 agar berada di atas gambar dan gradient */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[85%] w-full bg-gradient-to-t from-card via-card/80 to-transparent" />
+
       <CardContent className="relative z-10 flex h-full flex-col items-center justify-end p-6 text-center">
 
-        {/* Nama dan Role */}
         <div className="flex flex-col gap-1 transition-transform duration-500 group-hover:-translate-y-1">
           <h3 className="text-xl font-bold tracking-tight text-foreground">
             {founder.name}
@@ -57,10 +48,8 @@ function FounderCard({ founder }: { founder: Founder }) {
           </p>
         </div>
 
-        {/* Garis Pemisah (Divider) */}
         <div className="my-5 h-px w-4/5 bg-border/60 transition-all duration-500 group-hover:w-full group-hover:bg-primary/30" />
 
-        {/* Deretan Ikon Sosial Media */}
         <div className="flex items-center gap-3 transition-transform duration-500 group-hover:-translate-y-1">
           {founder.socials?.facebook && (
             <SocialIcon Icon={Facebook} href={founder.socials.facebook} hoverColor="hover:text-blue-500" />

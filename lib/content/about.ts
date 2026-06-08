@@ -8,7 +8,6 @@ import {
   type LucideIcon,
 } from "lucide-react"
 
-// 1. UPDATE TIPE DATA (Hapus bio, initial, gradient. Tambah image & socials)
 export type Founder = {
   name: string
   role: string
@@ -21,12 +20,10 @@ export type Founder = {
   }
 }
 
-// 2. UPDATE DATA FOUNDER (Sesuaikan dengan tipe data baru)
 export const founders: Founder[] = [
   {
     name: "Bintang Surya Nugraha",
     role: "Founder",
-    // Masukkan path foto Anda nanti di sini (simpan foto di folder 'public')
     image: "/images/bintang.png",
     socials: {
       instagram: "https://instagram.com/bintangsn",
@@ -95,8 +92,6 @@ export const companyValues: CompanyValue[] = [
   },
 ]
 
-// ─── Statistik Hero ───────────────────────────────────────────────────────────
-
 export type HeroStat = {
   value: string
   label: string
@@ -107,8 +102,6 @@ export const heroStats: HeroStat[] = [
   { value: "2hari", label: "Rata-rata Pengerjaan" },
   { value: "4.9★", label: "Rating Klien" },
 ]
-
-// ─── Info Card (Cerita Kami) ──────────────────────────────────────────────────
 
 export type InfoCard = {
   icon: LucideIcon
