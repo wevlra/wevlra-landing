@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/site-header"
 import { Section, SectionHeader } from "@/components/section"
 import { Card, CardContent } from "@/components/ui/card"
 import { brand } from "@/lib/content/site"
+import { FiFacebook as Facebook, FiInstagram as Instagram, FiTwitter as Twitter, FiLinkedin as Linkedin } from "react-icons/fi"
 import type { LucideIcon } from "lucide-react"
 
 import {
@@ -26,47 +27,71 @@ export const metadata: Metadata = {
 
 function FounderCard({ founder }: { founder: Founder }) {
   return (
-    <Card className="group relative h-full overflow-hidden border-border/60 bg-card/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5">
-      <CardContent className="flex flex-col items-center gap-5 p-6 text-center sm:p-8">
-        {/* Avatar placeholder */}
-        <div className="relative shrink-0">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 rounded-full bg-primary/20 opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100"
-          />
-          <div
-            className={`relative flex size-24 items-center justify-center rounded-full bg-gradient-to-br ${founder.gradient} text-2xl font-bold text-white shadow-lg ring-2 ring-white/10 transition-transform duration-300 group-hover:scale-105`}
-          >
-            {founder.initial}
-          </div>
-        </div>
+    <Card className="group relative h-[420px] sm:h-[460px] overflow-hidden border-border/60 bg-card transition-all duration-500 hover:-translate-y-2 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10">
 
-        {/* Info */}
-        <div className="flex flex-col gap-1.5">
-          <h3 className="text-lg font-semibold tracking-tight text-foreground">
+      {/* 1. Gambar Background (Portrait) */}
+      <div className="absolute inset-x-0 top-0 h-[80%] w-full overflow-hidden">
+        <img
+          // Gunakan placeholder abu-abu jika belum ada foto
+          src={founder.image || "https://ui-avatars.com/api/?name=" + founder.name + "&size=512&background=random"}
+          alt={founder.name}
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+
+        {/* 2. Gradient Fade (Vignette Bawah) */}
+        {/* Efek ini yang membuat gambar menyatu mulus dengan bagian teks di bawah */}
+        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/80 to-transparent" />
+      </div>
+
+      {/* 3. Konten Teks & Sosial Media */}
+      {/* Gunakan z-10 agar berada di atas gambar dan gradient */}
+      <CardContent className="relative z-10 flex h-full flex-col items-center justify-end p-6 text-center">
+
+        {/* Nama dan Role */}
+        <div className="flex flex-col gap-1 transition-transform duration-500 group-hover:-translate-y-1">
+          <h3 className="text-xl font-bold tracking-tight text-foreground">
             {founder.name}
           </h3>
-          <span className="inline-block rounded-full border border-primary/20 bg-primary/5 px-3 py-0.5 text-xs font-medium tracking-wider text-primary">
+          <p className="text-sm font-medium text-muted-foreground">
             {founder.role}
-          </span>
+          </p>
         </div>
 
-        <p className="text-sm leading-relaxed text-muted-foreground">
-          {founder.bio}
-        </p>
-      </CardContent>
+        {/* Garis Pemisah (Divider) */}
+        <div className="my-5 h-px w-4/5 bg-border/60 transition-all duration-500 group-hover:w-full group-hover:bg-primary/30" />
 
-      {/* Hover effects — gradient overlay */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      />
-      {/* Top line */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-primary/60 to-transparent transition-transform duration-500 group-hover:scale-x-100"
-      />
+        {/* Deretan Ikon Sosial Media */}
+        <div className="flex items-center gap-3 transition-transform duration-500 group-hover:-translate-y-1">
+          {founder.socials?.facebook && (
+            <SocialIcon Icon={Facebook} href={founder.socials.facebook} hoverColor="hover:text-blue-500" />
+          )}
+          {founder.socials?.instagram && (
+            <SocialIcon Icon={Instagram} href={founder.socials.instagram} hoverColor="hover:text-pink-500" />
+          )}
+          {founder.socials?.twitter && (
+            <SocialIcon Icon={Twitter} href={founder.socials.twitter} hoverColor="hover:text-sky-400" />
+          )}
+          {founder.socials?.linkedin && (
+            <SocialIcon Icon={Linkedin} href={founder.socials.linkedin} hoverColor="hover:text-blue-600" />
+          )}
+        </div>
+
+      </CardContent>
     </Card>
+  )
+}
+
+// Komponen Pembantu untuk Kotak Ikon Sosial Media
+function SocialIcon({ Icon, href, hoverColor }: { Icon: any, href: string, hoverColor: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className={`flex size-10 items-center justify-center rounded-xl bg-background/50 shadow-sm ring-1 ring-border/50 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-background hover:ring-primary/50 hover:shadow-md ${hoverColor}`}
+    >
+      <Icon className="size-4 text-foreground/70 transition-colors" />
+    </a>
   )
 }
 

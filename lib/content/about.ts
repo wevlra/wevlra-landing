@@ -8,42 +8,57 @@ import {
   type LucideIcon,
 } from "lucide-react"
 
+// 1. UPDATE TIPE DATA (Hapus bio, initial, gradient. Tambah image & socials)
 export type Founder = {
   name: string
   role: string
-  bio: string
-  initial: string
-  gradient: string
+  image?: string
+  socials?: {
+    facebook?: string
+    instagram?: string
+    twitter?: string
+    linkedin?: string
+  }
 }
 
+// 2. UPDATE DATA FOUNDER (Sesuaikan dengan tipe data baru)
 export const founders: Founder[] = [
   {
     name: "Bintang Surya Nugraha",
     role: "Founder",
-    bio: "Visioner di balik WEVLRA. Berpengalaman 2+ tahun di industri teknologi dan desain produk digital.",
-    initial: "BSN",
-    gradient: "from-violet-500 to-primary",
+    // Masukkan path foto Anda nanti di sini (simpan foto di folder 'public')
+    image: "/images/bintang.png",
+    socials: {
+      instagram: "https://instagram.com/bintangsn",
+      linkedin: "https://linkedin.com/in/bintangsn",
+    }
   },
   {
     name: "Azni Muzaiyin",
     role: "Founder",
-    bio: "Arsitek sistem WEVLRA. Ahli dalam Next.js, cloud infrastructure, dan performa web skala enterprise.",
-    initial: "AM",
-    gradient: "from-sky-500 to-cyan-400",
+    image: "/images/azni.png",
+    socials: {
+      instagram: "https://instagram.com/aznimuzaiyin",
+      linkedin: "https://linkedin.com/in/aznimuzaiyin",
+    }
   },
   {
     name: "Murphy Ibrahim Movic",
     role: "Founder",
-    bio: "Penyempurna estetika setiap proyek. Berlatar belakang Graphic Designer dan brand identity selama 4 tahun.",
-    initial: "MIM",
-    gradient: "from-rose-400 to-pink-500",
+    image: "/images/murphy.png",
+    socials: {
+      instagram: "https://instagram.com/murphy",
+      facebook: "https://facebook.com/murphy",
+    }
   },
   {
     name: "Budi Safta Nugraha",
     role: "Founder",
-    bio: "Penerjemah desain menjadi kode. Ahli dalam animasi web, dan optimasi performa front-end.",
-    initial: "BSN",
-    gradient: "from-amber-400 to-orange-500",
+    image: "/images/budi.png",
+    socials: {
+      twitter: "https://twitter.com/budis",
+      linkedin: "https://linkedin.com/in/budisn",
+    }
   },
 ]
 

@@ -21,7 +21,7 @@ export const features: Feature[] = [
     title: "Platform Modern",
     description:
       "Sampaikan kebutuhan website Anda, dan sistem kami langsung merancang draf website lengkap dalam waktu singkat.",
-    videoSrc: "/example-video.mp4", // Contoh: "/videos/platform-modern.mp4"
+    videoSrc: "/videos/features1.mp4", // Contoh: "/videos/platform-modern.mp4"
     poster: "",   // Contoh: "/images/posters/platform-modern.jpg"
   },
   {
@@ -29,7 +29,7 @@ export const features: Feature[] = [
     title: "Desain Custom",
     description:
       "Tim desainer kami menyempurnakan setiap detail visual agar sesuai dengan identitas brand Anda.",
-    videoSrc: "/example-video.mp4", // Contoh: "/videos/desain-custom.mp4"
+    videoSrc: "/videos/features2.mp4", // Contoh: "/videos/desain-custom.mp4"
     poster: "",   // Contoh: "/images/posters/desain-custom.jpg"
   },
   {
@@ -37,7 +37,7 @@ export const features: Feature[] = [
     title: "Optimasi SEO",
     description:
       "Setiap website dibangun dengan fondasi SEO yang kuat agar mudah ditemukan di Google dan mesin pencari lainnya.",
-    videoSrc: "/example-video.mp4", // Contoh: "/videos/optimasi-seo.mp4"
+    videoSrc: "/videos/features3.mp4", // Contoh: "/videos/optimasi-seo.mp4"
     poster: "",   // Contoh: "/images/posters/optimasi-seo.jpg"
   },
   {
@@ -45,7 +45,7 @@ export const features: Feature[] = [
     title: "Performa Kencang",
     description:
       "Dioptimalkan untuk kecepatan loading di bawah 2 detik. Pengunjung tidak perlu menunggu, konversi meningkat.",
-    videoSrc: "/example-video.mp4", // Contoh: "/videos/performa-kencang.mp4"
+    videoSrc: "/videos/features4.mp4", // Contoh: "/videos/performa-kencang.mp4"
     poster: "",   // Contoh: "/images/posters/performa-kencang.jpg"
   },
   {
@@ -53,7 +53,7 @@ export const features: Feature[] = [
     title: "Domain & Hosting",
     description:
       "Kami urus semua kebutuhan teknis: domain, hosting, SSL, hingga email profesional — semuanya dalam satu paket.",
-    videoSrc: "/example-video.mp4", // Contoh: "/videos/domain-hosting.mp4"
+    videoSrc: "/videos/features5.mp4", // Contoh: "/videos/domain-hosting.mp4"
     poster: "",   // Contoh: "/images/posters/domain-hosting.jpg"
   },
 ]
