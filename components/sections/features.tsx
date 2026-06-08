@@ -12,21 +12,22 @@ type FeatureCardProps = {
   className?: string
 }
 
-function FeatureCard({ icon: Icon, title, description, videoSrc, poster, className }: FeatureCardProps) {
+function FeatureCard({
+  icon: Icon,
+  title,
+  description,
+  videoSrc,
+  poster,
+  className,
+}: FeatureCardProps) {
   return (
     <Card
-      className={`
-        group relative h-full overflow-hidden transition-all duration-500 ease-out
-        isolate transform-gpu
-        hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5
-        ${videoSrc
-          ? "border-transparent bg-black"
+      className={`group relative isolate h-full transform-gpu overflow-hidden transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 ${
+        videoSrc
+          ? "border-border/60 bg-card dark:border-transparent dark:bg-black"
           : "border-border/60 bg-card/80 backdrop-blur-sm hover:border-primary/40"
-        }
-        ${className ? ` ${className}` : ""}
-      `}
+      } ${className ? ` ${className}` : ""} `}
     >
-
       {videoSrc && (
         <video
           src={videoSrc}
@@ -36,19 +37,18 @@ function FeatureCard({ icon: Icon, title, description, videoSrc, poster, classNa
           muted
           playsInline
           preload="metadata"
-          className="absolute inset-0 z-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          className="absolute inset-0 z-0 h-full w-full object-cover brightness-105 contrast-90 hue-rotate-180 invert saturate-125 transition-transform duration-700 ease-out group-hover:scale-105 dark:filter-none"
         />
       )}
 
       {videoSrc && (
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-2 left-0 right-0 top-1/2 z-[1] bg-gradient-to-t from-black via-black/60 to-transparent transition-opacity duration-500 group-hover:opacity-90"
+          className="pointer-events-none absolute top-1/2 right-0 -bottom-2 left-0 z-[1] bg-gradient-to-t from-card via-card/70 to-transparent transition-opacity duration-500 group-hover:opacity-90 dark:from-black dark:via-black/60"
         />
       )}
 
       <CardContent className="relative z-10 flex h-full min-h-[280px] flex-1 flex-col sm:min-h-[320px]">
-
         {!videoSrc && (
           <div className="flex flex-1 items-center justify-center text-primary transition-transform duration-500 group-hover:scale-110">
             <Icon aria-hidden className="size-12" />
@@ -58,10 +58,14 @@ function FeatureCard({ icon: Icon, title, description, videoSrc, poster, classNa
         {videoSrc && <div className="flex-1" />}
 
         <div className="relative mt-auto flex flex-col gap-2 text-left transition-transform duration-500 ease-out group-hover:-translate-y-1">
-          <h3 className={`text-lg font-bold tracking-tight ${videoSrc ? 'text-white' : 'text-foreground'}`}>
+          <h3
+            className={`text-lg font-bold tracking-tight ${videoSrc ? "text-foreground dark:text-white" : "text-foreground"}`}
+          >
             {title}
           </h3>
-          <p className={`text-sm leading-relaxed ${videoSrc ? 'text-white/80' : 'text-muted-foreground'}`}>
+          <p
+            className={`text-sm leading-relaxed ${videoSrc ? "text-muted-foreground dark:text-white/80" : "text-muted-foreground"}`}
+          >
             {description}
           </p>
         </div>
@@ -79,7 +83,6 @@ function FeatureCard({ icon: Icon, title, description, videoSrc, poster, classNa
           />
         </>
       )}
-
     </Card>
   )
 }

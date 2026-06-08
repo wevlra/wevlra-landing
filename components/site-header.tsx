@@ -65,10 +65,8 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full  bg-background/80 shadow-sm backdrop-blur-xl",
-        scrolled
-          ? "border-b border-border/60"
-          : "border-b border-transparent"
+        "sticky top-0 z-50 w-full bg-background/80 shadow-sm backdrop-blur-xl",
+        scrolled ? "border-b border-border/60" : "border-b border-transparent"
       )}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
@@ -79,10 +77,7 @@ export function SiteHeader() {
           aria-label="WEVLRA — kembali ke beranda"
         >
           <div className="relative">
-            <div
-              aria-hidden="true"
-              className="absolute inset-0"
-            />
+            <div aria-hidden="true" className="absolute inset-0" />
             <Image
               src="/icon-dark-transparent.png"
               alt=""

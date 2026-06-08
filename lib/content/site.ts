@@ -139,6 +139,7 @@ export const nav: NavItem[] = [
     ],
   },
   { kind: "link", label: "Harga", href: "/#harga" },
+  { kind: "link", label: "Tentang", href: "/tentang" },
   { kind: "link", label: "Kontak", href: "/#kontak" },
 ]
 
@@ -146,6 +147,7 @@ export const navFlat = [
   { label: "Fitur", href: "/#fitur" },
   { label: "Cara Kerja", href: "/#cara-kerja" },
   { label: "Harga", href: "/#harga" },
+  { label: "Tentang", href: "/tentang" },
   { label: "Kontak", href: "/#kontak" },
 ]
 

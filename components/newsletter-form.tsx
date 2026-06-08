@@ -21,7 +21,7 @@ export function NewsletterForm() {
         className="h-11 sm:flex-1"
         autoComplete="email"
       />
-      <Button type="submit" size="lg" className="h-11">
+      <Button type="submit" size="lg" className="h-11 px-6">
         Berlangganan
         <ArrowRight aria-hidden className="size-4" />
       </Button>

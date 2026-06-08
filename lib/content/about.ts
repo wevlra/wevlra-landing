@@ -28,7 +28,7 @@ export const founders: Founder[] = [
     socials: {
       instagram: "https://instagram.com/bintangsn",
       linkedin: "https://linkedin.com/in/bintangsn",
-    }
+    },
   },
   {
     name: "Azni Muzaiyin",
@@ -37,7 +37,7 @@ export const founders: Founder[] = [
     socials: {
       instagram: "https://instagram.com/aznimuzaiyin",
       linkedin: "https://linkedin.com/in/aznimuzaiyin",
-    }
+    },
   },
   {
     name: "Murphy Ibrahim Movic",
@@ -46,7 +46,7 @@ export const founders: Founder[] = [
     socials: {
       instagram: "https://instagram.com/murphy",
       facebook: "https://facebook.com/murphy",
-    }
+    },
   },
   {
     name: "Budi Safta Nugraha",
@@ -55,7 +55,7 @@ export const founders: Founder[] = [
     socials: {
       twitter: "https://twitter.com/budis",
       linkedin: "https://linkedin.com/in/budisn",
-    }
+    },
   },
 ]
 

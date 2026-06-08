@@ -44,11 +44,7 @@ export function FinalCta() {
         </p>
 
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-          <Button
-            size="lg"
-            className="h-12 w-full px-7 text-base font-medium shadow-xl shadow-primary/25 transition-transform hover:scale-[1.02] sm:w-auto"
-            asChild
-          >
+          <Button size="lg" className="h-11 px-6 sm:w-auto" asChild>
             <Link href="/#kontak">
               <Sparkles aria-hidden className="size-4" />
               Mulai Gratis Sekarang
@@ -58,7 +54,7 @@ export function FinalCta() {
           <Button
             size="lg"
             variant="outline"
-            className="h-12 w-full px-7 text-base font-medium backdrop-blur sm:w-auto"
+            className="h-11 px-6 sm:w-auto"
             asChild
           >
             <a href={`mailto:${contact.email}`}>

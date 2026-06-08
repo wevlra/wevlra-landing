@@ -286,7 +286,7 @@ export function ChatWidget() {
     <TooltipProvider>
       {isOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/40 transition-all duration-300"
+          className="fixed inset-0 z-[55] bg-black/40 transition-all duration-300"
           onClick={() => {
             if (isMaximized) setIsMaximized(false)
             else setIsOpen(false)
@@ -296,7 +296,7 @@ export function ChatWidget() {
       <div
         ref={widgetRef}
         className={cn(
-          "z-50",
+          "z-[60]",
           isMaximized
             ? "contents"
             : "fixed right-4 bottom-4 flex flex-col items-end gap-3 sm:right-6 sm:bottom-6"
@@ -310,7 +310,8 @@ export function ChatWidget() {
               ? "pointer-events-auto scale-100 opacity-100"
               : "pointer-events-none scale-95 opacity-0",
             !isMaximized && "origin-bottom-right",
-            isMaximized && "fixed inset-0 z-50 flex items-center justify-center p-4"
+            isMaximized &&
+              "fixed inset-0 z-[60] flex items-center justify-center p-4"
           )}
         >
           <Card
@@ -1040,7 +1041,7 @@ function renderInlineMarkdown(text: string, isUser: boolean) {
                 : "text-primary hover:text-primary/80"
             )}
           >
-            {renderTextWithHtmlBr(displayLinkText, isUser)}
+            {renderTextWithHtmlBrPlain(displayLinkText)}
           </a>
         )
       }
@@ -1060,6 +1061,17 @@ function renderTextWithHtmlBr(text: string, isUser: boolean) {
   return parts.map((part, i) => (
     <span key={i}>
       {renderTextWithAutoLinks(part, isUser)}
+      {i < parts.length - 1 && <br />}
+    </span>
+  ))
+}
+
+function renderTextWithHtmlBrPlain(text: string) {
+  const brRegex = /(?:<br\s*\/?>|&lt;br\s*\/?&gt;)/gi
+  const parts = text.split(brRegex)
+  return parts.map((part, i) => (
+    <span key={i}>
+      {part}
       {i < parts.length - 1 && <br />}
     </span>
   ))
