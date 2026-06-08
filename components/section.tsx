@@ -4,11 +4,8 @@ type SectionProps = {
   id?: string
   className?: string
   containerClassName?: string
-  /** Vertical spacing variant — controls py utilities */
   size?: "sm" | "md" | "lg"
-  /** Disable the inner container if section needs full-bleed children */
   bleed?: boolean
-  /** Optional aria-label for screen readers when no visible heading */
   ariaLabel?: string
   children: React.ReactNode
 }
@@ -49,8 +46,6 @@ export function Section({
     </section>
   )
 }
-
-/** Section header — consistent eyebrow + title + description block. */
 type SectionHeaderProps = {
   eyebrow?: string
   title: React.ReactNode

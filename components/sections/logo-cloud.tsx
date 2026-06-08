@@ -38,8 +38,6 @@ export function LogoCloud() {
           <span className="font-semibold text-foreground">terbaik</span> di
           kelasnya
         </p>
-
-        {/* Marquee with edge fade via mask */}
         <div
           className="relative w-full overflow-hidden"
           style={{

@@ -110,7 +110,6 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border/60 bg-muted/20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Top: newsletter band */}
         <div className="grid gap-6 border-b border-border/60 py-10 md:grid-cols-2 md:items-center md:gap-10 md:py-12">
           <div>
             <h3 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
@@ -123,10 +122,7 @@ export function SiteFooter() {
           </div>
           <NewsletterForm />
         </div>
-
-        {/* Main: brand + columns */}
         <div className="grid gap-10 py-12 md:grid-cols-12 md:gap-8">
-          {/* Brand */}
           <div className="md:col-span-4">
             <Link
               href="/"
@@ -175,8 +171,6 @@ export function SiteFooter() {
               <li>Lampung, Indonesia</li>
             </ul>
           </div>
-
-          {/* Link columns */}
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 md:col-span-8 md:gap-6">
             <FooterColumn title="Produk" links={productLinks} />
             <FooterColumn title="Solusi" links={solutionLinks} />
@@ -184,8 +178,6 @@ export function SiteFooter() {
             <FooterColumn title="Perusahaan" links={companyLinks} />
           </div>
         </div>
-
-        {/* Bottom bar */}
         <div className="flex flex-col gap-4 border-t border-border/60 py-6 md:flex-row md:items-center md:justify-between">
           <p className="text-xs text-muted-foreground">
             © 2026 {brand.name}. Semua hak dilindungi.

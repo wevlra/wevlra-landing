@@ -55,7 +55,6 @@ export function Showcase() {
                   key={item.name}
                   className="group hover-lift cursor-pointer overflow-hidden border-border/60 p-0 hover:border-primary/40"
                 >
-                  {/* Card Header — visual preview */}
                   <div
                     className={`relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br ${
                       GRADIENTS[cat.id] ?? "from-muted to-muted/50"
@@ -94,8 +93,6 @@ export function Showcase() {
                       </div>
                     </div>
                   </div>
-
-                  {/* Card Footer — title & description */}
                   <CardFooter className="flex-col items-start gap-1 border-t-0 bg-transparent px-5 py-4">
                     <div className="flex w-full items-start justify-between gap-3">
                       <div className="min-w-0 flex-1">

@@ -51,7 +51,6 @@ export function Contact() {
 
       <div className="mx-auto max-w-7xl overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm">
         <div className="grid lg:grid-cols-5">
-          {/* Info panel */}
           <aside className="relative flex flex-col gap-6 border-b border-border/60 bg-muted/40 p-6 sm:p-8 lg:col-span-2 lg:border-r lg:border-b-0">
             <div>
               <h3 className="text-lg font-semibold text-foreground">
@@ -100,8 +99,6 @@ export function Contact() {
               })}
             </ul>
           </aside>
-
-          {/* Form panel */}
           <div className="lg:col-span-3">
             <form
               className="flex flex-col gap-4 p-6 sm:p-8"

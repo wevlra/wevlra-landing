@@ -46,8 +46,6 @@ export function Comparison() {
         description="Bandingkan langsung dengan alternatif lain — kecepatan, biaya, dan dukungan yang membuat perbedaan."
         className="mb-12 sm:mb-14"
       />
-
-      {/* Desktop / tablet — table layout */}
       <div className="mx-auto hidden max-w-7xl overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm md:block">
         <div className="grid grid-cols-[1.5fr_repeat(3,1fr)] border-b border-border/60 bg-muted/40">
           <div className="px-6 py-4 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
@@ -106,8 +104,6 @@ export function Comparison() {
           </div>
         ))}
       </div>
-
-      {/* Mobile — stacked cards per attribute */}
       <div className="mx-auto flex max-w-7xl flex-col gap-3 md:hidden">
         {comparisonRows.map((row) => (
           <div

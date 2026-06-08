@@ -48,14 +48,12 @@
 }
 
 :root {
-    /* Light mode — slightly darker warm beige for reduced eye strain */
     --background: oklch(0.965 0.005 80);
     --foreground: oklch(0.18 0.005 80);
     --card: oklch(0.985 0.004 80);
     --card-foreground: oklch(0.18 0.005 80);
     --popover: oklch(0.985 0.004 80);
     --popover-foreground: oklch(0.18 0.005 80);
-    /* Elegant, premium gold brand */
     --primary: oklch(0.74 0.15 78);
     --primary-foreground: oklch(0.99 0.012 80);
     --secondary: oklch(0.93 0.006 80);
@@ -91,7 +89,6 @@
     --card-foreground: oklch(0.985 0 0);
     --popover: oklch(0.205 0 0);
     --popover-foreground: oklch(0.985 0 0);
-    /* Elegant, premium gold in dark mode too */
     --primary: oklch(0.76 0.15 80);
     --primary-foreground: oklch(0.99 0.012 80);
     --secondary: oklch(0.274 0.006 286);
@@ -137,8 +134,6 @@
     scrollbar-width: thin;
     scrollbar-color: color-mix(in oklch, var(--muted-foreground) 25%, transparent) transparent;
   }
-
-  /* Thin Scrollbars for webkit */
   ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
@@ -153,7 +148,6 @@
   ::-webkit-scrollbar-thumb:hover {
     background: color-mix(in oklch, var(--primary) 70%, transparent);
   }
-  /* Tighter, more refined headline tracking */
   h1, h2, h3, h4 {
     @apply tracking-tight;
     text-wrap: balance;
@@ -161,7 +155,6 @@
   p {
     text-wrap: pretty;
   }
-  /* Selection */
   ::selection {
     background: color-mix(in oklch, var(--primary) 25%, transparent);
     color: var(--foreground);
@@ -169,7 +162,6 @@
 }
 
 @layer utilities {
-  /* Soft grid pattern for hero/section backgrounds */
   .bg-grid {
     background-image:
       linear-gradient(to right, color-mix(in oklch, var(--foreground) 6%, transparent) 1px, transparent 1px),
@@ -181,78 +173,21 @@
       linear-gradient(to right, color-mix(in oklch, var(--foreground) 8%, transparent) 1px, transparent 1px),
       linear-gradient(to bottom, color-mix(in oklch, var(--foreground) 8%, transparent) 1px, transparent 1px);
   }
-  /* Radial fade mask — fades grid out toward edges */
   .mask-radial-fade {
     mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
   }
-
-  /* Shimmering Metallic Gold Gradients */
-  @keyframes gold-shimmer-anim {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  /* Gradient brand text — gold shimmering */
   .text-gradient-brand {
     background: linear-gradient(
       120deg,
-      #BF953F 0%,
-      #FCF6BA 25%,
-      #B38728 50%,
-      #FBF5B7 75%,
-      #AA771C 100%
+      var(--primary) 0%,
+      color-mix(in oklch, var(--primary) 55%, white) 45%,
+      var(--primary) 100%
     );
-    background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: gold-shimmer-anim 8s linear infinite;
   }
-
-  /* Style default buttons to have the shimmering metallic gold background */
-  [data-slot="button"][data-variant="default"] {
-    background: linear-gradient(
-      120deg,
-      #BF953F 0%,
-      #FCF6BA 25%,
-      #B38728 50%,
-      #FBF5B7 75%,
-      #AA771C 100%
-    ) !important;
-    background-size: 200% auto !important;
-    color: #1a1405 !important; /* Elegant dark bronze/gold-black text for high contrast */
-    font-weight: 600 !important;
-    border: 1px solid rgba(191, 149, 63, 0.4) !important;
-    transition: all 0.3s ease !important;
-    animation: gold-shimmer-anim 8s linear infinite !important;
-  }
-  [data-slot="button"][data-variant="default"]:hover {
-    background-position: right center !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-    transform: translateY(-1px) !important;
-  }
-  [data-slot="button"][data-variant="default"] svg {
-    color: #1a1405 !important;
-  }
-
-  /* Style default badges to have shimmering metallic gold */
-  [data-slot="badge"][data-variant="default"] {
-    background: linear-gradient(
-      120deg,
-      #BF953F 0%,
-      #FCF6BA 50%,
-      #B38728 100%
-    ) !important;
-    background-size: 200% auto !important;
-    color: #1a1405 !important;
-    font-weight: 600 !important;
-    border: 1px solid rgba(191, 149, 63, 0.3) !important;
-    animation: gold-shimmer-anim 10s linear infinite !important;
-  }
-
-  /* Soft elevated card surface */
   .surface-card {
     background: color-mix(in oklch, var(--card) 100%, transparent);
     border: 1px solid var(--border);
@@ -260,7 +195,6 @@
       0 1px 2px color-mix(in oklch, var(--foreground) 4%, transparent),
       0 1px 0 0 color-mix(in oklch, var(--background) 100%, transparent) inset;
   }
-  /* Soft hover lift */
   .hover-lift {
     transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1), border-color 250ms ease;
   }
@@ -271,7 +205,6 @@
   @media (prefers-reduced-motion: reduce) {
     .hover-lift:hover { transform: none; }
   }
-  /* Marquee */
   @keyframes marquee {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
@@ -279,7 +212,6 @@
   .animate-marquee {
     animation: marquee 40s linear infinite;
   }
-  /* Soft fade-in for hero entrance */
   @keyframes fade-up {
     from { opacity: 0; transform: translateY(8px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -287,7 +219,6 @@
   .animate-fade-up {
     animation: fade-up 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
-  /* Container padding helper — consistent across all sections */
   .container-px {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -298,8 +229,6 @@
   @media (min-width: 1024px) {
     .container-px { padding-left: 2rem; padding-right: 2rem; }
   }
-
-  /* ─── Chat Widget ─── */
   .chat-widget-card {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -311,8 +240,6 @@
   .chat-widget-panel {
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
   }
-
-  /* Custom scrollbar for Chat Widget */
   .chat-scrollbar::-webkit-scrollbar {
     width: 6px;
   }
@@ -330,7 +257,6 @@
     scrollbar-width: thin;
     scrollbar-color: color-mix(in oklch, var(--muted-foreground) 20%, transparent) transparent;
   }
-  /* Typing dots */
   @keyframes chat-dot-bounce {
     0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
     30% { transform: translateY(-4px); opacity: 1; }
@@ -345,8 +271,6 @@
   }
   .chat-typing-dots span:nth-child(2) { animation-delay: 0.2s; }
   .chat-typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-
-  /* FAB pulse ring */
   .chat-widget-fab::before {
     content: "";
     position: absolute;

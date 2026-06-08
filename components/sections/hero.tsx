@@ -62,7 +62,6 @@ function HeroIllustration() {
       className="w-full max-w-[520px]"
       aria-hidden="true"
     >
-      {/* ── Main browser window ── */}
       <rect
         x="60"
         y="30"
@@ -73,8 +72,6 @@ function HeroIllustration() {
         stroke="hsl(var(--border))"
         strokeWidth="1.5"
       />
-
-      {/* browser chrome bar */}
       <rect
         x="60"
         y="30"
@@ -84,13 +81,9 @@ function HeroIllustration() {
         className="fill-muted"
       />
       <rect x="60" y="52" width="310" height="14" className="fill-muted" />
-
-      {/* traffic lights */}
       <circle cx="84" cy="48" r="5" fill="#fc6058" />
       <circle cx="100" cy="48" r="5" fill="#fec02f" />
       <circle cx="116" cy="48" r="5" fill="#2aca44" />
-
-      {/* url bar */}
       <rect
         x="148"
         y="38"
@@ -110,8 +103,6 @@ function HeroIllustration() {
         className="fill-foreground"
         opacity="0.2"
       />
-
-      {/* hero headline lines */}
       <rect
         x="80"
         y="88"
@@ -157,8 +148,6 @@ function HeroIllustration() {
         className="fill-foreground"
         opacity="0.16"
       />
-
-      {/* CTA button */}
       <rect
         x="80"
         y="188"
@@ -176,8 +165,6 @@ function HeroIllustration() {
         className="fill-muted stroke-border"
         strokeWidth="1"
       />
-
-      {/* ── Floating card top-right ── */}
       <rect
         x="340"
         y="50"
@@ -197,7 +184,6 @@ function HeroIllustration() {
         className="fill-primary"
         opacity="0.15"
       />
-      {/* checkmark */}
       <path
         d="M367 88 l7 7 l13-13"
         className="stroke-primary"
@@ -223,8 +209,6 @@ function HeroIllustration() {
         className="fill-foreground"
         opacity="0.22"
       />
-
-      {/* connector from browser to card */}
       <path
         d="M370 30 C370 20 375 18 380 18 C395 18 398 30 398 50"
         className="stroke-primary"
@@ -233,9 +217,6 @@ function HeroIllustration() {
         opacity="0.4"
         strokeLinecap="round"
       />
-
-      {/* ── Three bottom cards ── */}
-      {/* card 1 */}
       <rect
         x="60"
         y="278"
@@ -265,8 +246,6 @@ function HeroIllustration() {
         className="fill-foreground"
         opacity="0.22"
       />
-
-      {/* card 2 */}
       <rect
         x="168"
         y="278"
@@ -302,8 +281,6 @@ function HeroIllustration() {
         className="fill-foreground"
         opacity="0.22"
       />
-
-      {/* card 3 */}
       <rect
         x="276"
         y="278"
@@ -339,8 +316,6 @@ function HeroIllustration() {
         className="fill-foreground"
         opacity="0.22"
       />
-
-      {/* vertical dashed connector: browser → cards */}
       <path
         d="M215 250 L215 278"
         className="stroke-primary"
@@ -349,8 +324,6 @@ function HeroIllustration() {
         opacity="0.35"
         strokeLinecap="round"
       />
-
-      {/* ── Stats chip ── */}
       <rect
         x="380"
         y="185"
@@ -388,8 +361,6 @@ function HeroIllustration() {
         className="fill-primary"
         opacity="0.45"
       />
-
-      {/* connector: browser → stats chip */}
       <path
         d="M370 160 C400 160 400 185 400 185"
         className="stroke-primary"

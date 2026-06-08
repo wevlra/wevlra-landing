@@ -70,7 +70,6 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        {/* Logo */}
         <Link
           href="/#"
           className="group flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90"
@@ -97,8 +96,6 @@ export function SiteHeader() {
           </div>
           <span className="text-lg font-extrabold tracking-tight">WEVLRA</span>
         </Link>
-
-        {/* Desktop nav */}
         <NavigationMenu className="hidden md:flex" viewport={false}>
           <NavigationMenuList className="gap-0.5">
             {nav.map((item) => {
@@ -175,8 +172,6 @@ export function SiteHeader() {
             })}
           </NavigationMenuList>
         </NavigationMenu>
-
-        {/* Right cluster (desktop) */}
         <div className="hidden items-center gap-1.5 md:flex">
           <ThemeToggle />
           <div className="mx-1 h-5 w-px bg-border/60" aria-hidden="true" />
@@ -184,8 +179,6 @@ export function SiteHeader() {
             <Link href="/#kontak">Mulai Gratis</Link>
           </Button>
         </div>
-
-        {/* Mobile: theme toggle + hamburger */}
         <div className="flex items-center gap-1 md:hidden">
           <ThemeToggle />
           <Sheet>

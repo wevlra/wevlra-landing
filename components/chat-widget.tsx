@@ -70,8 +70,7 @@ export function ChatWidget() {
       if (saved) {
         const parsed = JSON.parse(saved)
         if (Array.isArray(parsed) && parsed.length > 0) {
-          // eslint-disable-next-line react-hooks/set-state-in-effect
-          setMessages(parsed)
+          queueMicrotask(() => setMessages(parsed))
         }
       }
     } catch (err) {
@@ -302,7 +301,6 @@ export function ChatWidget() {
             : "fixed right-4 bottom-4 flex flex-col items-end gap-3 sm:right-6 sm:bottom-6"
         )}
       >
-        {/* Chat Panel */}
         <div
           className={cn(
             "chat-widget-panel transition-all duration-300 ease-out",
@@ -322,7 +320,6 @@ export function ChatWidget() {
                 : "w-[calc(100vw-2rem)] sm:w-[400px]"
             )}
           >
-            {/* Header */}
             <CardHeader className="flex items-center justify-between">
               <CardTitle className="font-semibold">WEVLRA Assistant</CardTitle>
               <div className="flex items-center gap-0.5">
@@ -375,8 +372,6 @@ export function ChatWidget() {
                 </Tooltip>
               </div>
             </CardHeader>
-
-            {/* Messages */}
             <CardContent className="flex min-h-0 flex-1 flex-col overflow-hidden p-0">
               <div
                 ref={scrollViewportRef}
@@ -391,8 +386,6 @@ export function ChatWidget() {
                       <ChatBubble key={msg.id} message={msg} />
                     ) : null
                   )}
-
-                  {/* Typing indicator */}
                   {isStreaming &&
                     messages[messages.length - 1]?.content === "" && (
                       <div className="flex items-start gap-2.5">
@@ -410,8 +403,6 @@ export function ChatWidget() {
                         </div>
                       </div>
                     )}
-
-                  {/* Quick questions (only after welcome) */}
                   {messages.length === 1 && !isStreaming && (
                     <div className="flex flex-col gap-1.5 pt-1">
                       <span className="text-[11px] font-medium text-muted-foreground">
@@ -468,8 +459,6 @@ export function ChatWidget() {
             </CardFooter>
           </Card>
         </div>
-
-        {/* Floating Action Button */}
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
@@ -498,8 +487,6 @@ export function ChatWidget() {
                     : "scale-0 -rotate-90 opacity-0"
                 )}
               />
-
-              {/* Unread badge */}
               {hasUnread && !isOpen && (
                 <span className="absolute -top-0.5 -right-0.5 flex size-4 items-center justify-center">
                   <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
@@ -516,8 +503,6 @@ export function ChatWidget() {
     </TooltipProvider>
   )
 }
-
-/* ─── Chat Bubble ─── */
 function ChatBubble({ message }: { message: Message }) {
   const isUser = message.role === "user"
 
@@ -725,8 +710,6 @@ function parseBlocks(content: string): Block[] {
 
   return blocks
 }
-
-/* ─── Render content with Markdown support ─── */
 function ChatContent({
   content,
   isUser = false,
@@ -963,7 +946,6 @@ function ChatContent({
 }
 
 function renderInlineMarkdown(text: string, isUser: boolean) {
-  // Split by bold, italic, strikethrough, inline code, and links
   const parts = text.split(
     /(\*\*[^*]+\*\*|\*[^*]+\*|~~[^~]+~~|`[^`]+`|\[[^\]]+\]\([^)]+\))/g
   )
@@ -1011,12 +993,10 @@ function renderInlineMarkdown(text: string, isUser: boolean) {
         const linkText = match[1]
         let linkUrl = match[2].trim()
 
-        // Strip mailto: from linkText if present
         const displayLinkText = linkText.startsWith("mailto:")
           ? linkText.slice(7)
           : linkText
 
-        // Prepend mailto: to email urls that don't have it
         if (
           /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(linkUrl) &&
           !linkUrl.startsWith("mailto:") &&
@@ -1078,10 +1058,6 @@ function renderTextWithHtmlBrPlain(text: string) {
 }
 
 function renderTextWithAutoLinks(text: string, isUser: boolean) {
-  // Regex to detect:
-  // 1. URLs (excluding trailing punctuation)
-  // 2. Email addresses (with optional mailto: prefix)
-  // 3. Phone numbers (Indonesian mobile: 08xx/+628xx, landlines: 021xx/+6221xx, or general international numbers)
   const regex =
     /(https?:\/\/[^\s/$.?#].[^\s]*?(?=[.,?!:;()]?(\s|$))|(?:mailto:)?[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|\+?62\s?8\d{2,4}[-\s]?\d{3,4}[-\s]?\d{3,4}|08\d{2,4}[-\s]?\d{3,4}[-\s]?\d{3,4}|\+?62[-\s]?2[1-9][-\s]?\d{3,4}[-\s]?\d{3,4}|02[1-9][-\s]?\d{3,4}[-\s]?\d{3,4})/g
   const parts = text.split(regex)

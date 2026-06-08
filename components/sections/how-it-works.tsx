@@ -17,7 +17,6 @@ export function HowItWorks() {
       />
 
       <div className="relative">
-        {/* Connector line — desktop only */}
         <div
           aria-hidden="true"
           className="absolute top-10 right-0 left-0 hidden lg:block"
@@ -35,7 +34,6 @@ export function HowItWorks() {
                 key={step.step}
                 className="relative flex flex-col items-center gap-5 text-center"
               >
-                {/* Step icon cluster */}
                 <div className="relative z-10 flex size-20 items-center justify-center">
                   <div
                     aria-hidden="true"

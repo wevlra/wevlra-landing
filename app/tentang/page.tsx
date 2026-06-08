@@ -146,7 +146,7 @@ export default function TentangPage() {
         <Section id="tentang-hero" size="md" className="pt-12 pb-8">
           <div>
             <div className="max-w-3xl">
-              <span className="text-sm font-semibold tracking-wide text-primary uppercase">
+              <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium tracking-wider text-primary uppercase">
                 Tentang Kami
               </span>
               <h1 className="mt-4 text-4xl leading-[1.08] font-semibold tracking-[-0.04em] text-balance text-foreground sm:text-5xl lg:text-[3.6rem]">
