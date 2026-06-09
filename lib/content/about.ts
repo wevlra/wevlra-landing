@@ -76,7 +76,7 @@ export const companyValues: CompanyValue[] = [
     icon: Heart,
     title: "Dedikasi",
     description:
-      "Setiap website yang kami bangun diperlakukan seperti milik sendiri — dengan perhatian penuh pada detail.",
+      "Setiap solusi yang kami bangun diperlakukan seperti milik sendiri dengan perhatian penuh pada detail.",
   },
   {
     icon: Lightbulb,
@@ -88,7 +88,7 @@ export const companyValues: CompanyValue[] = [
     icon: Globe,
     title: "Dampak Nyata",
     description:
-      "Kesuksesan klien adalah tolok ukur kami. Website bukan sekadar estetika — ia harus menghasilkan bisnis.",
+      "Setiap solusi yang kami bangun harus memberikan dampak nyata dan mendukung tujuan bisnis mereka.",
   },
 ]
 
@@ -110,8 +110,8 @@ export type InfoCard = {
 }
 
 export const companyInfoCards: InfoCard[] = [
-  { icon: Rocket, label: "Didirikan", value: "2024" },
-  { icon: Users, label: "Tim Inti", value: "4 Orang" },
+  { icon: Rocket, label: "Didirikan", value: "2025" },
+  { icon: Users, label: "Tim Inti", value: "Developer & Designer" },
   { icon: Globe, label: "Lokasi", value: "Lampung, ID" },
-  { icon: Heart, label: "Misi", value: "UMKM Digital" },
+  { icon: Heart, label: "Misi", value: "Solusi Digital" },
 ]
