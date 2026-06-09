@@ -26,8 +26,8 @@ export const founders: Founder[] = [
     role: "Founder",
     image: "/images/bintang.png",
     socials: {
-      instagram: "https://instagram.com/bintangsn",
-      linkedin: "https://linkedin.com/in/bintangsn",
+      instagram: "https://instagram.com/itsme.strr",
+      linkedin: "https://linkedin.com/in/bintangsuryanugraha",
     },
   },
   {
@@ -35,7 +35,7 @@ export const founders: Founder[] = [
     role: "Founder",
     image: "/images/azni.png",
     socials: {
-      instagram: "https://instagram.com/aznimuzaiyin",
+      instagram: "https://instagram.com/aznimzn",
       linkedin: "https://linkedin.com/in/aznimuzaiyin",
     },
   },
@@ -44,8 +44,8 @@ export const founders: Founder[] = [
     role: "Founder",
     image: "/images/murphy.png",
     socials: {
-      instagram: "https://instagram.com/murphy",
-      facebook: "https://facebook.com/murphy",
+      instagram: "https://instagram.com/murphyibra",
+      linkedin: "http://linkedin.com/in/murphy-ibrahim-movic",
     },
   },
   {
@@ -53,8 +53,8 @@ export const founders: Founder[] = [
     role: "Founder",
     image: "/images/budi.png",
     socials: {
-      twitter: "https://twitter.com/budis",
-      linkedin: "https://linkedin.com/in/budisn",
+      instagram: "https://instagram.com/bdsafta_",
+      linkedin: "https://linkedin.com/in/budi-safta-nugraha-567128142",
     },
   },
 ]
