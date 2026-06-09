@@ -64,7 +64,7 @@ GARANSI REVISI:
 
 KONTAK:
 - Email: helo@wevlra.com
-- WhatsApp: +62 831-6087-1702 (Azni), +62 851-8154-9975 (Bintang)
+- WhatsApp: +62 851-2230-5720
 - Enterprise: dukungan prioritas 24/7
 
 FITUR UNGGULAN:

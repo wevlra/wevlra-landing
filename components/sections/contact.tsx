@@ -1,5 +1,6 @@
 "use client"
 
+import { useActionState, useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -9,9 +10,13 @@ import {
   MapPin,
   MessageCircle,
   Send,
+  Loader2,
+  CheckCircle2,
   type LucideIcon,
 } from "lucide-react"
 import { contact } from "@/lib/content/site"
+import { submitContact, type ContactFormState } from "@/app/actions/contact"
+import { toast } from "sonner"
 
 const contactInfo: {
   icon: LucideIcon
@@ -39,7 +44,138 @@ const contactInfo: {
   },
 ]
 
+function ContactForm({ onSuccess }: { onSuccess: () => void }) {
+  const [state, formAction, pending] = useActionState(
+    submitContact,
+    {} as ContactFormState
+  )
+  const formRef = useRef<HTMLFormElement>(null)
+  const successHandled = useRef(false)
+  const [isValid, setIsValid] = useState(false)
+
+  function checkValidity() {
+    setIsValid(formRef.current?.checkValidity() ?? false)
+  }
+
+  useEffect(() => {
+    if (state.success && !successHandled.current) {
+      successHandled.current = true
+      onSuccess()
+    } else if (state.message && !state.success) {
+      toast.error(state.message)
+    }
+  }, [state, onSuccess])
+
+  return (
+    <form
+      ref={formRef}
+      className="flex flex-col gap-4 p-6 sm:p-8"
+      onChange={checkValidity}
+      onSubmit={(e) => {
+        e.preventDefault()
+        if (pending || !isValid) return
+        const fd = new FormData(e.currentTarget)
+        formAction(fd)
+      }}
+    >
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="name" className="text-xs font-medium text-foreground">
+            Nama
+          </label>
+          <Input
+            id="name"
+            name="name"
+            placeholder="Nama lengkap"
+            className="h-10"
+            required
+            disabled={pending}
+          />
+          {state.errors?.name && (
+            <p className="text-xs text-destructive">{state.errors.name[0]}</p>
+          )}
+        </div>
+        <div className="flex flex-col gap-1.5">
+          <label
+            htmlFor="email"
+            className="text-xs font-medium text-foreground"
+          >
+            Email
+          </label>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="email@contoh.com"
+            className="h-10"
+            required
+            disabled={pending}
+          />
+          {state.errors?.email && (
+            <p className="text-xs text-destructive">{state.errors.email[0]}</p>
+          )}
+        </div>
+      </div>
+      <div className="flex flex-col gap-1.5">
+        <label
+          htmlFor="subject"
+          className="text-xs font-medium text-foreground"
+        >
+          Subjek
+        </label>
+        <Input
+          id="subject"
+          name="subject"
+          placeholder="Apa yang bisa kami bantu?"
+          className="h-10"
+          required
+          disabled={pending}
+        />
+        {state.errors?.subject && (
+          <p className="text-xs text-destructive">{state.errors.subject[0]}</p>
+        )}
+      </div>
+      <div className="flex flex-col gap-1.5">
+        <label
+          htmlFor="message"
+          className="text-xs font-medium text-foreground"
+        >
+          Pesan
+        </label>
+        <Textarea
+          id="message"
+          name="message"
+          placeholder="Ceritakan kebutuhan website Anda..."
+          rows={4}
+          className="min-h-28"
+          required
+          disabled={pending}
+        />
+        {state.errors?.message && (
+          <p className="text-xs text-destructive">{state.errors.message[0]}</p>
+        )}
+      </div>
+      <div className="flex items-center justify-between gap-3 pt-1">
+        <p className="text-xs text-muted-foreground">
+          Kami balas dalam 1×24 jam.
+        </p>
+        <Button type="submit" size="default" disabled={pending || !isValid}>
+          {pending ? (
+            <Loader2 aria-hidden className="size-4 animate-spin" />
+          ) : (
+            <Send aria-hidden className="size-4" />
+          )}
+          {pending ? "Mengirim..." : "Kirim Pesan"}
+        </Button>
+      </div>
+    </form>
+  )
+}
+
 export function Contact() {
+  const [formKey, setFormKey] = useState(0)
+  const [submitted, setSubmitted] = useState(false)
+
   return (
     <Section id="kontak" className="bg-muted/30">
       <SectionHeader
@@ -100,76 +236,34 @@ export function Contact() {
             </ul>
           </aside>
           <div className="lg:col-span-3">
-            <form
-              className="flex flex-col gap-4 p-6 sm:p-8"
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="flex flex-col gap-1.5">
-                  <label
-                    htmlFor="name"
-                    className="text-xs font-medium text-foreground"
-                  >
-                    Nama
-                  </label>
-                  <Input
-                    id="name"
-                    placeholder="Nama lengkap"
-                    className="h-10"
-                  />
+            {submitted ? (
+              <div className="flex h-full flex-col items-center justify-center gap-4 p-6 sm:p-8">
+                <span className="flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <CheckCircle2 aria-hidden className="size-5" />
+                </span>
+                <div className="text-center">
+                  <h4 className="text-base font-semibold text-foreground">
+                    Pesan Terkirim!
+                  </h4>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Terima kasih sudah menghubungi kami. Kami akan membalas
+                    dalam 1×24 jam.
+                  </p>
                 </div>
-                <div className="flex flex-col gap-1.5">
-                  <label
-                    htmlFor="email"
-                    className="text-xs font-medium text-foreground"
-                  >
-                    Email
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="email@contoh.com"
-                    className="h-10"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="subject"
-                  className="text-xs font-medium text-foreground"
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setSubmitted(false)
+                    setFormKey((k) => k + 1)
+                  }}
                 >
-                  Subjek
-                </label>
-                <Input
-                  id="subject"
-                  placeholder="Apa yang bisa kami bantu?"
-                  className="h-10"
-                />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="message"
-                  className="text-xs font-medium text-foreground"
-                >
-                  Pesan
-                </label>
-                <Textarea
-                  id="message"
-                  placeholder="Ceritakan kebutuhan website Anda..."
-                  rows={4}
-                  className="min-h-28"
-                />
-              </div>
-              <div className="flex items-center justify-between gap-3 pt-1">
-                <p className="text-xs text-muted-foreground">
-                  Kami balas dalam 1×24 jam.
-                </p>
-                <Button type="submit" size="default">
-                  <Send aria-hidden className="size-4" />
-                  Kirim Pesan
+                  Kirim pesan lagi
                 </Button>
               </div>
-            </form>
+            ) : (
+              <ContactForm key={formKey} onSuccess={() => setSubmitted(true)} />
+            )}
           </div>
         </div>
       </div>

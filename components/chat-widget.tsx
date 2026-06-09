@@ -287,8 +287,8 @@ export function ChatWidget() {
         <div
           className="fixed inset-0 z-[55] bg-black/40 transition-all duration-300"
           onClick={() => {
-            if (isMaximized) setIsMaximized(false)
-            else setIsOpen(false)
+            setIsMaximized(false)
+            setIsOpen(false)
           }}
         />
       )}
@@ -311,12 +311,18 @@ export function ChatWidget() {
             isMaximized &&
               "fixed inset-0 z-[60] flex items-center justify-center p-4"
           )}
+          onClick={(e) => {
+            if (isMaximized && e.target === e.currentTarget) {
+              setIsMaximized(false)
+              setIsOpen(false)
+            }
+          }}
         >
           <Card
             className={cn(
               "chat-widget-card pointer-events-auto flex flex-col overflow-hidden shadow-lg",
               isMaximized
-                ? "h-[calc(100vh-4rem)] max-h-none w-[calc(100vw-2rem)] max-w-5xl sm:h-[600px] sm:w-[600px] md:h-[700px] md:w-[800px]"
+                ? "h-[85dvh] min-h-[85dvh] w-[calc(100vw-2rem)] max-w-5xl sm:w-[600px] md:w-[800px]"
                 : "w-[calc(100vw-2rem)] sm:w-[400px]"
             )}
           >

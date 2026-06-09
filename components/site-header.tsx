@@ -192,7 +192,11 @@ export function SiteHeader() {
                 <Menu aria-hidden className="size-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[88vw] max-w-sm p-0">
+            <SheetContent
+              side="right"
+              className="w-[88vw] max-w-sm p-0"
+              aria-describedby={undefined}
+            >
               <SheetTitle className="sr-only">Menu Navigasi</SheetTitle>
               <div className="flex h-full flex-col">
                 <div className="flex items-center gap-2.5 border-b px-6 py-5">
