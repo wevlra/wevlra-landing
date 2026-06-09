@@ -153,9 +153,9 @@ export const navFlat = [
 
 export const brand = {
   name: "WEVLRA",
-  tagline: "Cerita Anda, jadi website dalam hitungan menit.",
+  tagline: "Mengubah Ide Menjadi Solusi Digital.",
   description:
-    "Jasa pembuatan website profesional dengan desain premium dan proses pengerjaan super cepat.",
+    "Software house yang membantu bisnis membangun website, aplikasi, dan solusi digital modern melalui kombinasi teknologi, desain, dan strategi yang berorientasi pada hasil.",
 }
 
 export const social = {

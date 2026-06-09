@@ -17,29 +17,29 @@ export const steps: Step[] = [
   {
     step: 1,
     icon: MessageCircle,
-    title: "Ceritakan Ide Anda",
+    title: "Ceritakan Kebutuhan Anda",
     description:
-      "Ketik deskripsi website impian Anda di kolom prompt. Tidak perlu istilah teknis — cukup ceritakan seperti bicara ke teman.",
+      "Jelaskan ide, tantangan, atau kebutuhan bisnis Anda melalui AI Assistant atau konsultasi langsung dengan tim kami.",
   },
   {
     step: 2,
     icon: WandSparkles,
-    title: "Draft Cepat Terbuat",
+    title: "Analisis & Rekomendasi Solusi",
     description:
-      "Dalam waktu singkat, sistem kami merancang struktur, konten, dan desain awal yang siap untuk ditinjau.",
+      "Kami membantu mengidentifikasi kebutuhan dan merekomendasikan solusi digital yang paling sesuai.",
   },
   {
     step: 3,
     icon: Users,
-    title: "Tim Kami Sempurnakan",
+    title: "Pengembangan oleh Tim Ahli",
     description:
-      "Desainer dan developer kami menyempurnakan draft awal dengan sentuhan profesional: branding, animasi, dan detail kustom.",
+      "Developer dan designer kami membangun solusi yang telah disepakati dengan fokus pada kualitas, performa, dan pengalaman pengguna.",
   },
   {
     step: 4,
     icon: Rocket,
-    title: "Tayang & Kami Dukung",
+    title: "Launch & Dukungan Berkelanjutan",
     description:
-      "Website Anda tayang dengan domain dan hosting siap pakai. Kami terus mendampingi untuk update dan pemeliharaan.",
+      "Produk siap digunakan dan kami tetap mendampingi melalui pemeliharaan, pengembangan lanjutan, dan dukungan teknis.",
   },
 ]

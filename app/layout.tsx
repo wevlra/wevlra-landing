@@ -18,19 +18,26 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://wevlra.com"),
   title: {
     template: "%s | WEVLRA",
-    default: "WEVLRA — Jasa Pembuatan Website Premium",
+    default: "WEVLRA — Software House & Digital Solutions",
   },
   description:
-    "WEVLRA menggabungkan kecepatan teknologi modern dengan sentuhan desainer manusia. Buat website profesional untuk UMKM, portofolio, atau perusahaan Anda mulai dari Rp 499 ribu.",
+    "WEVLRA membantu bisnis membangun website, aplikasi, dan solusi digital modern melalui kombinasi teknologi, desain, dan strategi yang berorientasi pada hasil.",
   keywords: [
+    "software house indonesia",
+    "software development",
     "jasa pembuatan website",
-    "pembuatan website cepat",
-    "website UMKM Indonesia",
-    "buat website murah",
+    "jasa pembuatan aplikasi",
+    "web development",
+    "mobile app development",
+    "custom software development",
+    "solusi digital",
+    "website perusahaan",
+    "website UMKM",
     "website profesional",
-    "jasa website Indonesia",
-    "landing page",
-    "toko online",
+    "aplikasi bisnis",
+    "transformasi digital",
+    "software house lampung",
+    "wevlra",
   ],
   icons: {
     icon: [
@@ -48,9 +55,9 @@ export const metadata: Metadata = {
     apple: "/icon-dark.png",
   },
   openGraph: {
-    title: "WEVLRA — Jasa Pembuatan Website Premium",
+    title: "WEVLRA — Software House & Digital Solutions",
     description:
-      "Ceritakan website impian Anda. Kami bangun dengan cepat menggunakan teknologi modern + tim desainer lokal.",
+      "Bangun website, aplikasi, dan solusi digital modern bersama WEVLRA. Kami membantu bisnis mengubah ide menjadi produk digital yang profesional dan berdampak.",
     url: "https://wevlra.com",
     siteName: "WEVLRA",
     locale: "id_ID",
@@ -66,9 +73,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "WEVLRA — Jasa Pembuatan Website Premium",
+    title: "WEVLRA — Software House & Digital Solutions",
     description:
-      "Ceritakan website impian Anda. Kami bangun dengan cepat menggunakan teknologi modern + tim desainer lokal.",
+      "Bangun website, aplikasi, dan solusi digital modern bersama WEVLRA. Dari ide hingga produk digital yang siap berkembang.",
     images: ["/icon-dark.png"],
   },
 }
