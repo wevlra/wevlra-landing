@@ -129,7 +129,8 @@ export async function submitContact(
       success: true,
       message: "Pesan berhasil dikirim! Kami akan membalas dalam 1×24 jam.",
     }
-  } catch {
+  } catch (err) {
+    console.error("[Contact] send error:", err)
     return {
       success: false,
       message: "Gagal mengirim pesan. Silakan coba lagi nanti.",

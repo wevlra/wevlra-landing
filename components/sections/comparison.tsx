@@ -1,5 +1,6 @@
-import { Section, SectionHeader } from "@/components/section"
 import { Check, Minus, X } from "lucide-react"
+
+import { Section, SectionHeader } from "@/components/section"
 import { comparisonRows } from "@/lib/content/comparison"
 import { cn } from "@/lib/utils"
 
@@ -60,15 +61,9 @@ export function Comparison() {
               )}
             >
               {col.label}
-              {col.highlight ? (
-                <span className="ml-2 inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-medium tracking-wider uppercase">
-                  Pilihan
-                </span>
-              ) : null}
             </div>
           ))}
         </div>
-
         {comparisonRows.map((row, i) => (
           <div
             key={row.attribute}

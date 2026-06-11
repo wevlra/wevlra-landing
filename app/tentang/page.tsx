@@ -44,6 +44,7 @@ function FounderCard({ founder }: { founder: Founder }) {
           fill
           sizes="(min-width: 640px) 33vw, 100vw"
           unoptimized
+          loading="lazy"
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
       </div>
@@ -143,7 +144,11 @@ export default function TentangPage() {
     <>
       <SiteHeader />
       <main>
-        <Section id="tentang-hero" size="md" className="pt-12 pb-8">
+        <Section
+          id="tentang-hero"
+          size="md"
+          className="bg-background pt-12 pb-8"
+        >
           <div>
             <div className="max-w-3xl">
               <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium tracking-wider text-primary uppercase">
@@ -193,7 +198,7 @@ export default function TentangPage() {
           </div>
         </Section>
 
-        <Section id="cerita-wevlra" size="md">
+        <Section id="cerita-wevlra" size="md" className="bg-muted/30">
           <div className="grid gap-10 md:grid-cols-2 md:items-center md:gap-16">
             <div className="space-y-5">
               <SectionHeader
@@ -249,7 +254,7 @@ export default function TentangPage() {
           </div>
         </Section>
 
-        <Section id="nilai-kami" size="md">
+        <Section id="nilai-kami" size="md" className="bg-background">
           <SectionHeader
             eyebrow="Nilai Kami"
             title="Prinsip yang memandu setiap karya kami"
@@ -268,7 +273,7 @@ export default function TentangPage() {
           </div>
         </Section>
 
-        <Section id="tim-founder" size="md">
+        <Section id="tim-founder" size="md" className="bg-muted/30">
           <SectionHeader
             eyebrow="Tim Founder"
             title={
@@ -287,7 +292,7 @@ export default function TentangPage() {
           </div>
         </Section>
 
-        <Section id="tentang-cta" size="md">
+        <Section id="tentang-cta" size="md" className="bg-background">
           <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-card/80 px-8 py-12 text-center backdrop-blur-sm sm:px-12 sm:py-16">
             <div
               aria-hidden="true"

@@ -173,7 +173,7 @@ export function Pricing() {
       <p className="mt-10 text-center text-sm text-muted-foreground sm:mt-12">
         Butuh paket khusus?{" "}
         <a
-          href="mailto:helo@wevlra.com"
+          href="mailto:hello@wevlra.dev"
           className="font-medium text-foreground underline-offset-4 hover:underline"
         >
           Hubungi tim kami

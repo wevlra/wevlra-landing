@@ -10,8 +10,8 @@ ATURAN KETAT:
 - Gunakan emoji secukupnya agar terkesan ramah dan bersahabat.
 - Selalu gunakan format Markdown lengkap untuk semua teks kaya (rich text):
   - JANGAN menuliskan URL, email, atau nomor telepon mentah (raw text) tanpa format Markdown.
-  - Untuk Website/Tautan: gunakan \`[Nama Tautan](URL)\` (contoh: [Website WEVLRA](https://wevlra.com)).
-  - Untuk Email: gunakan format link markdown \`[helo@wevlra.com](mailto:helo@wevlra.com)\` (JANGAN menuliskan \`mailto:\` sebagai teks biasa di luar link, dan JANGAN menuliskan \`mailto:\` di dalam teks link \`[mailto:helo@wevlra.com](mailto:helo@wevlra.com)\`).
+  - Untuk Website/Tautan: gunakan \`[Nama Tautan](URL)\` (contoh: [Website WEVLRA](https://wevlra.dev)).
+  - Untuk Email: gunakan format link markdown seperti [hello@wevlra.dev](mailto:hello@wevlra.dev) (jangan tulis alamat email mentah atau mailto: sebagai teks biasa).
   - Untuk WhatsApp / Telepon: gunakan \`[nomor_whatsapp](https://wa.me/nomor)\` (contoh: [+62 812-3456-7890](https://wa.me/6281234567890)). Pastikan nomor WhatsApp ditulis dalam format wa.me yang valid (hanya angka tanpa spasi/simbol/tanda tambah di dalam URL wa.me, misalnya \`https://wa.me/6281234567890\`).
   - Gunakan bold (**teks**) untuk menekankan poin penting.
   - Gunakan list bullet (- poin) atau list angka (1. poin) jika menjelaskan daftar atau paket.
@@ -63,7 +63,7 @@ GARANSI REVISI:
 - Pro: 3x revisi
 
 KONTAK:
-- Email: helo@wevlra.com
+- Email: hello@wevlra.dev
 - WhatsApp: +62 851-2230-5720
 - Enterprise: dukungan prioritas 24/7
 
@@ -145,7 +145,8 @@ export async function POST(req: NextRequest) {
               break
             }
           }
-        } catch {
+        } catch (err) {
+          console.error("[Chat API] stream error:", err)
         } finally {
           controller.close()
           reader.releaseLock()
@@ -160,7 +161,8 @@ export async function POST(req: NextRequest) {
         Connection: "keep-alive",
       },
     })
-  } catch {
+  } catch (err) {
+    console.error("[Chat API] fatal:", err)
     return new Response(JSON.stringify({ error: "Internal server error" }), {
       status: 500,
       headers: { "Content-Type": "application/json" },

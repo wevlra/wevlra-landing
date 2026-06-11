@@ -29,10 +29,6 @@ export function FinalCta() {
       />
 
       <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-5 text-center sm:gap-7 md:gap-8">
-        <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[11px] font-medium text-primary backdrop-blur sm:px-4 sm:py-1.5 sm:text-xs">
-          <span>Mulai dalam 60 detik</span>
-        </div>
-
         <h2 className="text-3xl leading-[1.1] font-semibold tracking-tight text-balance text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
           Siap membangun{" "}
           <span className="text-gradient-brand">website impian</span> Anda?

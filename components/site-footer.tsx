@@ -20,31 +20,26 @@ const solutionLinks = [
 ]
 
 const companyLinks = [
-  { label: "Tentang Kami", href: "/about" },
-  { label: "Karir", href: "#" },
-  { label: "Mitra", href: "#" },
+  { label: "Tentang Kami", href: "/tentang" },
   { label: "Kontak", href: "/#kontak" },
-  { label: "Press Kit", href: "#" },
+  { label: "Harga", href: "/#harga" },
 ]
 
 const resourceLinks = [
-  { label: "Blog", href: "#" },
   { label: "Pertanyaan Umum", href: "/#pertanyaan" },
   { label: "Testimoni", href: "/#testimoni" },
-  { label: "Panduan", href: "#" },
-  { label: "Status", href: "#" },
+  { label: "Showcase", href: "/#showcase" },
 ]
 
 const legalLinks = [
-  { label: "Syarat & Ketentuan", href: "#" },
-  { label: "Kebijakan Privasi", href: "#" },
-  { label: "Kebijakan Cookie", href: "#" },
+  { label: "Syarat & Ketentuan", href: "/#kontak" },
+  { label: "Kebijakan Privasi", href: "/#kontak" },
 ]
 
 const socialLinks: { label: string; href: string; icon: React.ReactNode }[] = [
   {
     label: "Instagram WEVLRA",
-    href: "#",
+    href: "https://instagram.com/wevlra",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -64,7 +59,7 @@ const socialLinks: { label: string; href: string; icon: React.ReactNode }[] = [
   },
   {
     label: "X (Twitter) WEVLRA",
-    href: "#",
+    href: "https://x.com/wevlra",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -78,7 +73,7 @@ const socialLinks: { label: string; href: string; icon: React.ReactNode }[] = [
   },
   {
     label: "LinkedIn WEVLRA",
-    href: "#",
+    href: "https://linkedin.com/company/wevlra",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -92,7 +87,7 @@ const socialLinks: { label: string; href: string; icon: React.ReactNode }[] = [
   },
   {
     label: "YouTube WEVLRA",
-    href: "#",
+    href: "https://youtube.com/@wevlra",
     icon: (
       <svg
         viewBox="0 0 24 24"

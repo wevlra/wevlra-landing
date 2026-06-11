@@ -234,7 +234,9 @@ export function ChatWidget() {
                   return updated
                 })
               }
-            } catch {}
+            } catch (err) {
+              console.error("[ChatWidget] parse error:", err)
+            }
           }
         }
 
