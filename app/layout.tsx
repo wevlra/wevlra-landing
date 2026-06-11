@@ -14,14 +14,16 @@ const fontMono = Geist_Mono({
   variable: "--font-mono",
 })
 
+const BASE = "https://www.wevlra.dev"
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://wevlra.com"),
+  metadataBase: new URL(BASE),
   title: {
     template: "%s | WEVLRA",
-    default: "WEVLRA — Jasa Pembuatan Website Premium",
+    default: "WEVLRA — Jasa Pembuatan Website & Aplikasi",
   },
   description:
-    "WEVLRA menggabungkan kecepatan teknologi modern dengan sentuhan desainer manusia. Buat website profesional untuk UMKM, portofolio, atau perusahaan Anda mulai dari Rp 499 ribu.",
+    "WEVLRA menggabungkan kecepatan teknologi modern dengan sentuhan desainer manusia. Buat website, aplikasi mobile & desktop profesional mulai Rp 499 ribu.",
   keywords: [
     "jasa pembuatan website",
     "pembuatan website cepat",
@@ -31,7 +33,19 @@ export const metadata: Metadata = {
     "jasa website Indonesia",
     "landing page",
     "toko online",
+    "jasa pembuatan aplikasi",
+    "aplikasi mobile",
+    "aplikasi desktop",
+    "WEVLRA",
   ],
+  authors: [{ name: "WEVLRA" }],
+  creator: "WEVLRA",
+  publisher: "WEVLRA",
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
   icons: {
     icon: [
       {
@@ -48,28 +62,54 @@ export const metadata: Metadata = {
     apple: "/icon-dark.png",
   },
   openGraph: {
-    title: "WEVLRA — Jasa Pembuatan Website Premium",
+    title: "WEVLRA — Jasa Pembuatan Website & Aplikasi Premium",
     description:
       "Ceritakan website impian Anda. Kami bangun dengan cepat menggunakan teknologi modern + tim desainer lokal.",
-    url: "https://wevlra.com",
+    url: BASE,
     siteName: "WEVLRA",
     locale: "id_ID",
     type: "website",
     images: [
       {
-        url: "/icon-dark.png",
-        width: 730,
-        height: 730,
-        alt: "WEVLRA",
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "WEVLRA — Jasa Pembuatan Website & Aplikasi Premium",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "WEVLRA — Jasa Pembuatan Website Premium",
+    title: "WEVLRA — Jasa Pembuatan Website & Aplikasi Premium",
     description:
       "Ceritakan website impian Anda. Kami bangun dengan cepat menggunakan teknologi modern + tim desainer lokal.",
-    images: ["/icon-dark.png"],
+    images: ["/opengraph-image.png"],
+    creator: "@wevlra",
+    site: "@wevlra",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: BASE,
+    languages: {
+      "id-ID": BASE,
+    },
+  },
+  appleWebApp: {
+    title: "WEVLRA",
+    statusBarStyle: "black-translucent",
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ?? "",
   },
 }
 

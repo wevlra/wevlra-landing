@@ -159,14 +159,14 @@ export const brand = {
 }
 
 export const social = {
-  instagram: "#",
-  twitter: "#",
-  linkedin: "#",
-  youtube: "#",
+  instagram: "https://instagram.com/wevlra",
+  twitter: "https://x.com/wevlra",
+  linkedin: "https://linkedin.com/company/wevlra",
+  youtube: "https://youtube.com/@wevlra",
 }
 
 export const contact = {
-  email: "wevlratech@gmail.com",
+  email: "hello@wevlra.dev",
   whatsapp_link: "https://wa.me/6285122305720",
   whatsapp_text: "+62 851-2230-5720",
 }

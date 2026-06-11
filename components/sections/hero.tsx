@@ -11,21 +11,21 @@ export function Hero() {
       size="md"
       className="relative overflow-hidden pt-8 pb-6"
     >
-      <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+      <div className="relative grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="animate-fade-up max-w-xl space-y-8">
           <div className="space-y-5">
-            <h1 className="text-3xl leading-[1.1] font-semibold tracking-[-0.04em] text-balance text-foreground sm:text-4xl lg:text-[2.85rem]">
-              Website yang membuat bisnis Anda terlihat profesional dan
-              dipercaya.
+            <h1 className="text-4xl leading-[1.05] font-semibold tracking-[-0.04em] text-balance text-foreground sm:text-5xl lg:text-[3.2rem]">
+              Website yang membuat bisnis Anda terlihat profesional dan{" "}
+              <span className="text-gradient-brand">dipercaya.</span>
             </h1>
-            <p className="text-sm leading-7 text-muted-foreground sm:text-base">
+            <p className="text-base leading-8 text-muted-foreground sm:text-lg">
               Dari strategi, desain, copywriting, hingga deploy — semua dalam
               satu proses yang rapi, transparan, dan tanpa template murahan.
             </p>
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button size="lg" className="h-11 px-6 sm:w-auto" asChild>
+            <Button size="lg" className="h-12 px-7 text-base sm:w-auto" asChild>
               <Link href="/#kontak">
                 Mulai konsultasi gratis
                 <ArrowRight aria-hidden className="size-4" />
@@ -34,7 +34,7 @@ export function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="h-11 px-6 sm:w-auto"
+              className="h-12 px-7 text-base sm:w-auto"
               asChild
             >
               <Link href="/#showcase">Lihat portfolio</Link>
@@ -69,7 +69,7 @@ function HeroIllustration() {
         height="220"
         rx="14"
         className="fill-card"
-        stroke="hsl(var(--border))"
+        stroke="var(--border)"
         strokeWidth="1.5"
       />
       <rect
@@ -172,7 +172,7 @@ function HeroIllustration() {
         height="96"
         rx="14"
         className="fill-card"
-        stroke="hsl(var(--border))"
+        stroke="var(--border)"
         strokeWidth="1.5"
       />
       <rect
@@ -224,7 +224,7 @@ function HeroIllustration() {
         height="78"
         rx="12"
         className="fill-card"
-        stroke="hsl(var(--border))"
+        stroke="var(--border)"
         strokeWidth="1.5"
       />
       <circle cx="83" cy="305" r="13" className="fill-primary" opacity="0.15" />
@@ -253,7 +253,7 @@ function HeroIllustration() {
         height="78"
         rx="12"
         className="fill-card"
-        stroke="hsl(var(--border))"
+        stroke="var(--border)"
         strokeWidth="1.5"
       />
       <circle
@@ -288,7 +288,7 @@ function HeroIllustration() {
         height="78"
         rx="12"
         className="fill-card"
-        stroke="hsl(var(--border))"
+        stroke="var(--border)"
         strokeWidth="1.5"
       />
       <circle
@@ -331,7 +331,7 @@ function HeroIllustration() {
         height="56"
         rx="12"
         className="fill-card"
-        stroke="hsl(var(--border))"
+        stroke="var(--border)"
         strokeWidth="1.5"
       />
       <rect

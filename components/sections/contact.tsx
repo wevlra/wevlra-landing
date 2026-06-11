@@ -53,9 +53,9 @@ function ContactForm({ onSuccess }: { onSuccess: () => void }) {
   const successHandled = useRef(false)
   const [isValid, setIsValid] = useState(false)
 
-  function checkValidity() {
+  useEffect(() => {
     setIsValid(formRef.current?.checkValidity() ?? false)
-  }
+  }, [])
 
   useEffect(() => {
     if (state.success && !successHandled.current) {
@@ -69,97 +69,59 @@ function ContactForm({ onSuccess }: { onSuccess: () => void }) {
   return (
     <form
       ref={formRef}
-      className="flex flex-col gap-4 p-6 sm:p-8"
-      onChange={checkValidity}
+      className="flex flex-col gap-5 p-8 sm:p-10"
+      onChange={() => setIsValid(formRef.current?.checkValidity() ?? false)}
       onSubmit={(e) => {
         e.preventDefault()
         if (pending || !isValid) return
-        const fd = new FormData(e.currentTarget)
-        formAction(fd)
+        formAction(new FormData(e.currentTarget))
       }}
     >
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="name" className="text-xs font-medium text-foreground">
-            Nama
-          </label>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field label="Nama" id="name" error={state.errors?.name}>
           <Input
             id="name"
             name="name"
             placeholder="Nama lengkap"
-            className="h-10"
             required
             disabled={pending}
           />
-          {state.errors?.name && (
-            <p className="text-xs text-destructive">{state.errors.name[0]}</p>
-          )}
-        </div>
-        <div className="flex flex-col gap-1.5">
-          <label
-            htmlFor="email"
-            className="text-xs font-medium text-foreground"
-          >
-            Email
-          </label>
+        </Field>
+        <Field label="Email" id="email" error={state.errors?.email}>
           <Input
             id="email"
             name="email"
             type="email"
             placeholder="email@contoh.com"
-            className="h-10"
             required
             disabled={pending}
           />
-          {state.errors?.email && (
-            <p className="text-xs text-destructive">{state.errors.email[0]}</p>
-          )}
-        </div>
+        </Field>
       </div>
-      <div className="flex flex-col gap-1.5">
-        <label
-          htmlFor="subject"
-          className="text-xs font-medium text-foreground"
-        >
-          Subjek
-        </label>
+      <Field label="Subjek" id="subject" error={state.errors?.subject}>
         <Input
           id="subject"
           name="subject"
           placeholder="Apa yang bisa kami bantu?"
-          className="h-10"
           required
           disabled={pending}
         />
-        {state.errors?.subject && (
-          <p className="text-xs text-destructive">{state.errors.subject[0]}</p>
-        )}
-      </div>
-      <div className="flex flex-col gap-1.5">
-        <label
-          htmlFor="message"
-          className="text-xs font-medium text-foreground"
-        >
-          Pesan
-        </label>
+      </Field>
+      <Field label="Pesan" id="message" error={state.errors?.message}>
         <Textarea
           id="message"
           name="message"
           placeholder="Ceritakan kebutuhan website Anda..."
-          rows={4}
-          className="min-h-28"
+          rows={5}
           required
           disabled={pending}
         />
-        {state.errors?.message && (
-          <p className="text-xs text-destructive">{state.errors.message[0]}</p>
-        )}
-      </div>
-      <div className="flex items-center justify-between gap-3 pt-1">
+      </Field>
+      <div className="flex items-center justify-between gap-3 pt-2">
         <p className="text-xs text-muted-foreground">
           Kami balas dalam 1×24 jam.
         </p>
-        <Button type="submit" size="default" disabled={pending || !isValid}>
+        <Button type="submit" disabled={pending || !isValid}>
           {pending ? (
             <Loader2 aria-hidden className="size-4 animate-spin" />
           ) : (
@@ -169,6 +131,28 @@ function ContactForm({ onSuccess }: { onSuccess: () => void }) {
         </Button>
       </div>
     </form>
+  )
+}
+
+function Field({
+  label,
+  id,
+  error,
+  children,
+}: {
+  label: string
+  id: string
+  error?: string[]
+  children: React.ReactNode
+}) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label htmlFor={id} className="text-xs font-medium text-foreground">
+        {label}
+      </label>
+      {children}
+      {error && <p className="text-xs text-destructive">{error[0]}</p>}
+    </div>
   )
 }
 
@@ -187,7 +171,7 @@ export function Contact() {
 
       <div className="mx-auto max-w-7xl overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm">
         <div className="grid lg:grid-cols-5">
-          <aside className="relative flex flex-col gap-6 border-b border-border/60 bg-muted/40 p-6 sm:p-8 lg:col-span-2 lg:border-r lg:border-b-0">
+          <aside className="relative flex flex-col gap-6 border-b border-border/60 bg-muted/40 p-8 sm:p-10 lg:col-span-2 lg:border-r lg:border-b-0">
             <div>
               <h3 className="text-lg font-semibold text-foreground">
                 Mari mulai obrolan
@@ -197,12 +181,11 @@ export function Contact() {
                 formal, kirim email kapan saja.
               </p>
             </div>
-
-            <ul className="flex flex-col gap-1">
+            <ul className="flex flex-col gap-2">
               {contactInfo.map((item) => {
                 const content = (
                   <>
-                    <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                       <item.icon aria-hidden className="size-4" />
                     </span>
                     <span className="flex min-w-0 flex-col">
@@ -215,18 +198,17 @@ export function Contact() {
                     </span>
                   </>
                 )
-
                 return (
                   <li key={item.label}>
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="group -mx-2 flex items-center gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-background/60"
+                        className="group -mx-2 flex items-center gap-3 rounded-lg px-2 py-2.5 transition-colors hover:bg-background/60"
                       >
                         {content}
                       </a>
                     ) : (
-                      <div className="-mx-2 flex items-center gap-3 px-2 py-2">
+                      <div className="-mx-2 flex items-center gap-3 px-2 py-2.5">
                         {content}
                       </div>
                     )}
@@ -237,12 +219,12 @@ export function Contact() {
           </aside>
           <div className="lg:col-span-3">
             {submitted ? (
-              <div className="flex h-full flex-col items-center justify-center gap-4 p-6 sm:p-8">
-                <span className="flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <CheckCircle2 aria-hidden className="size-5" />
+              <div className="flex h-full flex-col items-center justify-center gap-4 p-8 sm:p-10">
+                <span className="flex size-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <CheckCircle2 aria-hidden className="size-6" />
                 </span>
                 <div className="text-center">
-                  <h4 className="text-base font-semibold text-foreground">
+                  <h4 className="text-lg font-semibold text-foreground">
                     Pesan Terkirim!
                   </h4>
                   <p className="mt-1 text-sm text-muted-foreground">
