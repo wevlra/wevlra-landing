@@ -37,8 +37,8 @@ function FounderCard({ founder }: { founder: Founder }) {
           src={
             founder.image ||
             "https://ui-avatars.com/api/?name=" +
-              founder.name +
-              "&size=512&background=random"
+            founder.name +
+            "&size=512&background=random"
           }
           alt={founder.name}
           fill
@@ -155,14 +155,14 @@ export default function TentangPage() {
                 Tentang Kami
               </span>
               <h1 className="mt-4 text-4xl leading-[1.08] font-semibold tracking-[-0.04em] text-balance text-foreground sm:text-5xl lg:text-[3.6rem]">
-                Kami ingin bisnis lokal punya website yang
-                <span className="text-gradient-brand"> terlihat serius</span>,
-                bukan sekadar online.
+                Kami membantu bisnis membangun produk digital yang
+                <span className="text-gradient-brand"> profesional, scalable</span>,
+                dan berdampak nyata.
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
-                {brand.name} membantu bisnis tampil lebih profesional melalui
-                desain yang rapi, struktur konten yang jelas, dan proses kerja
-                yang transparan dari brief sampai website live.
+                {brand.name} adalah software house asal Lampung yang berfokus pada
+                pengembangan website, aplikasi mobile, aplikasi desktop, dan solusi digital untuk
+                bisnis di seluruh Indonesia.
               </p>
             </div>
 
@@ -172,12 +172,12 @@ export default function TentangPage() {
                   Visi
                 </p>
                 <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                  Membuat website profesional lebih mudah diakses.
+                  Menjadi partner teknologi terpercaya bagi bisnis yang ingin bertumbuh di era digital.
                 </h2>
                 <p className="mt-4 text-base leading-8 text-muted-foreground">
-                  Kami ingin UMKM, kreator, dan perusahaan lokal bisa punya
-                  website yang dipercaya tanpa harus melewati proses yang mahal,
-                  lambat, dan membingungkan.
+                  Kami percaya bahwa teknologi yang tepat dapat membantu bisnis berkembang
+                  lebih cepat, bekerja lebih efisien, dan memberikan pengalaman yang lebih baik
+                  bagi pelanggan.
                 </p>
               </div>
 
@@ -186,12 +186,12 @@ export default function TentangPage() {
                   Misi
                 </p>
                 <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                  Menggabungkan desain, teknologi, dan komunikasi yang jelas.
+                  Membangun solusi digital yang inovatif, berkualitas, dan berdampak nyata.
                 </h2>
                 <p className="mt-4 text-base leading-8 text-muted-foreground">
-                  Setiap proyek kami arahkan agar tidak hanya terlihat bagus,
-                  tapi juga cepat diakses, mudah dipahami, dan siap membantu
-                  bisnis mendapatkan kepercayaan dari calon pelanggan.
+                  Kami menggabungkan strategi, desain, dan teknologi untuk menciptakan
+                  website, aplikasi, dan sistem digital yang membantu bisnis mencapai tujuan
+                  mereka secara efektif.
                 </p>
               </div>
             </div>
@@ -205,8 +205,8 @@ export default function TentangPage() {
                 eyebrow="Cerita Kami"
                 title={
                   <>
-                    Dari Lampung,{" "}
-                    <span className="text-gradient-brand">untuk Indonesia</span>
+                    Mengubah Ide{" "}
+                    <span className="text-gradient-brand">Menjadi Solusi.</span>
                   </>
                 }
                 align="left"
@@ -214,21 +214,13 @@ export default function TentangPage() {
               />
               <div className="space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
                 <p>
-                  WEVLRA didirikan pada 2024 oleh empat mahasiswa teknologi yang
-                  frustrasi melihat banyak UMKM lokal kesulitan memiliki website
-                  yang bagus karena harga jasa web yang mahal dan proses yang
-                  tidak transparan.
+                  {brand.name} didirikan dengan keyakinan bahwa teknologi yang tepat mampu membantu bisnis berkembang lebih cepat dan beradaptasi dengan perubahan di era digital. Kami melihat bahwa banyak bisnis memiliki potensi besar, tetapi belum memiliki solusi digital yang mampu mendukung pertumbuhan mereka secara optimal.
                 </p>
                 <p>
-                  Kami membangun platform yang memungkinkan siapa saja — pemilik
-                  warung, kreator konten, hingga perusahaan besar — mendapatkan
-                  website premium dengan harga terjangkau dan proses yang
-                  menyenangkan.
+                  Dengan menggabungkan strategi, desain, dan teknologi modern, kami membantu mengubah ide menjadi produk digital yang fungsional, efisien, dan mudah digunakan. Setiap solusi yang kami bangun dirancang tidak hanya untuk memenuhi kebutuhan saat ini, tetapi juga untuk mendukung perkembangan bisnis di masa depan.
                 </p>
                 <p>
-                  Hari ini, kami telah membantu lebih dari 50 klien dari
-                  berbagai kota di Indonesia untuk hadir secara profesional di
-                  internet.
+                  Bagi kami, pengembangan perangkat lunak bukan sekadar menulis kode. Ini adalah proses memahami tantangan, menemukan peluang, dan menciptakan solusi yang memberikan dampak nyata. Melalui kolaborasi yang transparan dan berorientasi pada hasil, kami berkomitmen menjadi partner teknologi yang dapat diandalkan oleh setiap klien.
                 </p>
               </div>
             </div>

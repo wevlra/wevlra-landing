@@ -15,12 +15,12 @@ export function Hero() {
         <div className="animate-fade-up max-w-xl space-y-8">
           <div className="space-y-5">
             <h1 className="text-4xl leading-[1.05] font-semibold tracking-[-0.04em] text-balance text-foreground sm:text-5xl lg:text-[3.2rem]">
-              Website yang membuat bisnis Anda terlihat profesional dan{" "}
-              <span className="text-gradient-brand">dipercaya.</span>
+              Membangun Solusi Digital untuk Pertumbuhan Bisnis Anda.
             </h1>
             <p className="text-base leading-8 text-muted-foreground sm:text-lg">
-              Dari strategi, desain, copywriting, hingga deploy — semua dalam
-              satu proses yang rapi, transparan, dan tanpa template murahan.
+              Kami membantu bisnis, startup, dan organisasi membangun website, aplikasi, 
+              dan solusi digital melalui kombinasi teknologi modern, tim berpengalaman, 
+              dan AI Assistant yang siap membantu kapan saja.
             </p>
           </div>
 

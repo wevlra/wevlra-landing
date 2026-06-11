@@ -8,11 +8,11 @@ export function HowItWorks() {
         eyebrow="Cara Kerja"
         title={
           <>
-            Dari ide ke website hidup,{" "}
+            Dari ide ke produk digital,{" "}
             <span className="text-gradient-brand">hanya 4 langkah</span>
           </>
         }
-        description="Proses kami dirancang sesederhana mungkin — Anda fokus pada bisnis, kami urus semua teknisnya."
+        description="Proses kami dirancang sesederhana mungkin — Anda fokus pada bisnis, kami urus strategi, desain, dan pengembangannya."
         className="mb-12 sm:mb-14"
       />
 

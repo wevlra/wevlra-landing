@@ -26,8 +26,8 @@ export const founders: Founder[] = [
     role: "Founder",
     image: "/images/bintang.png",
     socials: {
-      instagram: "https://instagram.com/bintangsn",
-      linkedin: "https://linkedin.com/in/bintangsn",
+      instagram: "https://instagram.com/itsme.strr",
+      linkedin: "https://linkedin.com/in/bintangsuryanugraha",
     },
   },
   {
@@ -35,7 +35,7 @@ export const founders: Founder[] = [
     role: "Founder",
     image: "/images/azni.png",
     socials: {
-      instagram: "https://instagram.com/aznimuzaiyin",
+      instagram: "https://instagram.com/aznimzn",
       linkedin: "https://linkedin.com/in/aznimuzaiyin",
     },
   },
@@ -44,8 +44,8 @@ export const founders: Founder[] = [
     role: "Founder",
     image: "/images/murphy.png",
     socials: {
-      instagram: "https://instagram.com/murphy",
-      facebook: "https://facebook.com/murphy",
+      instagram: "https://instagram.com/murphyibra",
+      linkedin: "http://linkedin.com/in/murphy-ibrahim-movic",
     },
   },
   {
@@ -53,8 +53,8 @@ export const founders: Founder[] = [
     role: "Founder",
     image: "/images/budi.png",
     socials: {
-      twitter: "https://twitter.com/budis",
-      linkedin: "https://linkedin.com/in/budisn",
+      instagram: "https://instagram.com/bdsafta_",
+      linkedin: "https://linkedin.com/in/budi-safta-nugraha-567128142",
     },
   },
 ]
@@ -76,7 +76,7 @@ export const companyValues: CompanyValue[] = [
     icon: Heart,
     title: "Dedikasi",
     description:
-      "Setiap website yang kami bangun diperlakukan seperti milik sendiri — dengan perhatian penuh pada detail.",
+      "Setiap solusi yang kami bangun diperlakukan seperti milik sendiri dengan perhatian penuh pada detail.",
   },
   {
     icon: Lightbulb,
@@ -88,7 +88,7 @@ export const companyValues: CompanyValue[] = [
     icon: Globe,
     title: "Dampak Nyata",
     description:
-      "Kesuksesan klien adalah tolok ukur kami. Website bukan sekadar estetika — ia harus menghasilkan bisnis.",
+      "Setiap solusi yang kami bangun harus memberikan dampak nyata dan mendukung tujuan bisnis mereka.",
   },
 ]
 
@@ -110,8 +110,8 @@ export type InfoCard = {
 }
 
 export const companyInfoCards: InfoCard[] = [
-  { icon: Rocket, label: "Didirikan", value: "2024" },
-  { icon: Users, label: "Tim Inti", value: "4 Orang" },
+  { icon: Rocket, label: "Didirikan", value: "2025" },
+  { icon: Users, label: "Tim Inti", value: "Developer & Designer" },
   { icon: Globe, label: "Lokasi", value: "Lampung, ID" },
-  { icon: Heart, label: "Misi", value: "UMKM Digital" },
+  { icon: Heart, label: "Misi", value: "Solusi Digital" },
 ]
