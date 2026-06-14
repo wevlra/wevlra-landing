@@ -44,8 +44,10 @@ const REPOS = [
   { repo: "logichain-indonesia", category: "corporate" },
   { repo: "freshfarm-market", category: "umkm" },
   { repo: "arunika-craft", category: "umkm" },
-  { repo: "lumina", category: "personal" },
   { repo: "rasa-nusantara", category: "umkm" },
+  { repo: "ethan-walker-fitness", category: "personal" },
+  { repo: "aurelia-journal", category: "personal" },
+  { repo: "lumina", category: "personal" },
 ] as const
 
 const REVALIDATE = 21600
