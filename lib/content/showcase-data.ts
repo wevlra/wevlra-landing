@@ -38,23 +38,40 @@ const CATEGORY_LABELS: Record<string, string> = {
   korporat: "Korporat",
 }
 
-const REPOS = [
-  { repo: "greenbuild-indonesia", category: "corporate" },
-  { repo: "nexora-consulting", category: "corporate" },
-  { repo: "logichain-indonesia", category: "corporate" },
-  { repo: "freshfarm-market", category: "umkm" },
-  { repo: "arunika-craft", category: "umkm" },
-  { repo: "rasa-nusantara", category: "umkm" },
-  { repo: "ethan-walker-fitness", category: "personal" },
-  { repo: "aurelia-journal", category: "personal" },
-  { repo: "lumina", category: "personal" },
-] as const
-
 const REVALIDATE = 21600
 
+async function fetchRepos(): Promise<string[]> {
+  const token = process.env.GITHUB_TOKEN
+  const headers: Record<string, string> = {
+    Accept: "application/vnd.github.v3+json",
+  }
+  if (token) {
+    headers.Authorization = `Bearer ${token}`
+  }
+
+  try {
+    const res = await fetch(
+      "https://api.github.com/orgs/wevlra/repos?per_page=100&sort=updated",
+      { headers, next: { revalidate: REVALIDATE } }
+    )
+    if (!res.ok) {
+      return []
+    }
+    const repos = await res.json() as Array<{ name: string; fork: boolean; private: boolean }>
+    return repos
+      .filter(r => !r.fork && !r.private)
+      .map(r => r.name)
+  } catch {
+    return []
+  }
+}
+
 async function fetchAllRepos(): Promise<ShowcaseCategory[]> {
+  const repoNames = await fetchRepos()
+  if (repoNames.length === 0) return []
+
   const responses = await Promise.allSettled(
-    REPOS.map(async ({ repo, category }) => {
+    repoNames.map(async (repo) => {
       const res = await fetch(
         `https://raw.githubusercontent.com/wevlra/${repo}/main/data.json`,
         { next: { revalidate: REVALIDATE } }
@@ -67,7 +84,7 @@ async function fetchAllRepos(): Promise<ShowcaseCategory[]> {
         image: `https://raw.githubusercontent.com/wevlra/${repo}/main/preview.webp`,
         slug: toSlug(raw.title),
         repo,
-        _category: CATEGORY_MAP[raw.category] ?? CATEGORY_MAP[category],
+        _category: CATEGORY_MAP[raw.category] ?? "personal",
       }
     })
   )
