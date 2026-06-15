@@ -27,7 +27,6 @@ function toSlug(title: string): string {
 }
 
 const CATEGORY_MAP: Record<string, string> = {
-  construction: "korporat",
   corporate: "korporat",
   umkm: "umkm",
   personal: "personal",
@@ -40,12 +39,15 @@ const CATEGORY_LABELS: Record<string, string> = {
 }
 
 const REPOS = [
-  { repo: "greenbuild-indonesia", category: "construction" },
+  { repo: "greenbuild-indonesia", category: "corporate" },
   { repo: "nexora-consulting", category: "corporate" },
+  { repo: "logichain-indonesia", category: "corporate" },
   { repo: "freshfarm-market", category: "umkm" },
   { repo: "arunika-craft", category: "umkm" },
-  { repo: "lumina", category: "personal" },
   { repo: "rasa-nusantara", category: "umkm" },
+  { repo: "ethan-walker-fitness", category: "personal" },
+  { repo: "aurelia-journal", category: "personal" },
+  { repo: "lumina", category: "personal" },
 ] as const
 
 const REVALIDATE = 21600
