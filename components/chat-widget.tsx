@@ -287,7 +287,7 @@ export function ChatWidget() {
     <TooltipProvider>
       {isOpen && (
         <div
-          className="fixed inset-0 z-[55] bg-black/40 transition-all duration-300"
+          className="fixed inset-0 z-40 bg-black/40 transition-all duration-300"
           onClick={() => {
             setIsMaximized(false)
             setIsOpen(false)
@@ -297,10 +297,13 @@ export function ChatWidget() {
       <div
         ref={widgetRef}
         className={cn(
-          "z-[60]",
+          "z-40",
           isMaximized
             ? "contents"
-            : "fixed right-4 bottom-4 flex flex-col items-end gap-3 sm:right-6 sm:bottom-6"
+            : cn(
+                "fixed right-4 bottom-4 flex flex-col items-end gap-3 sm:right-6 sm:bottom-6",
+                !isOpen && "pointer-events-none"
+              )
         )}
       >
         <div
@@ -311,7 +314,7 @@ export function ChatWidget() {
               : "pointer-events-none scale-95 opacity-0",
             !isMaximized && "origin-bottom-right",
             isMaximized &&
-              "fixed inset-0 z-[60] flex items-center justify-center p-4"
+              "fixed inset-0 z-40 flex items-center justify-center p-4"
           )}
           onClick={(e) => {
             if (isMaximized && e.target === e.currentTarget) {
@@ -474,7 +477,7 @@ export function ChatWidget() {
               size="icon-lg"
               onClick={toggleOpen}
               className={cn(
-                "chat-widget-fab relative size-14 rounded-full shadow-md transition-all duration-300 hover:shadow-lg",
+                "chat-widget-fab pointer-events-auto relative size-14 rounded-full shadow-md transition-all duration-300 hover:shadow-lg",
                 isOpen && "rotate-0",
                 isMaximized && "pointer-events-none scale-0 opacity-0"
               )}
