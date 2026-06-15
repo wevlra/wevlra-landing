@@ -322,7 +322,8 @@ export function ChatWidget() {
         >
           <Card
             className={cn(
-              "chat-widget-card pointer-events-auto flex flex-col overflow-hidden shadow-lg",
+              "chat-widget-card flex flex-col overflow-hidden shadow-lg",
+              isOpen ? "pointer-events-auto" : "pointer-events-none",
               isMaximized
                 ? "h-[85dvh] min-h-[85dvh] w-[calc(100vw-2rem)] max-w-5xl sm:w-[600px] md:w-[800px]"
                 : "w-[calc(100vw-2rem)] sm:w-[400px]"
