@@ -6,37 +6,41 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import { Section } from "@/components/section"
 
 const SLIDES = [
   {
     id: 1,
-    title: "Membangun Solusi Digital untuk Pertumbuhan Bisnis Anda.",
-    description: "Kami membantu bisnis, startup, dan organisasi membangun website, aplikasi, dan solusi digital melalui kombinasi teknologi modern, tim berpengalaman, dan AI Assistant yang siap membantu kapan saja.",
+    badge: "Solusi Digital Terdepan",
+    title: "Transformasi Bisnis Anda ke Era Digital Berikutnya.",
+    description: "Tinggalkan cara lama. Kami hadirkan ekosistem digital cerdas yang didukung teknologi modern dan AI, khusus dirancang untuk mendongkrak skala bisnis Anda secara eksponensial.",
     image: "/images/hero-slide-1.jpg",
-    ctaPrimaryText: "Mulai konsultasi gratis",
+    ctaPrimaryText: "Mulai Transformasi",
     ctaPrimaryLink: "/#kontak",
-    ctaSecondaryText: "Lihat portfolio",
+    ctaSecondaryText: "Lihat Portfolio",
     ctaSecondaryLink: "/#showcase"
   },
   {
     id: 2,
-    title: "Desain Modern dan Responsif untuk Pengalaman Terbaik.",
-    description: "Tingkatkan interaksi pelanggan dengan antarmuka yang intuitif dan menarik. Kami memastikan setiap produk digital yang kami buat tidak hanya indah, tapi juga mudah digunakan.",
+    badge: "Desain Premium & Interaktif",
+    title: "Ciptakan Pengalaman UI/UX yang Tak Terlupakan.",
+    description: "Bukan sekadar indah dipandang, kami membangun antarmuka yang responsif, intuitif, dan dinamis. Setiap piksel dikurasi untuk memanjakan mata dan mengonversi pengunjung menjadi pelanggan setia.",
     image: "/images/hero-slide-2.jpg",
-    ctaPrimaryText: "Pelajari lebih lanjut",
+    ctaPrimaryText: "Pelajari Layanan",
     ctaPrimaryLink: "/#layanan",
-    ctaSecondaryText: "Hubungi kami",
+    ctaSecondaryText: "Hubungi Ahli",
     ctaSecondaryLink: "/#kontak"
   },
   {
     id: 3,
-    title: "Optimasi Performa dan Keamanan Terjamin.",
-    description: "Kecepatan dan keamanan adalah prioritas utama. Solusi kami dibangun dengan standar industri tertinggi untuk memastikan bisnis Anda berjalan lancar tanpa hambatan.",
+    badge: "Performa Maksimal & Aman",
+    title: "Kecepatan dan Keamanan Siber Tanpa Kompromi.",
+    description: "Bisnis Anda berhak mendapatkan infrastruktur terbaik. Dengan optimasi tingkat tinggi, platform digital Anda akan memuat super cepat, stabil 24/7, dan terlindungi dari ancaman siber.",
     image: "/images/hero-slide-3.jpg",
-    ctaPrimaryText: "Lihat teknologi kami",
+    ctaPrimaryText: "Eksplorasi Teknologi",
     ctaPrimaryLink: "/#teknologi",
-    ctaSecondaryText: "Mulai sekarang",
+    ctaSecondaryText: "Mulai Sekarang",
     ctaSecondaryLink: "/#kontak"
   }
 ]
@@ -102,6 +106,11 @@ export function Hero() {
               <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
                 <div className="max-w-xl space-y-8 animate-fade-up">
                   <div className="space-y-5">
+                    {slide.badge && (
+                      <Badge variant="secondary" className="px-3 py-1.5 text-sm font-medium rounded-full bg-primary/10 text-primary hover:bg-primary/20 border-0">
+                        {slide.badge}
+                      </Badge>
+                    )}
                     <h1 className="text-4xl leading-[1.05] font-semibold tracking-[-0.04em] text-balance text-foreground sm:text-5xl lg:text-[3.2rem]">
                       {slide.title}
                     </h1>
