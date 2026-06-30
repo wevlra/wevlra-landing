@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import Link from "next/link"
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
@@ -15,7 +15,7 @@ const SLIDES = [
     badge: "Solusi Digital Terdepan",
     title: "Transformasi Bisnis Anda ke Era Digital Berikutnya.",
     description: "Tinggalkan cara lama. Kami hadirkan ekosistem digital cerdas yang didukung teknologi modern dan AI, khusus dirancang untuk mendongkrak skala bisnis Anda secara eksponensial.",
-    image: "/images/hero-slide-1.jpg",
+    image: "/images/slide-1.png",
     ctaPrimaryText: "Mulai Transformasi",
     ctaPrimaryLink: "/#kontak",
     ctaSecondaryText: "Lihat Portfolio",
@@ -26,7 +26,7 @@ const SLIDES = [
     badge: "Desain Premium & Interaktif",
     title: "Ciptakan Pengalaman UI/UX yang Tak Terlupakan.",
     description: "Bukan sekadar indah dipandang, kami membangun antarmuka yang responsif, intuitif, dan dinamis. Setiap piksel dikurasi untuk memanjakan mata dan mengonversi pengunjung menjadi pelanggan setia.",
-    image: "/images/hero-slide-2.jpg",
+    image: "/images/contoh2.png",
     ctaPrimaryText: "Pelajari Layanan",
     ctaPrimaryLink: "/#layanan",
     ctaSecondaryText: "Hubungi Ahli",
@@ -37,7 +37,7 @@ const SLIDES = [
     badge: "Performa Maksimal & Aman",
     title: "Kecepatan dan Keamanan Siber Tanpa Kompromi.",
     description: "Bisnis Anda berhak mendapatkan infrastruktur terbaik. Dengan optimasi tingkat tinggi, platform digital Anda akan memuat super cepat, stabil 24/7, dan terlindungi dari ancaman siber.",
-    image: "/images/hero-slide-3.jpg",
+    image: "/images/contoh2.png",
     ctaPrimaryText: "Eksplorasi Teknologi",
     ctaPrimaryLink: "/#teknologi",
     ctaSecondaryText: "Mulai Sekarang",
@@ -48,41 +48,111 @@ const SLIDES = [
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(1)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  
+  const sliderRef = useRef<HTMLDivElement>(null)
+  const dragOffset = useRef(0)
+  const isDragging = useRef(false)
+  const startX = useRef(0)
+  const isTransitioningRef = useRef(false)
 
   const extendedSlides = [SLIDES[SLIDES.length - 1], ...SLIDES, SLIDES[0]]
 
-  const nextSlide = useCallback(() => {
-    if (currentSlide >= extendedSlides.length - 1) return
+  const handleSlideChange = useCallback((newSlide: number) => {
+    if (isTransitioningRef.current) return
     setIsTransitioning(true)
-    setCurrentSlide((prev) => prev + 1)
-  }, [currentSlide, extendedSlides.length])
+    isTransitioningRef.current = true
+    setCurrentSlide(newSlide)
+
+    setTimeout(() => {
+      isTransitioningRef.current = false
+      if (newSlide >= extendedSlides.length - 1) {
+        setIsTransitioning(false)
+        setCurrentSlide(1)
+      } else if (newSlide <= 0) {
+        setIsTransitioning(false)
+        setCurrentSlide(extendedSlides.length - 2)
+      }
+    }, 250)
+  }, [extendedSlides.length])
+
+  const nextSlide = useCallback(() => {
+    handleSlideChange(currentSlide + 1)
+  }, [currentSlide, handleSlideChange])
 
   const prevSlide = useCallback(() => {
-    if (currentSlide <= 0) return
-    setIsTransitioning(true)
-    setCurrentSlide((prev) => prev - 1)
-  }, [currentSlide])
+    handleSlideChange(currentSlide - 1)
+  }, [currentSlide, handleSlideChange])
 
   const goToSlide = useCallback((idx: number) => {
-    setIsTransitioning(true)
-    setCurrentSlide(idx + 1)
-  }, [])
+    handleSlideChange(idx + 1)
+  }, [handleSlideChange])
 
   useEffect(() => {
     const timer = setInterval(() => {
-      nextSlide()
+      if (!isDragging.current && !isTransitioningRef.current) {
+        nextSlide()
+      }
     }, 5000)
     return () => clearInterval(timer)
   }, [nextSlide])
 
-  const handleTransitionEnd = () => {
-    if (currentSlide >= extendedSlides.length - 1) {
-      setIsTransitioning(false)
-      setCurrentSlide(1)
-    } else if (currentSlide <= 0) {
-      setIsTransitioning(false)
-      setCurrentSlide(extendedSlides.length - 2)
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return
+    if (isTransitioningRef.current) return
+    
+    isDragging.current = true
+    startX.current = e.clientX
+    dragOffset.current = 0
+    if (sliderRef.current) {
+      sliderRef.current.style.transition = 'none'
     }
+    try {
+      ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
+    } catch(err) {}
+  }
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDragging.current) return
+    const diff = e.clientX - startX.current
+    dragOffset.current = diff
+    if (sliderRef.current) {
+      sliderRef.current.style.transform = `translateX(calc(-${currentSlide * 100}% + ${diff}px))`
+    }
+  }
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    if (!isDragging.current) return
+    isDragging.current = false
+
+    try {
+      ;(e.target as HTMLElement).releasePointerCapture(e.pointerId)
+    } catch(err) {}
+
+    if (sliderRef.current) {
+      sliderRef.current.style.transition = ''
+    }
+
+    const diff = dragOffset.current
+    if (diff <= -75) {
+      nextSlide()
+    } else if (diff >= 75) {
+      prevSlide()
+    } else {
+      if (Math.abs(diff) > 5) {
+        isTransitioningRef.current = true
+        if (sliderRef.current) {
+          sliderRef.current.style.transform = `translateX(-${currentSlide * 100}%)`
+        }
+        setTimeout(() => {
+          isTransitioningRef.current = false
+        }, 750)
+      } else {
+        if (sliderRef.current) {
+          sliderRef.current.style.transform = `translateX(-${currentSlide * 100}%)`
+        }
+      }
+    }
+    dragOffset.current = 0
   }
 
   let activeDotIndex = currentSlide - 1
@@ -95,11 +165,17 @@ export function Hero() {
       size="md"
       className="relative overflow-hidden pt-8 pb-16"
     >
-      <div className="relative overflow-hidden w-full">
+      <div 
+        className="relative overflow-hidden w-full touch-pan-y select-none"
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+      >
         <div 
+          ref={sliderRef}
           className={`flex ${isTransitioning ? "transition-transform duration-700 ease-in-out" : ""}`} 
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          onTransitionEnd={handleTransitionEnd}
         >
           {extendedSlides.map((slide, index) => (
             <div key={`${slide.id}-${index}`} className="w-full shrink-0">
@@ -147,6 +223,7 @@ export function Hero() {
                     fill
                     className="object-contain"
                     priority={index === 1}
+                    draggable={false}
                   />
                 </div>
               </div>
@@ -157,7 +234,6 @@ export function Hero() {
       
       {/* Navigation Controls */}
       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-6 z-20">
-        
         <div className="flex gap-3">
           {SLIDES.map((_, idx) => (
             <button
@@ -170,7 +246,6 @@ export function Hero() {
             />
           ))}
         </div>
-        
       </div>
     </Section>
   )
