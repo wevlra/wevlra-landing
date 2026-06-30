@@ -42,8 +42,8 @@ export const pricingCategories: PricingCategory[] = [
         name: "Pro",
         description:
           "Untuk bisnis yang ingin tampil profesional dan tumbuh lebih cepat.",
-        monthlyPrice: 1499000,
-        yearlyPrice: Math.round(1499000 * 12 * 0.8),
+        monthlyPrice: 1899000,
+        yearlyPrice: Math.round(1899000 * 12 * 0.8),
         popular: true,
         features: [
           "Semua fitur Starter, plus:",
