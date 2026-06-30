@@ -2,48 +2,13 @@
 
 import { useState, useEffect, useCallback, useRef } from "react"
 import Link from "next/link"
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Section } from "@/components/section"
-
-const SLIDES = [
-  {
-    id: 1,
-    badge: "🚀 Solusi Digital Terdepan",
-    title: "Transformasi Bisnis Anda ke Era Digital Berikutnya.",
-    description: "Tinggalkan cara lama. Kami hadirkan ekosistem digital cerdas yang didukung teknologi modern dan AI, khusus dirancang untuk mendongkrak skala bisnis Anda secara eksponensial.",
-    image: "/images/hero-slide-1.jpg",
-    ctaPrimaryText: "Mulai Transformasi",
-    ctaPrimaryLink: "/#kontak",
-    ctaSecondaryText: "Lihat Portfolio",
-    ctaSecondaryLink: "/#showcase"
-  },
-  {
-    id: 2,
-    badge: "✨ Desain Premium & Interaktif",
-    title: "Ciptakan Pengalaman UI/UX yang Tak Terlupakan.",
-    description: "Bukan sekadar indah dipandang, kami membangun antarmuka yang responsif, intuitif, dan dinamis. Setiap piksel dikurasi untuk memanjakan mata dan mengonversi pengunjung menjadi pelanggan setia.",
-    image: "/images/hero-slide-2.jpg",
-    ctaPrimaryText: "Pelajari Fitur",
-    ctaPrimaryLink: "/#fitur",
-    ctaSecondaryText: "Hubungi Ahli",
-    ctaSecondaryLink: "/#kontak"
-  },
-  {
-    id: 3,
-    badge: "⚡ Performa Maksimal & Aman",
-    title: "Kecepatan dan Keamanan Siber Tanpa Kompromi.",
-    description: "Bisnis Anda berhak mendapatkan infrastruktur terbaik. Dengan optimasi tingkat tinggi, platform digital Anda akan memuat super cepat, stabil 24/7, dan terlindungi dari ancaman siber.",
-    image: "/images/hero-slide-3.jpg",
-    ctaPrimaryText: "Bandingkan Keunggulan",
-    ctaPrimaryLink: "/#perbandingan",
-    ctaSecondaryText: "Mulai Sekarang",
-    ctaSecondaryLink: "/#kontak"
-  }
-]
+import { SLIDES } from "@/lib/content/hero"
 
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(1)
@@ -233,7 +198,7 @@ export function Hero() {
       </div>
       
       {/* Navigation Controls */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-6 z-20">
+      <div className="mt-12 flex items-center z-20">
         <div className="flex gap-3">
           {SLIDES.map((_, idx) => (
             <button
