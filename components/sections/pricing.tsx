@@ -113,10 +113,20 @@ export function Pricing() {
                       <CardContent className="flex flex-1 flex-col gap-6 pt-0">
                         <div className="border-b border-border/60 pb-6">
                           {pricePerMonth !== null ? (
-                            <div className="flex flex-wrap items-baseline gap-x-1.5">
-                              <span className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-3xl lg:text-4xl">
-                                {formatIDR(pricePerMonth)}
-                              </span>
+                            <div className="flex flex-col gap-1">
+                              <div className="flex items-center gap-2">
+                                <span className="text-sm font-medium text-muted-foreground line-through">
+                                  {formatIDR(pricePerMonth * 2)}
+                                </span>
+                                <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">
+                                  Hemat 50%
+                                </span>
+                              </div>
+                              <div className="flex flex-wrap items-baseline gap-x-1.5">
+                                <span className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-3xl lg:text-4xl">
+                                  {formatIDR(pricePerMonth)}
+                                </span>
+                              </div>
                             </div>
                           ) : (
                             <span className="text-3xl font-bold tracking-tight text-foreground md:text-2xl lg:text-3xl">
