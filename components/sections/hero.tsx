@@ -37,7 +37,7 @@ export function Hero() {
         setIsTransitioning(false)
         setCurrentSlide(extendedSlides.length - 2)
       }
-    }, 250)
+    }, 550)
   }, [extendedSlides.length])
 
   const nextSlide = useCallback(() => {
@@ -63,7 +63,17 @@ export function Hero() {
 
   const handlePointerDown = (e: React.PointerEvent) => {
     if (e.pointerType === 'mouse' && e.button !== 0) return
-    if (isTransitioningRef.current) return
+    
+    if (isTransitioningRef.current) {
+      isTransitioningRef.current = false
+      if (currentSlide >= extendedSlides.length - 1) {
+        setIsTransitioning(false)
+        setCurrentSlide(1)
+      } else if (currentSlide <= 0) {
+        setIsTransitioning(false)
+        setCurrentSlide(extendedSlides.length - 2)
+      }
+    }
     
     isDragging.current = true
     startX.current = e.clientX
@@ -79,9 +89,12 @@ export function Hero() {
   const handlePointerMove = (e: React.PointerEvent) => {
     if (!isDragging.current) return
     const diff = e.clientX - startX.current
+    if (Math.abs(diff) > 5 && e.cancelable) {
+      e.preventDefault()
+    }
     dragOffset.current = diff
     if (sliderRef.current) {
-      sliderRef.current.style.transform = `translateX(calc(-${currentSlide * 100}% + ${diff}px))`
+      sliderRef.current.style.transform = `translate3d(calc(-${currentSlide * 100}% + ${diff}px), 0, 0)`
     }
   }
 
@@ -98,22 +111,22 @@ export function Hero() {
     }
 
     const diff = dragOffset.current
-    if (diff <= -75) {
+    if (diff <= -40) {
       nextSlide()
-    } else if (diff >= 75) {
+    } else if (diff >= 40) {
       prevSlide()
     } else {
       if (Math.abs(diff) > 5) {
         isTransitioningRef.current = true
         if (sliderRef.current) {
-          sliderRef.current.style.transform = `translateX(-${currentSlide * 100}%)`
+          sliderRef.current.style.transform = `translate3d(-${currentSlide * 100}%, 0, 0)`
         }
         setTimeout(() => {
           isTransitioningRef.current = false
-        }, 750)
+        }, 550)
       } else {
         if (sliderRef.current) {
-          sliderRef.current.style.transform = `translateX(-${currentSlide * 100}%)`
+          sliderRef.current.style.transform = `translate3d(-${currentSlide * 100}%, 0, 0)`
         }
       }
     }
@@ -139,8 +152,8 @@ export function Hero() {
       >
         <div 
           ref={sliderRef}
-          className={`flex ${isTransitioning ? "transition-transform duration-700 ease-in-out" : ""}`} 
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          className={`flex ${isTransitioning ? "transition-transform duration-500 ease-out" : ""}`} 
+          style={{ transform: `translate3d(-${currentSlide * 100}%, 0, 0)` }}
         >
           {extendedSlides.map((slide, index) => (
             <div key={`${slide.id}-${index}`} className="w-full shrink-0">
