@@ -197,8 +197,10 @@ export function Hero() {
                 >
                   <Image
                     src={slide.image}
-                    alt="Hero illustration"
+                    alt={slide.title}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    quality={60}
                     className="object-contain"
                     priority={index === 1}
                     draggable={false}
