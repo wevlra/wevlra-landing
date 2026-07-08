@@ -23,8 +23,8 @@ export const pricingCategories: PricingCategory[] = [
       {
         name: "Starter",
         description: "Cocok untuk UMKM dan profesional yang baru mulai online.",
-        monthlyPrice: 1099000,
-        yearlyPrice: Math.round(1099000 * 12 * 0.8),
+        monthlyPrice: 1089000,
+        yearlyPrice: Math.round(1089000 * 12 * 0.8),
         features: [
           "1 halaman landing page profesional",
           "Domain .com/.id gratis 1 tahun",
@@ -42,8 +42,8 @@ export const pricingCategories: PricingCategory[] = [
         name: "Pro",
         description:
           "Untuk bisnis yang ingin tampil profesional dan tumbuh lebih cepat.",
-        monthlyPrice: 1899000,
-        yearlyPrice: Math.round(1899000 * 12 * 0.8),
+        monthlyPrice: 1889000,
+        yearlyPrice: Math.round(1889000 * 12 * 0.8),
         popular: true,
         features: [
           "Semua fitur Starter, plus:",
@@ -87,8 +87,8 @@ export const pricingCategories: PricingCategory[] = [
         name: "Starter",
         description:
           "Ideal untuk startup dan bisnis yang baru masuk ke ekosistem mobile.",
-        monthlyPrice: 2999000,
-        yearlyPrice: Math.round(2999000 * 12 * 0.8),
+        monthlyPrice: 2989000,
+        yearlyPrice: Math.round(2989000 * 12 * 0.8),
         features: [
           "Aplikasi Android (APK siap publish)",
           "Hingga 5 layar / fitur utama",
@@ -106,8 +106,8 @@ export const pricingCategories: PricingCategory[] = [
         name: "Pro",
         description:
           "Untuk bisnis yang membutuhkan aplikasi lengkap di Android & iOS.",
-        monthlyPrice: 5999000,
-        yearlyPrice: Math.round(5999000 * 12 * 0.8),
+        monthlyPrice: 5989000,
+        yearlyPrice: Math.round(5989000 * 12 * 0.8),
         popular: true,
         features: [
           "Semua fitur Starter, plus:",
@@ -153,8 +153,8 @@ export const pricingCategories: PricingCategory[] = [
         name: "Starter",
         description:
           "Solusi desktop ringan untuk kebutuhan operasional bisnis sehari-hari.",
-        monthlyPrice: 3499000,
-        yearlyPrice: Math.round(3499000 * 12 * 0.8),
+        monthlyPrice: 3489000,
+        yearlyPrice: Math.round(3489000 * 12 * 0.8),
         features: [
           "Aplikasi Windows (installer siap pakai)",
           "Hingga 5 modul / fitur utama",
@@ -172,8 +172,8 @@ export const pricingCategories: PricingCategory[] = [
         name: "Pro",
         description:
           "Aplikasi desktop lintas platform dengan fitur kolaborasi dan cloud.",
-        monthlyPrice: 7499000,
-        yearlyPrice: Math.round(7499000 * 12 * 0.8),
+        monthlyPrice: 7489000,
+        yearlyPrice: Math.round(7489000 * 12 * 0.8),
         popular: true,
         features: [
           "Semua fitur Starter, plus:",
