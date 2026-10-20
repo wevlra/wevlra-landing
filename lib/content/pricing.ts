@@ -27,7 +27,7 @@ export const pricingCategories: PricingCategory[] = [
         yearlyPrice: Math.round(1089000 * 12 * 0.8),
         features: [
           "1 halaman landing page profesional",
-          "Domain .com/.id gratis 1 tahun",
+          "Domain gratis 1 tahun",
           "Hosting + SSL gratis",
           "Desain responsif mobile-friendly",
           "Formulir kontak & tombol WhatsApp",
@@ -47,11 +47,10 @@ export const pricingCategories: PricingCategory[] = [
         popular: true,
         features: [
           "Semua fitur Starter, plus:",
-          "Hingga 10 halaman kustom",
-          "Domain .com/.id gratis 1 tahun",
+          "Hingga 5 halaman",
+          "Domain gratis 1 tahun",
           "Hosting + SSL gratis",
-          "Optimasi SEO lanjutan + Google Analytics",
-          "Integrasi WhatsApp, Instagram & email",
+          "Optimasi SEO lanjutan",
           "Revisi desain hingga 3x",
           "Dukungan prioritas via WhatsApp",
         ],
